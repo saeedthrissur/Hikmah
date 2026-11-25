@@ -55,7 +55,6 @@
         .arabic-calligraphy { font-family: 'Amiri', serif; line-height: 2; }
         .glass-nav { background: rgba(255, 255, 255, 0.96); backdrop-filter: blur(16px); }
         
-        /* High-Contrast Dark Mode Fixes */
         body.dark-theme { background-color: #020617 !important; color: #f8fafc !important; }
         body.dark-theme .glass-nav { background: rgba(15, 23, 42, 0.98) !important; border-color: #334155 !important; }
         body.dark-theme .bg-white { background-color: #0f172a !important; color: #f8fafc !important; border-color: #334155 !important; }
@@ -74,10 +73,9 @@
 </head>
 <body class="bg-slate-50 text-slate-800 antialiased selection:bg-brand-800 selection:text-white">
 
-    <!-- Hidden Google Translate Element -->
     <div id="google_translate_element" class="hidden"></div>
 
-    <!-- Admin Role View Simulation Banner (Visible ONLY when Admin switches view!) -->
+    <!-- Admin Role View Simulation Banner -->
     <div id="simulationBanner" class="hidden bg-amber-500 text-brand-950 py-2 px-4 text-xs font-extrabold sticky top-0 z-50 shadow-md">
         <div class="max-w-5xl mx-auto flex flex-wrap items-center justify-between gap-2">
             <div class="flex items-center gap-2">
@@ -120,14 +118,12 @@
                 </a>
 
                 <div class="flex items-center gap-2 shrink-0">
-                    <!-- Direct Admin Workspace Button (Visible ONLY to Admin!) -->
                     <button id="topAdminWorkspaceBtn" onclick="openAdminWorkspace()" class="hidden px-3 py-2 bg-amber-500 hover:bg-amber-400 text-brand-950 rounded-xl font-extrabold text-xs shadow-md flex items-center gap-1.5">
                         <i class="fa-solid fa-shield-halved"></i>
                         <span class="hidden sm:inline">Admin Workspace</span>
                         <span class="sm:hidden">Admin</span>
                     </button>
 
-                    <!-- Unified Clean Settings & Account Menu -->
                     <div class="relative">
                         <button onclick="toggleSettingsMenu()" aria-label="Settings and Account" class="px-3 py-2 bg-slate-100 hover:bg-slate-200 text-slate-800 rounded-xl border border-slate-200 flex items-center gap-2 text-xs font-bold shadow-sm transition-all">
                             <i class="fa-solid fa-gear text-brand-700 text-sm"></i>
@@ -135,7 +131,6 @@
                             <i class="fa-solid fa-chevron-down text-[10px]"></i>
                         </button>
 
-                        <!-- Settings Dropdown Panel -->
                         <div id="settingsDropdown" class="hidden absolute right-0 mt-2 w-72 bg-white rounded-3xl shadow-2xl border border-slate-200 p-4 z-50 text-xs space-y-4">
                             <div class="bg-slate-50 p-3 rounded-2xl border border-slate-200 space-y-2">
                                 <span class="text-[10px] font-extrabold uppercase tracking-wider text-slate-500 block">അക്കൗണ്ട് & പോർട്ടൽ</span>
@@ -192,10 +187,9 @@
         </div>
     </header>
 
-    <!-- DEDICATED FULL-SCREEN ADMIN WORKSPACE (Separate Page View for Admin Only!) -->
+    <!-- DEDICATED FULL-SCREEN ADMIN WORKSPACE -->
     <section id="adminWorkspacePage" class="hidden min-h-screen bg-slate-950 text-white py-8 px-4 sm:px-6">
         <div class="max-w-5xl mx-auto space-y-6">
-            <!-- Admin Header -->
             <div class="bg-brand-950 border border-amber-400/40 rounded-3xl p-5 sm:p-6 flex flex-wrap items-center justify-between gap-4 shadow-xl">
                 <div class="flex items-center gap-3.5">
                     <div class="w-12 h-12 rounded-2xl bg-amber-500 text-brand-950 flex items-center justify-center text-2xl font-bold shadow">
@@ -204,7 +198,7 @@
                     <div>
                         <span class="text-[10px] font-extrabold uppercase tracking-wider text-amber-400 block">Dedicated Admin Control Center</span>
                         <h1 class="font-display text-xl sm:text-2xl font-bold text-white">HIKMA അഡ്മിൻ ഡാഷ്ബോർഡ്</h1>
-                        <p class="text-xs text-emerald-200/80">ക്ലാസുകൾ പരിശോധിക്കാനും, നേരിട്ട് പണം നൽകുന്ന കുട്ടികളെ ചേർക്കാനും, വ്യത്യസ്ത വ്യൂകൾ കാണാനും</p>
+                        <p class="text-xs text-emerald-200/80">ഓൺലൈൻ ക്ലാസുകളും ദർസ് സിലബസും പരിശോധിക്കാനും, നേരിട്ട് പണം നൽകുന്ന കുട്ടികളെ ചേർക്കാനും</p>
                     </div>
                 </div>
                 <button onclick="closeAdminWorkspace()" class="px-4 py-2.5 bg-slate-800 hover:bg-slate-700 text-white font-bold rounded-xl border border-slate-600 text-xs flex items-center gap-2">
@@ -213,11 +207,11 @@
                 </button>
             </div>
 
-            <!-- 1. 4-WAY ROLE VIEW SWITCHER (Admin / Paid Student / Free Student / Public Guest) -->
+            <!-- 1. 4-WAY ROLE VIEW SWITCHER -->
             <div class="bg-slate-900 border border-slate-800 rounded-3xl p-5 sm:p-6 space-y-4">
                 <div class="space-y-1">
                     <h2 class="font-bold text-base text-amber-300"><i class="fa-solid fa-users-viewfinder mr-2"></i>1. വ്യത്യസ്ത ഉപയോക്താക്കളുടെ കാഴ്ച പരിശോധിക്കുക (Role View Switcher)</h2>
-                    <p class="text-xs text-slate-400">ഒരു സാധാരണ സന്ദർശകനോ, ഫ്രീ വിദ്യാർത്ഥിയോ, പണമടച്ച വിദ്യാർത്ഥിയോ സൈറ്റ് തുറക്കുമ്പോൾ എങ്ങനെ കാണും എന്ന് തത്സമയം പരിശോധിക്കാം:</p>
+                    <p class="text-xs text-slate-400">പണമടച്ച വിദ്യാർത്ഥിക്കും (Paid Student), ഫ്രീ വിദ്യാർത്ഥിക്കും, പൊതുജനങ്ങൾക്കും ഓൺലൈൻ ക്ലാസ് എങ്ങനെ കാണും എന്ന് തത്സമയം പരിശോധിക്കാം:</p>
                 </div>
 
                 <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-3 text-xs">
@@ -226,7 +220,7 @@
                             <span>👑 Admin View</span>
                             <i class="fa-solid fa-circle-check"></i>
                         </div>
-                        <p class="text-[11px] text-slate-300">എല്ലാ 12 മൊഡ്യൂളുകളും അഡ്മിൻ അധികാരങ്ങളും തുറന്നിരിക്കും.</p>
+                        <p class="text-[11px] text-slate-300">ഓൺലൈൻ ക്ലാസിലെ 12 മൊഡ്യൂളുകളും അഡ്മിൻ അധികാരങ്ങളും.</p>
                     </button>
 
                     <button onclick="setAdminViewMode('paid_student')" id="viewBtn-paid_student" class="p-4 rounded-2xl border border-slate-700 bg-slate-950 hover:border-emerald-400 text-left space-y-1.5 transition-all">
@@ -234,7 +228,7 @@
                             <span>🎓 Paid Student View</span>
                             <i class="fa-solid fa-eye"></i>
                         </div>
-                        <p class="text-[11px] text-slate-400">₹499 അടച്ച വിദ്യാർത്ഥിക്ക് 12 മൊഡ്യൂളുകളും കാണുന്ന രീതി.</p>
+                        <p class="text-[11px] text-slate-400">₹499 അടച്ച വിദ്യാർത്ഥിക്ക് 12 ഓൺലൈൻ മൊഡ്യൂളുകളും തുറന്നുകാണുന്ന രീതി.</p>
                     </button>
 
                     <button onclick="setAdminViewMode('free_student')" id="viewBtn-free_student" class="p-4 rounded-2xl border border-slate-700 bg-slate-950 hover:border-sky-400 text-left space-y-1.5 transition-all">
@@ -257,12 +251,11 @@
 
             <!-- 2. DIRECT CASH / OFFLINE ENROLLMENT + ONLINE APPROVALS -->
             <div class="grid lg:grid-cols-2 gap-6">
-                <!-- Direct Offline/Cash Enrollment Form -->
                 <div class="bg-slate-900 border border-emerald-500/40 rounded-3xl p-5 sm:p-6 space-y-4">
                     <div class="space-y-1">
                         <span class="px-2.5 py-0.5 bg-emerald-500/20 text-emerald-300 rounded text-[10px] font-extrabold uppercase">Direct Offline / Cash Admission</span>
                         <h2 class="font-bold text-base text-white"><i class="fa-solid fa-user-plus text-emerald-400 mr-2"></i>2. നേരിട്ട് പണം നൽകിയ വിദ്യാർത്ഥിയെ ചേർക്കുക</h2>
-                        <p class="text-xs text-slate-400">കയ്യിൽ നേരിട്ട് പണം നൽകിയവരുടെ Google Email ID ഇവിടെ ചേർത്താൽ, അവർ ലോഗിൻ ചെയ്യുമ്പോൾ ഉടൻ മുഴുവൻ ക്ലാസുകളും തുറന്നുകിട്ടും:</p>
+                        <p class="text-xs text-slate-400">കയ്യിൽ നേരിട്ട് പണം നൽകിയവരുടെ Google Email ID ഇവിടെ ചേർത്താൽ, അവർ ലോഗിൻ ചെയ്യുമ്പോൾ ഉടൻ മുഴുവൻ ഓൺലൈൻ ക്ലാസുകളും തുറന്നുകിട്ടും:</p>
                     </div>
 
                     <form onsubmit="adminDirectEnrollStudent(event)" class="space-y-3 text-xs">
@@ -272,7 +265,7 @@
                         </div>
                         <div>
                             <label class="block text-slate-300 font-bold mb-1">കുറിപ്പ് / രസീത് നമ്പർ (Note / Receipt)</label>
-                            <input type="text" id="directEnrollNote" placeholder="ഉദാ: Cash Paid - Bayanul Uloom Batch / Direct Receipt #01" value="Direct Cash Payment" class="w-full px-4 py-3 rounded-xl bg-slate-950 border border-slate-700 text-slate-200 outline-none">
+                            <input type="text" id="directEnrollNote" placeholder="ഉദാ: Cash Paid - Direct Receipt #01" value="Direct Cash Payment" class="w-full px-4 py-3 rounded-xl bg-slate-950 border border-slate-700 text-slate-200 outline-none">
                         </div>
                         <button type="submit" class="w-full py-3.5 bg-emerald-600 hover:bg-emerald-500 text-white font-extrabold rounded-xl shadow-lg flex items-center justify-center gap-2 text-xs sm:text-sm">
                             <i class="fa-solid fa-circle-check"></i>
@@ -281,7 +274,6 @@
                     </form>
                 </div>
 
-                <!-- Enrolled Students & Online Claims List -->
                 <div class="bg-slate-900 border border-slate-800 rounded-3xl p-5 sm:p-6 space-y-4">
                     <div class="flex items-center justify-between">
                         <div>
@@ -296,12 +288,12 @@
                 </div>
             </div>
 
-            <!-- 3. FULL COURSE VIEWER & MANAGER (Modules 01 to 12 Complete Preview for Admin!) -->
+            <!-- 3. FULL ONLINE COURSE VIEWER & MANAGER (Modules 01 to 12 Complete Preview for Admin!) -->
             <div class="bg-slate-900 border border-slate-800 rounded-3xl p-5 sm:p-6 space-y-4">
                 <div class="flex flex-wrap items-center justify-between gap-2 border-b border-slate-800 pb-4">
                     <div>
-                        <h2 class="font-bold text-base sm:text-lg text-white"><i class="fa-solid fa-book-open text-amber-400 mr-2"></i>4. മുഴുവൻ ക്ലാസുകളും പരിശോധിക്കുക (മൊഡ്യൂൾ 01 മുതൽ 12 വരെ)</h2>
-                        <p class="text-xs text-slate-400">മൊഡ്യൂൾ 03 മുതൽ 12 വരെയുള്ള എല്ലാ ക്ലാസുകളും നോട്ടുകളും ഇവിടെ ക്ലിക്ക് ചെയ്ത് നേരിട്ട് വായിക്കാം:</p>
+                        <h2 class="font-bold text-base sm:text-lg text-white"><i class="fa-solid fa-book-open text-amber-400 mr-2"></i>4. ഓൺലൈൻ കോഴ്സിലെ മുഴുവൻ ക്ലാസുകളും (മൊഡ്യൂൾ 01 മുതൽ 12 വരെ)</h2>
+                        <p class="text-xs text-slate-400">ഓൺലൈൻ വിദ്യാർത്ഥികൾക്കായി തയ്യാറാക്കിയ 12 മൊഡ്യൂളുകളും ഇവിടെ ക്ലിക്ക് ചെയ്ത് നേരിട്ട് വായിക്കാം:</p>
                     </div>
                 </div>
 
@@ -320,7 +312,7 @@
                 </form>
 
                 <form onsubmit="adminAddLesson(event)" class="bg-slate-900 border border-slate-800 rounded-3xl p-5 sm:p-6 space-y-3 text-xs">
-                    <h3 class="font-bold text-base text-sky-300"><i class="fa-solid fa-plus-circle mr-2"></i>6. പുതിയ ക്ലാസ് നോട്ട് ചേർക്കുക</h3>
+                    <h3 class="font-bold text-base text-sky-300"><i class="fa-solid fa-plus-circle mr-2"></i>6. പുതിയ ഓൺലൈൻ ക്ലാസ് ചേർക്കുക</h3>
                     <input type="text" id="adminLessonTab" required placeholder="ടാബ് പേര് (ഉദാ: മൊഡ്യൂൾ 13)" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-950 border border-slate-700 text-white">
                     <input type="text" id="adminLessonTitle" required placeholder="പാഠത്തിന്റെ തലക്കെട്ട്" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-950 border border-slate-700 text-white">
                     <textarea id="adminLessonSummary" required rows="2" placeholder="പാഠത്തിന്റെ ചുരുക്കം..." class="w-full px-3.5 py-2.5 rounded-xl bg-slate-950 border border-slate-700 text-white"></textarea>
@@ -333,7 +325,6 @@
 
     <!-- PUBLIC & STUDENT MAIN WEBSITE VIEW -->
     <div id="publicMainWebsite">
-        <!-- Compact Hero Section -->
         <section class="hero-mesh text-white relative overflow-hidden">
             <div class="max-w-5xl mx-auto px-4 sm:px-6 py-10 md:py-14 relative z-10 text-center space-y-5">
                 <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-brand-900/90 border border-emerald-500/30 text-amber-300 text-xs font-bold shadow">
@@ -369,7 +360,7 @@
         <!-- MAIN COLLAPSIBLE ACCORDION HUB -->
         <main class="max-w-5xl mx-auto px-4 sm:px-6 py-8 sm:py-12 space-y-4">
 
-            <!-- 1. COLLAPSIBLE: ഓൺലൈൻ ക്ലാസ് -->
+            <!-- 1. COLLAPSIBLE: ഓൺലൈൻ ക്ലാസ് (Dedicated Self-Paced Online Course!) -->
             <details id="sec-online" class="bg-white rounded-3xl border-2 border-brand-800 shadow-lg overflow-hidden group">
                 <summary class="p-5 sm:p-6 cursor-pointer flex items-center justify-between gap-4 select-none bg-gradient-to-r from-brand-950 via-brand-900 to-brand-800 text-white">
                     <div class="flex items-center gap-3.5">
@@ -379,7 +370,7 @@
                         <div>
                             <span class="text-[10px] font-extrabold uppercase tracking-wider text-amber-300 block">Self-Paced Online Course</span>
                             <h2 class="font-display text-lg sm:text-xl font-bold text-white">ഓൺലൈൻ ക്ലാസ് & പഠന സഹായി</h2>
-                            <p class="text-xs text-emerald-200/80">ആദ്യ 2 മൊഡ്യൂളുകൾ സൗജന്യം • ക്ലിക്ക് ചെയ്ത് തുറക്കുക</p>
+                            <p class="text-xs text-emerald-200/80">ആദ്യ 2 മൊഡ്യൂളുകൾ സൗജന്യം • ബാക്കിയുള്ളവ അഡ്മിഷന് ശേഷം തുറക്കും</p>
                         </div>
                     </div>
                     <span class="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center text-amber-300 shrink-0 group-open:rotate-180 transition-transform">
@@ -390,7 +381,7 @@
                 <div class="p-5 sm:p-7 bg-slate-950 text-white space-y-6">
                     <div class="space-y-2.5">
                         <div class="flex items-center justify-between">
-                            <span class="text-xs font-bold text-emerald-300"><i class="fa-solid fa-hand-pointer mr-1.5 text-amber-400"></i> ക്ലാസ് കാണാൻ താഴെ മൊഡ്യൂളിൽ ടച്ച് ചെയ്യുക:</span>
+                            <span class="text-xs font-bold text-emerald-300"><i class="fa-solid fa-hand-pointer mr-1.5 text-amber-400"></i> ഓൺലൈൻ ക്ലാസ് കാണാൻ മൊഡ്യൂളിൽ ടച്ച് ചെയ്യുക:</span>
                             <span id="studentAccessBadge" class="text-[11px] font-bold px-2.5 py-1 rounded-lg bg-emerald-900/70 text-emerald-300">Free Access (01–02)</span>
                         </div>
 
@@ -403,7 +394,7 @@
                     <!-- Collapsible Admission & Payment Box -->
                     <details class="bg-slate-900 border border-slate-800 rounded-2xl p-4 text-xs group/pay">
                         <summary class="cursor-pointer font-bold text-amber-300 flex items-center justify-between select-none">
-                            <span><i class="fa-solid fa-lock-open mr-1.5"></i> മുഴുവൻ 12 മൊഡ്യൂളുകളും അൺലോക്ക് ചെയ്യാൻ / ലോഗിൻ ചെയ്യാൻ (₹499)</span>
+                            <span><i class="fa-solid fa-lock-open mr-1.5"></i> ഓൺലൈൻ കോഴ്സിലെ മുഴുവൻ 12 മൊഡ്യൂളുകളും അൺലോക്ക് ചെയ്യാൻ (₹499)</span>
                             <i class="fa-solid fa-chevron-down text-slate-400 group-open/pay:rotate-180 transition-transform"></i>
                         </summary>
                         <div class="mt-4 pt-4 border-t border-slate-800 space-y-4">
@@ -423,7 +414,7 @@
                             </div>
 
                             <div class="grid sm:grid-cols-3 gap-2.5">
-                                <a href="https://www.instamojo.com/@saeed_anchangadi" target="_blank" rel="noopener noreferrer" class="py-3 px-4 bg-brand-700 hover:bg-brand-600 text-white font-extrabold rounded-xl text-center">
+                                <a href="https://www.instamojo.com/@saeed_anchangadi/lbd890fba8f0c421cbf79815cf7120370/" target="_blank" rel="noopener noreferrer" class="py-3 px-4 bg-brand-700 hover:bg-brand-600 text-white font-extrabold rounded-xl text-center">
                                     1. Pay ₹499 (Instamojo)
                                 </a>
                                 <button onclick="openModal('claimAccessModal')" class="py-3 px-4 bg-amber-500 hover:bg-amber-400 text-brand-950 font-extrabold rounded-xl text-center">
@@ -448,8 +439,8 @@
                         </div>
                         <div>
                             <span class="text-[10px] font-extrabold uppercase tracking-wider text-brand-700 block">Institutional & Organizational Training</span>
-                            <h2 class="font-display text-lg sm:text-xl font-bold text-slate-900">സ്ഥാപനങ്ങളിലെയും സംഘടനകളിലെയും ക്ലാസുകൾ</h2>
-                            <p class="text-xs text-slate-500">AL-BAYAN (ദർസ് & കോളേജ്) • AN-NOOR (സംഘടനാ ക്യാമ്പുകൾ)</p>
+                            <h2 class="font-display text-lg sm:text-xl font-bold text-slate-900">സ്ഥാപനങ്ങളിലെയും സംഘടനകളിലെയും നേരിട്ടുള്ള ക്ലാസുകൾ</h2>
+                            <p class="text-xs text-slate-500">AL-BAYAN (1-വർഷത്തെ ദർസ് & കോളേജ് ഡിപ്ലോമ) • AN-NOOR (സംഘടനാ ക്യാമ്പുകൾ)</p>
                         </div>
                     </div>
                     <span class="w-9 h-9 rounded-full bg-slate-100 flex items-center justify-center text-slate-600 shrink-0 group-open:rotate-180 transition-transform">
@@ -467,7 +458,7 @@
                             </div>
                             <h3 class="font-english text-xl font-extrabold text-slate-900">AL-BAYAN (EDAC-AI)</h3>
                             <p class="text-xs text-slate-600 leading-relaxed">
-                                ദർസുകളിലെയും മത-ഭൗതിക കലാലയങ്ങളിലെയും വിദ്യാർത്ഥികൾക്കായി അവധി ദിവസങ്ങളിൽ (മാസത്തിൽ 4 ക്ലാസുകൾ വീതം) ക്രമീകരിച്ചിട്ടുള്ള ഒരു വർഷത്തെ പ്രാക്ടിക്കൽ ഡിപ്ലോമ.
+                                ദർസുകളിലെയും മത-ഭൗതിക കലാലയങ്ങളിലെയും വിദ്യാർത്ഥികൾക്കായി അവധി ദിവസങ്ങളിൽ (മാസത്തിൽ 4 ക്ലാസുകൾ വീതം) നേരിട്ട് വന്ന് എടുക്കുന്ന 1-വർഷത്തെ പ്രാക്ടിക്കൽ ഡിപ്ലോമ.
                             </p>
                             <details class="bg-white border border-brand-200 rounded-xl p-3 text-xs group/sub1">
                                 <summary class="font-bold text-brand-900 cursor-pointer flex items-center justify-between">
@@ -517,7 +508,7 @@
                 </div>
             </details>
 
-            <!-- 3. COLLAPSIBLE: 12 പ്രായോഗിക മൊഡ്യൂളുകൾ (Syllabus Overview) -->
+            <!-- 3. COLLAPSIBLE: ദർസ് & ക്യാമ്പസ് ഡിപ്ലോമ സിലബസ് (AL-BAYAN / AN-NOOR Syllabus) -->
             <details id="sec-syllabus" class="bg-white rounded-3xl border border-slate-200 shadow-md overflow-hidden group">
                 <summary class="p-5 sm:p-6 cursor-pointer flex items-center justify-between gap-4 select-none hover:bg-slate-50 transition-colors">
                     <div class="flex items-center gap-3.5">
@@ -525,9 +516,9 @@
                             <i class="fa-solid fa-list-check"></i>
                         </div>
                         <div>
-                            <span class="text-[10px] font-extrabold uppercase tracking-wider text-amber-700 block">Curriculum Overview</span>
-                            <h2 class="font-display text-lg sm:text-xl font-bold text-slate-900">12 പ്രായോഗിക മൊഡ്യൂളുകളുടെ സിലബസ്</h2>
-                            <p class="text-xs text-slate-500">പഠിപ്പിക്കുന്ന മുഴുവൻ വിഷയങ്ങളും കാണാൻ ക്ലിക്ക് ചെയ്യുക</p>
+                            <span class="text-[10px] font-extrabold uppercase tracking-wider text-amber-700 block">AL-BAYAN & AN-NOOR Curriculum</span>
+                            <h2 class="font-display text-lg sm:text-xl font-bold text-slate-900">ദർസ് & ക്യാമ്പസ് ഡിപ്ലോമ സിലബസ് (12 മൊഡ്യൂളുകൾ)</h2>
+                            <p class="text-xs text-slate-500">നേരിട്ടുള്ള ദർസ്/സ്ഥാപന ക്ലാസുകളിൽ പഠിപ്പിക്കുന്ന 12 വിഷയങ്ങൾ</p>
                         </div>
                     </div>
                     <span class="w-9 h-9 rounded-full bg-slate-100 flex items-center justify-center text-slate-600 shrink-0 group-open:rotate-180 transition-transform">
@@ -536,18 +527,18 @@
                 </summary>
 
                 <div class="p-5 sm:p-7 pt-2 border-t border-slate-100 grid sm:grid-cols-2 lg:grid-cols-3 gap-3 text-xs">
-                    <div class="bg-slate-50 p-3.5 rounded-2xl border border-slate-200"><span class="font-bold text-brand-700 block">01. System Setup (Free)</span><h4 class="font-bold text-slate-900 mt-0.5">Windows Reset, Linux Mint & Folders</h4></div>
-                    <div class="bg-slate-50 p-3.5 rounded-2xl border border-slate-200"><span class="font-bold text-brand-700 block">02. Chrome & Typing (Free)</span><h4 class="font-bold text-slate-900 mt-0.5">Google Account, English & Arabic Typing</h4></div>
-                    <div class="bg-slate-50 p-3.5 rounded-2xl border border-slate-200"><span class="font-bold text-slate-500 block">03. Proton Mail & Security</span><h4 class="font-bold text-slate-900 mt-0.5">Bitwarden, 2FA & Digital Ethics</h4></div>
-                    <div class="bg-slate-50 p-3.5 rounded-2xl border border-slate-200"><span class="font-bold text-slate-500 block">04. Gemini AI & Docs</span><h4 class="font-bold text-slate-900 mt-0.5">സംഘടനാ പഠനം & Google Docs</h4></div>
-                    <div class="bg-slate-50 p-3.5 rounded-2xl border border-slate-200"><span class="font-bold text-slate-500 block">05. Creative Design & DTP</span><h4 class="font-bold text-slate-900 mt-0.5">ID കാർഡ്, QR Code & 50 നിയമങ്ങൾ</h4></div>
-                    <div class="bg-slate-50 p-3.5 rounded-2xl border border-slate-200"><span class="font-bold text-slate-500 block">06. Smart Spreadsheets</span><h4 class="font-bold text-slate-900 mt-0.5">Google Sheets (=SUM, =IF)</h4></div>
-                    <div class="bg-slate-50 p-3.5 rounded-2xl border border-slate-200"><span class="font-bold text-slate-500 block">07. AI Studio & NotebookLM</span><h4 class="font-bold text-slate-900 mt-0.5">ഡിജിറ്റൽ നോട്ട്ബുക്ക് & പോഡ്‌കാസ്റ്റ്</h4></div>
-                    <div class="bg-slate-50 p-3.5 rounded-2xl border border-slate-200"><span class="font-bold text-slate-500 block">08. Web & Blogging</span><h4 class="font-bold text-slate-900 mt-0.5">YouTube, Google Sites & Blogger</h4></div>
-                    <div class="bg-slate-50 p-3.5 rounded-2xl border border-slate-200"><span class="font-bold text-slate-500 block">09. Coding & Web</span><h4 class="font-bold text-slate-900 mt-0.5">Python & HTML/CSS പ്രോഗ്രാമിംഗ്</h4></div>
-                    <div class="bg-slate-50 p-3.5 rounded-2xl border border-slate-200"><span class="font-bold text-slate-500 block">10. Multimedia & e-Gov</span><h4 class="font-bold text-slate-900 mt-0.5">Audacity, Kdenlive & e-District</h4></div>
-                    <div class="bg-slate-50 p-3.5 rounded-2xl border border-slate-200"><span class="font-bold text-slate-500 block">11. 52 Global Certifications</span><h4 class="font-bold text-slate-900 mt-0.5">Google, IBM, Cisco, Harvard CS50</h4></div>
-                    <div class="bg-slate-50 p-3.5 rounded-2xl border border-slate-200"><span class="font-bold text-slate-500 block">12. Capstone & MCQs</span><h4 class="font-bold text-slate-900 mt-0.5">ഫൈനൽ പ്രൊജക്റ്റ് & ചോദ്യാവലി</h4></div>
+                    <div class="bg-slate-50 p-3.5 rounded-2xl border border-slate-200"><span class="font-bold text-brand-700 block">01. ദർസ് ഡിജിറ്റൽ ധാർമ്മികത</span><h4 class="font-bold text-slate-900 mt-0.5">ഹലാൽ ലൈസൻസിംഗ് & ഡാറ്റാ പ്രൈവസി</h4></div>
+                    <div class="bg-slate-50 p-3.5 rounded-2xl border border-slate-200"><span class="font-bold text-brand-700 block">02. സൈബർ സുരക്ഷ & Linux</span><h4 class="font-bold text-slate-900 mt-0.5">Proton Mail, Bitwarden & Linux Mint</h4></div>
+                    <div class="bg-slate-50 p-3.5 rounded-2xl border border-slate-200"><span class="font-bold text-brand-700 block">03. സംഘടനാ പഠനവും Gemini AI-യും</span><h4 class="font-bold text-slate-900 mt-0.5">സമസ്ത, SKSSF, മിനിറ്റ്സ് & റിപ്പോർട്ടിംഗ്</h4></div>
+                    <div class="bg-slate-50 p-3.5 rounded-2xl border border-slate-200"><span class="font-bold text-brand-700 block">04. പ്രൊഫഷണൽ ഡോക്യുമെന്റേഷൻ</span><h4 class="font-bold text-slate-900 mt-0.5">Google Docs & LibreOffice നോട്ടീസുകൾ</h4></div>
+                    <div class="bg-slate-50 p-3.5 rounded-2xl border border-slate-200"><span class="font-bold text-brand-700 block">05. ക്രിയേറ്റീവ് ഡിസൈനിംഗ് & DTP</span><h4 class="font-bold text-slate-900 mt-0.5">ദർസ് ID കാർഡ്, QR Code & 50 നിയമങ്ങൾ</h4></div>
+                    <div class="bg-slate-50 p-3.5 rounded-2xl border border-slate-200"><span class="font-bold text-brand-700 block">06. ദർസ് കണക്കുകൾ & ട്രാക്കിംഗ്</span><h4 class="font-bold text-slate-900 mt-0.5">Google Sheets വരവ്-ചെലവ് & ഗ്രേഡിംഗ്</h4></div>
+                    <div class="bg-slate-50 p-3.5 rounded-2xl border border-slate-200"><span class="font-bold text-brand-700 block">07. AI Studio & NotebookLM</span><h4 class="font-bold text-slate-900 mt-0.5">കിതാബ് സംഗ്രഹം & പ്രസംഗ നിർമ്മാണം</h4></div>
+                    <div class="bg-slate-50 p-3.5 rounded-2xl border border-slate-200"><span class="font-bold text-brand-700 block">08. മീഡിയ & വെബ് പബ്ലിഷിംഗ്</span><h4 class="font-bold text-slate-900 mt-0.5">YouTube Brand Channel, Blogger & Sites</h4></div>
+                    <div class="bg-slate-50 p-3.5 rounded-2xl border border-slate-200"><span class="font-bold text-brand-700 block">09. കോഡിംഗ് & വെബ് അടിസ്ഥാനം</span><h4 class="font-bold text-slate-900 mt-0.5">Python ലോജിക് & HTML/CSS</h4></div>
+                    <div class="bg-slate-50 p-3.5 rounded-2xl border border-slate-200"><span class="font-bold text-brand-700 block">10. ദഅ്വാ മൾട്ടിമീഡിയ & e-Gov</span><h4 class="font-bold text-slate-900 mt-0.5">Audacity, Kdenlive & e-District</h4></div>
+                    <div class="bg-slate-50 p-3.5 rounded-2xl border border-slate-200"><span class="font-bold text-brand-700 block">11. 52 ആഗോള സർട്ടിഫിക്കേഷനുകൾ</span><h4 class="font-bold text-slate-900 mt-0.5">Google, IBM, Cisco, Harvard CS50</h4></div>
+                    <div class="bg-slate-50 p-3.5 rounded-2xl border border-slate-200"><span class="font-bold text-brand-700 block">12. ഫൈനൽ ഗ്രാജ്വേഷൻ പ്രൊജക്റ്റ്</span><h4 class="font-bold text-slate-900 mt-0.5">ഡിജിറ്റൽ പോർട്ട്ഫോളിയോ & മൂല്യനിർണ്ണയം</h4></div>
                 </div>
             </details>
 
@@ -594,7 +585,6 @@
 
         </main>
 
-        <!-- Minimal Footer -->
         <footer id="contact" class="bg-slate-950 text-slate-400 py-8 border-t border-slate-900 text-center text-xs space-y-2">
             <p class="font-english font-bold text-white text-sm">HIKMA <span class="text-amber-400">Digital Academy</span></p>
             <p>Contact: <a href="mailto:saeed.anchangadi@gmail.com" class="text-amber-300 underline">saeed.anchangadi@gmail.com</a> • Telegram: <a href="https://t.me/username_786313" target="_blank" class="text-sky-400 underline">@username_786313</a></p>
@@ -672,14 +662,14 @@
     <div id="claimAccessModal" class="hidden fixed inset-0 z-50 bg-slate-950/85 backdrop-blur-sm flex items-center justify-center p-4">
         <div class="bg-white rounded-3xl max-w-md w-full overflow-hidden shadow-2xl">
             <div class="bg-brand-900 text-white p-5 flex justify-between items-center">
-                <h3 class="font-bold text-base">പേയ്‌മെന്റ് വിവരം നൽകുക</h3>
+                <h3 class="font-bold text-base">Instant Auto-Verify & Unlock</h3>
                 <button onclick="closeModal('claimAccessModal')" class="text-emerald-200 hover:text-white"><i class="fa-solid fa-xmark text-lg"></i></button>
             </div>
             <form onsubmit="submitPaymentClaim(event)" class="p-6 space-y-4 text-xs">
-                <p class="text-slate-600">Instamojo വഴി ₹499 അടച്ച ശേഷം ലഭിച്ച <strong>Payment ID / UTR നമ്പർ</strong> നൽകുക:</p>
-                <input type="email" id="claimEmailInput" required placeholder="yourname@gmail.com" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 font-semibold">
-                <input type="text" id="claimUtrInput" required placeholder="Instamojo Payment ID (ഉദാ: MOJO12345)" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 font-mono uppercase">
-                <button type="submit" class="w-full py-3 bg-brand-800 hover:bg-brand-900 text-white font-bold rounded-xl shadow-md">സമർപ്പിക്കുക</button>
+                <p class="text-slate-600 leading-relaxed">Instamojo വഴി ₹499 അടച്ച ശേഷം ലഭിച്ച <strong>Payment ID (MOJO...)</strong> നൽകിയാൽ <strong>അതേ നിമിഷം തന്നെ</strong> 12 മൊഡ്യൂളുകളും തനിയെ തുറന്നുകിട്ടും:</p>
+                <input type="email" id="claimEmailInput" required placeholder="നിങ്ങളുടെ Google Email (yourname@gmail.com)" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 font-semibold">
+                <input type="text" id="claimUtrInput" required placeholder="Instamojo Payment ID (ഉദാ: MOJO6b26...)" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 font-mono">
+                <button type="submit" id="claimSubmitBtn" class="w-full py-3.5 bg-brand-800 hover:bg-brand-900 text-white font-extrabold rounded-xl shadow-md">പേയ്‌മെന്റ് വെരിഫൈ ചെയ്ത് ക്ലാസ് തുറക്കുക ✓</button>
             </form>
         </div>
     </div>
@@ -730,6 +720,7 @@
     <script>
         const SUPABASE_URL = 'https://grpvarwtvbzeysmnrdko.supabase.co';
         const SUPABASE_ANON_KEY = 'sb_publishable_2dSVWhC71ueYPPfvDzUogg_t2HopYbr';
+        const INSTAMOJO_PAY_URL = 'https://www.instamojo.com/@saeed_anchangadi/lbd890fba8f0c421cbf79815cf7120370/';
 
         let supabaseClient = null;
         if (SUPABASE_URL && SUPABASE_ANON_KEY && window.supabase) {
@@ -860,7 +851,7 @@
             if (!lesson) return;
             const pointsArr = Array.isArray(lesson.points) ? lesson.points : [];
             const cleanPoints = pointsArr.map((p, i) => `${i + 1}. ${p.replace(/<[^>]*>?/gm, '')}`).join('\n\n');
-            const content = `HIKMA DIGITAL ACADEMY — STUDY NOTE\n========================================\n${lesson.title}\n\n${lesson.summary}\n\n${cleanPoints}\n\n========================================\nWebsite: https://saeedthrissur.github.io/Hikmah/\nTelegram: @username_786313`;
+            const content = `HIKMA DIGITAL ACADEMY — ONLINE STUDY NOTE\n========================================\n${lesson.title}\n\n${lesson.summary}\n\n${cleanPoints}\n\n========================================\nWebsite: https://saeedthrissur.github.io/Hikmah/\nTelegram: @username_786313`;
             const blob = new Blob([content], { type: 'text/plain;charset=utf-8' });
             const url = URL.createObjectURL(blob);
             const a = document.createElement('a');
@@ -879,14 +870,14 @@
             if (isSpeaking) {
                 window.speechSynthesis.cancel();
                 isSpeaking = false;
-                if (btnLabel) btnLabel.innerText = 'ക്ലാസ് കേൾക്കുക (Audio)';
+                if (btnLabel) btnLabel.innerText = 'ക്ലാസ് കേൾക്കുക';
                 return;
             }
             window.speechSynthesis.cancel();
             const utterance = new SpeechSynthesisUtterance(`${title}. ${summary}. ${pointsText}`);
             utterance.lang = activeLangCode === 'ar' ? 'ar-SA' : (activeLangCode === 'en' ? 'en-US' : 'ml-IN');
             utterance.rate = 0.95;
-            utterance.onend = () => { isSpeaking = false; if (btnLabel) btnLabel.innerText = 'ക്ലാസ് കേൾക്കുക (Audio)'; };
+            utterance.onend = () => { isSpeaking = false; if (btnLabel) btnLabel.innerText = 'ക്ലാസ് കേൾക്കുക'; };
             isSpeaking = true;
             if (btnLabel) btnLabel.innerText = 'നിർത്തുക (Stop)';
             window.speechSynthesis.speak(utterance);
@@ -895,13 +886,14 @@
         let currentUser = null;
         let isCourseUnlocked = false;
         let isServerAdmin = false;
-        let adminViewMode = 'admin'; // 'admin' | 'paid_student' | 'free_student' | 'public_guest'
+        let adminViewMode = 'admin';
 
-        const defaultFreeLessons = [
+        // ONLINE COURSE MODULES 01 & 02 (FREE & ALWAYS AVAILABLE)
+        const onlineFreeModules = [
             {
                 tab_name: 'മൊഡ്യൂൾ 01',
                 short_label: 'System Setup & Folders',
-                title: 'മൊഡ്യൂൾ 01: കമ്പ്യൂട്ടർ സജ്ജീകരണം (Windows Reset, Linux Mint & Folder Management)',
+                title: 'മൊഡ്യൂൾ 01: കമ്പ്യൂട്ടർ സജ്ജീകരണം (Windows Reset, Linux Mint & Folders)',
                 is_free: true,
                 visual_diagram: `<div class="bg-slate-900 border border-emerald-500/40 rounded-2xl p-4 text-xs text-emerald-100 space-y-3">
                     <div class="grid sm:grid-cols-3 gap-2.5">
@@ -971,21 +963,169 @@
             }
         ];
 
-        const dimmedLockedPlaceholders = [
-            { tab_name: 'മൊഡ്യൂൾ 03', short_label: 'Proton & Security' },
-            { tab_name: 'മൊഡ്യൂൾ 04', short_label: 'Gemini AI & Docs' },
-            { tab_name: 'മൊഡ്യൂൾ 05', short_label: 'ID Card & DTP' },
-            { tab_name: 'മൊഡ്യൂൾ 06', short_label: 'Google Sheets' },
-            { tab_name: 'മൊഡ്യൂൾ 07', short_label: 'NotebookLM' },
-            { tab_name: 'മൊഡ്യൂൾ 08', short_label: 'Web & YouTube' },
-            { tab_name: 'മൊഡ്യൂൾ 09', short_label: 'Python & HTML' },
-            { tab_name: 'മൊഡ്യൂൾ 10', short_label: 'Audio & Video' },
-            { tab_name: 'മൊഡ്യൂൾ 11', short_label: '52 Global Certs' },
-            { tab_name: 'മൊഡ്യൂൾ 12', short_label: 'Capstone & MCQs' }
+        // ONLINE COURSE MODULES 03 TO 12
+        const onlinePaidModules = [
+            {
+                tab_name: 'മൊഡ്യൂൾ 03',
+                short_label: 'Online Privacy & Security',
+                title: 'മൊഡ്യൂൾ 03: ഓൺലൈൻ സുരക്ഷ, Proton Mail & പാസ്‌വേഡ് മാനേജ്മെന്റ്',
+                is_free: false,
+                visual_diagram: `<div class="bg-slate-900 border border-emerald-500/30 rounded-2xl p-3 text-xs text-emerald-200 flex flex-wrap gap-2">
+                    <a href="https://proton.me/mail" target="_blank" class="px-3 py-1.5 bg-purple-600 text-white font-bold rounded-lg">Proton Mail ↗</a>
+                    <a href="https://bitwarden.com/" target="_blank" class="px-3 py-1.5 bg-sky-600 text-white font-bold rounded-lg">Bitwarden ↗</a>
+                </div>`,
+                summary: 'ഓൺലൈൻ തട്ടിപ്പുകളിൽ നിന്നും ഹാക്കിംഗിൽ നിന്നും സ്വയം രക്ഷനേടാൻ എൻഡ്-ടു-എൻഡ് എൻക്രിപ്റ്റഡ് ഇമെയിൽ (Proton Mail), Bitwarden പാസ്‌വേഡ് മാനേജർ, 2-Step Verification (2FA) എന്നിവ സജ്ജമാക്കുന്ന രീതി.',
+                points: [
+                    '1. ഹലാൽ ലൈസൻസിംഗ് & ഡാറ്റാ പ്രൈവസി: വ്യാജ (Cracked) ആപ്പുകളും സോഫ്റ്റ്‌വെയറുകളും ഒഴിവാക്കി സുരക്ഷിതമായ സ്വതന്ത്ര സോഫ്റ്റ്‌വെയറുകൾ ഉപയോഗിക്കുക.',
+                    '2. Proton Mail & Bitwarden: proton.me വഴി സുരക്ഷിത ഇമെയിൽ തുടങ്ങുകയും Bitwarden വഴി ശക്തമായ പാസ്‌വേഡുകൾ സൂക്ഷിക്കുകയും ചെയ്യുക.',
+                    '3. 2-Step Verification (2FA): Google അക്കൗണ്ടിൽ 2FA ഓൺ ചെയ്ത് അക്കൗണ്ട് സുരക്ഷ ഉറപ്പാക്കുക.'
+                ]
+            },
+            {
+                tab_name: 'മൊഡ്യൂൾ 04',
+                short_label: 'Gemini AI & Prompting',
+                title: 'മൊഡ്യൂൾ 04: Google Gemini AI & പ്രോംപ്റ്റ് എൻജിനീയറിംഗ്',
+                is_free: false,
+                visual_diagram: `<div class="bg-slate-900 border border-indigo-500/30 rounded-2xl p-3 text-xs text-indigo-200 flex flex-wrap gap-2">
+                    <a href="https://gemini.google.com/" target="_blank" class="px-3 py-1.5 bg-indigo-600 text-white font-bold rounded-lg">Google Gemini തുറക്കുക ↗</a>
+                </div>`,
+                summary: 'ദൈനംദിന പഠനത്തിനും ജോലികൾക്കും ലേഖനങ്ങൾ തയ്യാറാക്കാനും പരിഭാഷപ്പെടുത്താനും Google Gemini AI എങ്ങനെ കൃത്യമായ പ്രോംപ്റ്റുകൾ നൽകി ഉപയോഗിക്കാം എന്ന് പഠിക്കുന്നു.',
+                points: [
+                    '1. കൃത്യമായ പ്രോംപ്റ്റുകൾ നൽകുന്ന രീതി: വിഷയം, ഭാഷ, ഉദാഹരണങ്ങൾ എന്നിവ വ്യക്തമായി നൽകി മികച്ച മറുപടികൾ നേടുക.',
+                    '2. Voice Input & Read Aloud: സംസാരിച്ചുകൊണ്ട് നിർദ്ദേശങ്ങൾ നൽകാനും മറുപടികൾ കേൾക്കാനും പഠിക്കുക.',
+                    '3. Gemini Workspace Integration: മറുപടികൾ നേരിട്ട് Google Docs, Google Sheets എന്നിവയിലേക്ക് മാറ്റുക.'
+                ]
+            },
+            {
+                tab_name: 'മൊഡ്യൂൾ 05',
+                short_label: 'Google Docs Mastery',
+                title: 'മൊഡ്യൂൾ 05: പ്രൊഫഷണൽ ഡോക്യുമെന്റേഷൻ & Google Docs',
+                is_free: false,
+                visual_diagram: `<div class="bg-slate-900 border border-sky-500/30 rounded-2xl p-3 text-xs text-sky-200 flex flex-wrap gap-2">
+                    <a href="https://docs.google.com/" target="_blank" class="px-3 py-1.5 bg-sky-600 text-white font-bold rounded-lg">Google Docs തുറക്കുക ↗</a>
+                </div>`,
+                summary: 'A4 പേജ് സെറ്റപ്പ്, മലയാളം യൂണികോഡ് ഫോണ്ടുകൾ (Manjari, Gayathri), Header & Footer, ടേബിളുകൾ, PDF എക്സ്പോർട്ട് എന്നിവ ഉപയോഗിച്ച് ഔദ്യോഗിക രേഖകൾ തയ്യാറാക്കുന്ന വിധം.',
+                points: [
+                    '1. Page Setup & Margins: A4 പേജ് സൈസും 1 inch മാർജിനും നൽകി ഡോക്യുമെന്റ് ക്രമീകരിക്കുക.',
+                    '2. Header, Footer & Page Numbers: എല്ലാ പേജിലും തലക്കെട്ടും പേജ് നമ്പറും നൽകുക.',
+                    '3. മലയാളം ടൈപ്പിംഗ് (Google Input Tools): മംഗ്ലീഷിൽ ടൈപ്പ് ചെയ്ത് മലയാളം ആക്കുന്ന രീതി.'
+                ]
+            },
+            {
+                tab_name: 'മൊഡ്യൂൾ 06',
+                short_label: 'Canva Graphic Design',
+                title: 'മൊഡ്യൂൾ 06: Canva ഗ്രാഫിക് ഡിസൈനിംഗ് & പ്രൊഫഷണൽ പോസ്റ്ററുകൾ',
+                is_free: false,
+                visual_diagram: `<div class="bg-slate-900 border border-purple-500/30 rounded-2xl p-3 text-xs text-purple-200 flex flex-wrap gap-2">
+                    <a href="https://www.canva.com/" target="_blank" class="px-3 py-1.5 bg-purple-600 text-white font-bold rounded-lg">Canva തുറക്കുക ↗</a>
+                    <a href="https://www.remove.bg/" target="_blank" class="px-3 py-1.5 bg-slate-700 text-white font-bold rounded-lg">remove.bg ↗</a>
+                </div>`,
+                summary: 'വിസിറ്റിംഗ് കാർഡുകൾ, ID കാർഡുകൾ, QR കോഡ് ജനറേഷൻ, ഫോട്ടോ ബാക്ക്ഗ്രൗണ്ട് റിമൂവൽ, സോഷ്യൽ മീഡിയ പോസ്റ്ററുകൾ എന്നിവ Canva വഴി നിർമ്മിക്കാൻ പഠിക്കുന്നു.',
+                points: [
+                    '1. ഡിസൈൻ നിയമങ്ങൾ: ഫോണ്ട് തിരഞ്ഞെടുപ്പ്, കളർ കോൺട്രാസ്റ്റ്, 60-30-10 കളർ അനുപാതം.',
+                    '2. Background Removal & Frames: ഫോട്ടോകളുടെ പശ്ചാത്തലം മാറ്റി ഫ്രെയിമുകളിൽ ചേർക്കുക.',
+                    '3. QR Code & Print Export: കാർഡുകളിൽ QR കോഡ് ചേർത്ത് High-Quality PNG / PDF ആയി ഡൗൺലോഡ് ചെയ്യുക.'
+                ]
+            },
+            {
+                tab_name: 'മൊഡ്യൂൾ 07',
+                short_label: 'Google Sheets & Formulas',
+                title: 'മൊഡ്യൂൾ 07: Google Sheets സ്മാർട്ട് കണക്കുകളും ഡാറ്റാ മാനേജ്മെന്റും',
+                is_free: false,
+                visual_diagram: `<div class="bg-slate-900 border border-emerald-500/30 rounded-2xl p-3 text-xs text-emerald-200 flex flex-wrap gap-2">
+                    <a href="https://sheets.google.com/" target="_blank" class="px-3 py-1.5 bg-emerald-600 text-white font-bold rounded-lg">Google Sheets തുറക്കുക ↗</a>
+                </div>`,
+                summary: 'വരവ്-ചെലവ് കണക്കുകൾ, മാർക്ക് ലിസ്റ്റുകൾ, ഹാജർ പട്ടിക എന്നിവ =SUM, =AVERAGE, =IF, Checkbox ഫോർമുലകൾ ഉപയോഗിച്ച് ഓട്ടോമാറ്റിക് ആയി നിർമ്മിക്കുന്ന വിധം.',
+                points: [
+                    '1. Rows, Columns & Cells: സ്പ്രെഡ്ഷീറ്റിന്റെ അടിസ്ഥാന ഘടന മനസ്സിലാക്കുക.',
+                    '2. പ്രധാന ഫോർമുലകൾ: =SUM(B2:B10), =AVERAGE(C2:C10), =IF(D2>=50, "PASS", "FAIL").',
+                    '3. Checkbox & Auto Tracker: ടിക്ക് ബോക്സുകൾ ഉപയോഗിച്ച് ഓട്ടോമാറ്റിക് പോയിന്റുകൾ നൽകുക.'
+                ]
+            },
+            {
+                tab_name: 'മൊഡ്യൂൾ 08',
+                short_label: 'NotebookLM & AI Studio',
+                title: 'മൊഡ്യൂൾ 08: Google NotebookLM & AI Studio സ്വയം പഠന രീതി',
+                is_free: false,
+                visual_diagram: `<div class="bg-slate-900 border border-amber-500/30 rounded-2xl p-3 text-xs text-amber-200 flex flex-wrap gap-2">
+                    <a href="https://notebooklm.google.com/" target="_blank" class="px-3 py-1.5 bg-amber-600 text-white font-bold rounded-lg">NotebookLM ↗</a>
+                    <a href="https://aistudio.google.com/" target="_blank" class="px-3 py-1.5 bg-slate-700 text-white font-bold rounded-lg">AI Studio ↗</a>
+                </div>`,
+                summary: 'വലിയ PDF പുസ്തകങ്ങളും നോട്ടുകളും അപ്‌ലോഡ് ചെയ്ത് സംഗ്രഹം (Study Guide), ക്വിസ്, ഓഡിയോ പോഡ്‌കാസ്റ്റ് എന്നിവ നിർമ്മിക്കുന്ന നൂതന AI പഠന രീതി.',
+                points: [
+                    '1. NotebookLM Study Guide: PDF ഫയലുകൾ അപ്‌ലോഡ് ചെയ്ത് പ്രധാന ആശയങ്ങൾ വേർതിരിച്ചെടുക്കുക.',
+                    '2. Quiz & Audio Overview: പാഠഭാഗങ്ങളിൽ നിന്ന് ചോദ്യോത്തരങ്ങളും ഓഡിയോ ചർച്ചകളും നിർമ്മിക്കുക.',
+                    '3. Personal Digital Notebook: സ്വന്തം പഠന നോട്ടുകളും വർക്കുകളുടെ ലിങ്കുകളും ഒരു പോർട്ട്ഫോളിയോ ആയി സൂക്ഷിക്കുക.'
+                ]
+            },
+            {
+                tab_name: 'മൊഡ്യൂൾ 09',
+                short_label: 'Websites & Blogging',
+                title: 'മൊഡ്യൂൾ 09: സൗജന്യ വെബ്സൈറ്റ് നിർമ്മാണം (Google Sites & Blogger)',
+                is_free: false,
+                visual_diagram: `<div class="bg-slate-900 border border-sky-500/30 rounded-2xl p-3 text-xs text-sky-200 flex flex-wrap gap-2">
+                    <a href="https://sites.google.com/" target="_blank" class="px-3 py-1.5 bg-sky-600 text-white font-bold rounded-lg">Google Sites ↗</a>
+                    <a href="https://www.blogger.com/" target="_blank" class="px-3 py-1.5 bg-orange-600 text-white font-bold rounded-lg">Blogger ↗</a>
+                </div>`,
+                summary: 'കോഡിംഗ് അറിയാതെ തന്നെ സ്വന്തമായി ഒരു വെബ്സൈറ്റും (Google Sites) ഓൺലൈൻ ബ്ലോഗും (Blogger) നിർമ്മിച്ച് ലോകത്തിന് മുന്നിൽ പബ്ലിഷ് ചെയ്യുന്ന വിധം.',
+                points: [
+                    '1. Google Sites: പേജുകൾ, ഫോട്ടോ ഗാലറി, ഡൗൺലോഡ് ലിങ്കുകൾ എന്നിവ ഉൾപ്പെടുത്തി സ്വന്തം പോർട്ടൽ നിർമ്മിക്കുക.',
+                    '2. Blogger: ലേഖനങ്ങളും പഠന കുറിപ്പുകളും മലയാളത്തിലും ഇംഗ്ലീഷിലും പബ്ലിഷ് ചെയ്യുക.',
+                    '3. YouTube Brand Account: സുരക്ഷിതമായി YouTube ചാനൽ തുടങ്ങി SEO ക്രമീകരിക്കുക.'
+                ]
+            },
+            {
+                tab_name: 'മൊഡ്യൂൾ 10',
+                short_label: 'Coding & HTML/Python',
+                title: 'മൊഡ്യൂൾ 10: പ്രോഗ്രാമിംഗ് ലോജിക് (Python & HTML/CSS Basics)',
+                is_free: false,
+                visual_diagram: `<div class="bg-slate-900 border border-emerald-500/30 rounded-2xl p-3 text-xs text-emerald-200 flex flex-wrap gap-2">
+                    <a href="https://www.freecodecamp.org/" target="_blank" class="px-3 py-1.5 bg-emerald-600 text-white font-bold rounded-lg">freeCodeCamp ↗</a>
+                </div>`,
+                summary: 'കമ്പ്യൂട്ടർ പ്രോഗ്രാമിംഗിന്റെ അടിസ്ഥാന തത്വങ്ങളായ Python കോഡിംഗും വെബ് പേജുകൾ നിർമ്മിക്കുന്ന HTML/CSS ഭാഷയും ലളിതമായി പരിചയപ്പെടുന്നു.',
+                points: [
+                    '1. Python അടിസ്ഥാനം: Variables, Input/Output, If-Else കണ്ടീഷനുകൾ ഉപയോഗിച്ച് ലളിതമായ പ്രോഗ്രാമുകൾ എഴുതുക.',
+                    '2. HTML & CSS: സ്വന്തമായി ഒരു വെബ് പേജ് ഘടന നിർമ്മിക്കുക.',
+                    '3. Linux Terminal കമാൻഡുകൾ: ls, cd, mkdir, pwd എന്നിവ ഉപയോഗിച്ച് കമ്പ്യൂട്ടർ നിയന്ത്രിക്കുക.'
+                ]
+            },
+            {
+                tab_name: 'മൊഡ്യൂൾ 11',
+                short_label: '52 Global Certifications',
+                title: 'മൊഡ്യൂൾ 11: 52 സൗജന്യ അന്താരാഷ്ട്ര സർട്ടിഫിക്കറ്റ് കോഴ്സുകൾ',
+                is_free: false,
+                visual_diagram: `<div class="bg-slate-900 border border-amber-500/40 rounded-2xl p-3 text-xs text-amber-200 grid sm:grid-cols-2 gap-2">
+                    <a href="https://grow.google/ai/" target="_blank" class="underline font-bold">1. Google AI Essentials ↗</a>
+                    <a href="https://skillsbuild.org/students/course-catalog/artificial-intelligence" target="_blank" class="underline font-bold">2. IBM AI Fundamentals Badge ↗</a>
+                    <a href="https://www.netacad.com/courses/introduction-to-cybersecurity" target="_blank" class="underline font-bold">3. Cisco Cybersecurity Badge ↗</a>
+                    <a href="https://www.freecodecamp.org/learn/2022/responsive-web-design/" target="_blank" class="underline font-bold">4. freeCodeCamp Web Cert ↗</a>
+                    <a href="https://www.elementsofai.com/" target="_blank" class="underline font-bold">5. Elements of AI (Finland Govt) ↗</a>
+                    <a href="https://www.skillindiadigital.gov.in/courses" target="_blank" class="underline font-bold">6. Govt. of India Skill India ↗</a>
+                </div>`,
+                summary: 'Google, Microsoft, IBM, Cisco, Harvard CS50, ഫിൻലൻഡ് ഗവൺമെന്റ്, ഭാരത സർക്കാർ (Skill India) എന്നിവ നൽകുന്ന 100% സൗജന്യ അന്താരാഷ്ട്ര സർട്ടിഫിക്കറ്റുകൾ നേടുന്ന രീതി.',
+                points: [
+                    '1. സൗജന്യ രജിസ്ട്രേഷൻ: സ്വന്തം Gmail ഉപയോഗിച്ച് ഈ ഔദ്യോഗിക പ്ലാറ്റ്ഫോമുകളിൽ സൗജന്യമായി ചേരുക.',
+                    '2. Credly ഡിജിറ്റൽ ബാഡ്ജുകൾ: പരീക്ഷ പാസായി ലഭിക്കുന്ന വെരിഫൈഡ് സർട്ടിഫിക്കറ്റുകൾ CV-യിലും LinkedIn-ലും ചേർക്കുക.',
+                    '3. വ്യാജ സൈറ്റുകൾ ഒഴിവാക്കുക: പണം ആവശ്യപ്പെടാത്ത ഔദ്യോഗിക ലിങ്കുകൾ മാത്രം ഉപയോഗിക്കുക.'
+                ]
+            },
+            {
+                tab_name: 'മൊഡ്യൂൾ 12',
+                short_label: 'Capstone & Assessment',
+                title: 'മൊഡ്യൂൾ 12: ഫൈനൽ പ്രൊജക്റ്റ്, ചോദ്യാവലി & സർട്ടിഫിക്കേഷൻ',
+                is_free: false,
+                visual_diagram: '',
+                summary: 'പഠിച്ച മുഴുവൻ കാര്യങ്ങളും ഉൾപ്പെടുത്തി സ്വന്തം ഡിജിറ്റൽ പോർട്ട്ഫോളിയോ സമർപ്പിച്ച് HIKMA Digital Academy-യുടെ ഔദ്യോഗിക സർട്ടിഫിക്കറ്റ് കരസ്ഥമാക്കുക.',
+                points: [
+                    '1. ഫൈനൽ പ്രൊജക്റ്റ്: Google Sites വെബ്സൈറ്റ്, Canva ID കാർഡ്, Google Sheets ട്രാക്കർ, 3 ആഗോള സർട്ടിഫിക്കറ്റുകൾ എന്നിവ സമർപ്പിക്കുക.',
+                    '2. പ്രാക്ടീസ് ചോദ്യാവലി (MCQs): പഠിച്ച പാഠഭാഗങ്ങളിലെ പ്രധാന ചോദ്യങ്ങളും ഉത്തരങ്ങളും പരിശീലിക്കുക.',
+                    '3. വെരിഫൈഡ് സർട്ടിഫിക്കറ്റ്: വിജയിക്കുന്നവർക്ക് QR / Credential ID സഹിതമുള്ള ഔദ്യോഗിക സർട്ടിഫിക്കറ്റ് ലഭിക്കും.'
+                ]
+            }
         ];
 
-        let serverLessons = [...defaultFreeLessons];
-        let allFetchedLessonsCache = [...defaultFreeLessons];
+        const allOnlineModulesMaster = [...onlineFreeModules, ...onlinePaidModules];
+        let serverLessons = [...onlineFreeModules];
 
         async function loginWithGoogle() {
             if (!supabaseClient) return;
@@ -996,26 +1136,23 @@
         }
 
         async function fetchProtectedLessons() {
-            if (!supabaseClient) {
-                serverLessons = [...defaultFreeLessons];
-                allFetchedLessonsCache = [...defaultFreeLessons];
-                renderModuleGrid();
-                return;
-            }
-            const { data, error } = await supabaseClient.from('lessons').select('*').order('id', { ascending: true });
-            if (!error && data && data.length > 0) {
-                allFetchedLessonsCache = [...defaultFreeLessons, ...data];
-            } else {
-                allFetchedLessonsCache = [...defaultFreeLessons];
+            let dbExtraLessons = [];
+            if (supabaseClient) {
+                const { data, error } = await supabaseClient.from('lessons').select('*').order('id', { ascending: true });
+                if (!error && data && data.length > 0) {
+                    dbExtraLessons = data;
+                }
             }
 
+            const combinedAll12Plus = [...onlineFreeModules, ...onlinePaidModules, ...dbExtraLessons];
+
             if (isCourseUnlocked) {
-                serverLessons = [...allFetchedLessonsCache];
+                serverLessons = combinedAll12Plus;
             } else {
-                serverLessons = [...defaultFreeLessons];
+                serverLessons = [...onlineFreeModules];
             }
             renderModuleGrid();
-            if (isServerAdmin) renderAdminAllModulesViewer();
+            if (isServerAdmin) renderAdminAllModulesViewer(combinedAll12Plus);
         }
 
         async function verifyServerAdminRole() {
@@ -1060,14 +1197,13 @@
             fetchProtectedLessons();
         }
 
-        // DEDICATED ADMIN WORKSPACE OPEN / CLOSE
         function openAdminWorkspace() {
             if (!isServerAdmin) return;
             document.getElementById('publicMainWebsite').classList.add('hidden');
             document.getElementById('adminWorkspacePage').classList.remove('hidden');
             window.scrollTo({ top: 0, behavior: 'smooth' });
             loadAdminEnrollments();
-            renderAdminAllModulesViewer();
+            fetchProtectedLessons();
         }
 
         function closeAdminWorkspace() {
@@ -1076,14 +1212,12 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        // 4-WAY ROLE VIEW SWITCHER FOR ADMIN
         function setAdminViewMode(mode) {
             if (!isServerAdmin) return;
             adminViewMode = mode;
             activeSelectedIndex = null;
             document.getElementById('lessonContentDrawer').classList.add('hidden');
 
-            // Highlight active view card in Admin Workspace
             ['admin', 'paid_student', 'free_student', 'public_guest'].forEach(m => {
                 const btn = document.getElementById(`viewBtn-${m}`);
                 if (btn) {
@@ -1109,15 +1243,15 @@
             } else if (mode === 'paid_student') {
                 isCourseUnlocked = true;
                 simBanner.classList.remove('hidden');
-                simText.innerText = '🎓 നിലവിലെ വ്യൂ: Paid Student View (₹499 അടച്ച വിദ്യാർത്ഥിയുടെ കാഴ്ച — 12 മൊഡ്യൂളുകളും തുറന്നിരിക്കുന്നു)';
-                badge.innerText = 'Paid Student Access (01–12)';
+                simText.innerText = '🎓 നിലവിലെ വ്യൂ: Paid Student View (₹499 അടച്ച വിദ്യാർത്ഥിയുടെ കാഴ്ച — 12 ഓൺലൈൻ മൊഡ്യൂളുകളും തുറന്നിരിക്കുന്നു!)';
+                badge.innerText = 'Paid Student Access (01–12) ✓';
                 document.getElementById('academyLoggedOutView').classList.add('hidden');
                 document.getElementById('academyLoggedInView').classList.remove('hidden');
-                document.getElementById('userRoleBadge').innerText = 'Paid Student';
+                document.getElementById('userRoleBadge').innerText = 'Paid Student ✓';
             } else if (mode === 'free_student') {
                 isCourseUnlocked = false;
                 simBanner.classList.remove('hidden');
-                simText.innerText = '🆓 നിലവിലെ വ്യൂ: Free Logged-In Student View (ലോഗിൻ ചെയ്ത എന്നാൽ പണമടയ്ക്കാത്ത വിദ്യാർത്ഥി — 01–02 മാത്രം)';
+                simText.innerText = '🆓 നിലവിലെ വ്യൂ: Free Student View (ലോഗിൻ ചെയ്ത എന്നാൽ പണമടയ്ക്കാത്ത കുട്ടി — 01–02 മാത്രം)';
                 badge.innerText = 'Free Student Access (01–02)';
                 document.getElementById('academyLoggedOutView').classList.add('hidden');
                 document.getElementById('academyLoggedInView').classList.remove('hidden');
@@ -1125,7 +1259,7 @@
             } else if (mode === 'public_guest') {
                 isCourseUnlocked = false;
                 simBanner.classList.remove('hidden');
-                simText.innerText = '🌐 നിലവിലെ വ്യൂ: Public Guest View (ലോഗിൻ ചെയ്യാത്ത സാധാരണ സന്ദർശകന്റെ കാഴ്ച)';
+                simText.innerText = '🌐 നിലവിലെ വ്യൂ: Public Guest View (ലോഗിൻ ചെയ്യാത്ത പൊതുജനങ്ങളുടെ കാഴ്ച)';
                 badge.innerText = 'Public Guest (01–02 Free)';
                 document.getElementById('academyLoggedInView').classList.add('hidden');
                 document.getElementById('academyLoggedOutView').classList.remove('hidden');
@@ -1139,14 +1273,12 @@
             }
         }
 
-        // DIRECT OFFLINE / CASH ENROLLMENT BY ADMIN
         async function adminDirectEnrollStudent(e) {
             e.preventDefault();
             if (!isServerAdmin || !supabaseClient) return;
             const student_email = document.getElementById('directEnrollEmail').value.trim().toLowerCase();
             const utr_number = document.getElementById('directEnrollNote').value.trim() || 'Direct Cash Payment';
 
-            // Check if already exists
             const { data: existing } = await supabaseClient.from('enrollments').select('*').eq('student_email', student_email).maybeSingle();
             let error = null;
 
@@ -1161,21 +1293,17 @@
             if (!error) {
                 document.getElementById('directEnrollEmail').value = '';
                 loadAdminEnrollments();
-                showToast(`${student_email} വിജയകരമായി എൻറോൾ ചെയ്തു! അവർ ലോഗിൻ ചെയ്യുമ്പോൾ മുഴുവൻ ക്ലാസുകളും തുറന്നുകിട്ടും.`);
+                showToast(`${student_email} വിജയകരമായി എൻറോൾ ചെയ്തു!`);
             } else {
                 showToast('പിശക്: ' + error.message);
             }
         }
 
-        // RENDER ALL 12 MODULES INSIDE ADMIN WORKSPACE FOR FULL READING
-        function renderAdminAllModulesViewer() {
+        function renderAdminAllModulesViewer(lessonsList) {
             const container = document.getElementById('adminAllModulesAccordion');
             if (!container) return;
-            if (!allFetchedLessonsCache || allFetchedLessonsCache.length === 0) {
-                container.innerHTML = '<p class="text-slate-400">ക്ലാസുകൾ ലോഡ് ചെയ്യുന്നു...</p>';
-                return;
-            }
-            container.innerHTML = allFetchedLessonsCache.map((lesson, idx) => {
+            const list = lessonsList || allOnlineModulesMaster;
+            container.innerHTML = list.map((lesson) => {
                 const pointsArr = Array.isArray(lesson.points) ? lesson.points : [];
                 const pointsHtml = pointsArr.map(p => `<li class="flex items-start gap-2"><span class="text-amber-400">•</span><span>${p}</span></li>`).join('');
                 return `
@@ -1230,7 +1358,7 @@
             }).join('');
 
             if (!isCourseUnlocked) {
-                html += dimmedLockedPlaceholders.map(item => `
+                html += onlinePaidModules.map(item => `
                     <button onclick="showLockedDrawer('${item.tab_name}')" class="p-3 rounded-2xl text-left bg-slate-900/60 border border-slate-800/80 opacity-45 hover:opacity-70 transition-opacity">
                         <div class="flex items-center justify-between gap-1 mb-1 text-slate-400">
                             <span class="font-bold text-xs">${item.tab_name}</span>
@@ -1269,7 +1397,7 @@
                 <div class="space-y-4">
                     <div class="flex flex-wrap items-center justify-between gap-2 border-b border-brand-800/80 pb-3">
                         <span class="px-2.5 py-1 bg-emerald-500/20 text-emerald-300 rounded-md text-[11px] font-bold">
-                            ${lesson.is_free ? 'സൗജന്യ ക്ലാസ് (Free)' : 'Unlocked Lesson'}
+                            ${lesson.is_free ? 'സൗജന്യ ഓൺലൈൻ ക്ലാസ് (Free)' : 'Unlocked Online Class'}
                         </span>
                         <div class="flex flex-wrap items-center gap-2">
                             <button onclick='speakCurrentLesson(${JSON.stringify(lesson.title)}, ${JSON.stringify(lesson.summary)}, ${JSON.stringify(plainPoints)})' class="px-3 py-1.5 bg-sky-500/20 hover:bg-sky-500/30 text-sky-300 border border-sky-400/40 rounded-xl text-xs font-bold flex items-center gap-1.5">
@@ -1310,11 +1438,11 @@
                     </div>
                     <h4 class="font-bold text-base text-white">${moduleName} ലോക്ക് ചെയ്തിരിക്കുന്നു</h4>
                     <p class="text-xs text-emerald-200/80 max-w-md mx-auto">
-                        മൊഡ്യൂൾ 03 മുതൽ 12 വരെയുള്ള ക്ലാസുകളും 52 ആഗോള സർട്ടിഫിക്കറ്റ് ലിങ്കുകളും തുറക്കാൻ ഓൺലൈൻ കോഴ്സിൽ അഡ്മിഷൻ നേടുക.
+                        മൊഡ്യൂൾ 03 മുതൽ 12 വരെയുള്ള ഓൺലൈൻ ക്ലാസുകളും 52 ആഗോള സർട്ടിഫിക്കറ്റ് ലിങ്കുകളും തുറക്കാൻ ഓൺലൈൻ കോഴ്സിൽ അഡ്മിഷൻ നേടുക.
                     </p>
                     <div class="flex flex-wrap justify-center gap-2.5 pt-1">
-                        <a href="https://www.instamojo.com/@saeed_anchangadi" target="_blank" class="px-4 py-2.5 bg-amber-500 text-brand-950 font-extrabold rounded-xl text-xs">Pay ₹499 (Instamojo)</a>
-                        <a href="https://t.me/username_786313" target="_blank" class="px-4 py-2.5 bg-sky-500 text-white font-bold rounded-xl text-xs">Telegram വഴി ചേരുക</a>
+                        <a href="${INSTAMOJO_PAY_URL}" target="_blank" rel="noopener noreferrer" class="px-4 py-2.5 bg-amber-500 text-brand-950 font-extrabold rounded-xl text-xs">Pay ₹499 (Instamojo)</a>
+                        <a href="https://t.me/username_786313" target="_blank" rel="noopener noreferrer" class="px-4 py-2.5 bg-sky-500 text-white font-bold rounded-xl text-xs">Telegram വഴി ചേരുക</a>
                     </div>
                 </div>
             `;
@@ -1324,14 +1452,40 @@
         async function submitPaymentClaim(e) {
             e.preventDefault();
             if (!supabaseClient) return;
+            const btn = document.getElementById('claimSubmitBtn');
             const student_email = document.getElementById('claimEmailInput').value.trim().toLowerCase();
-            const utr_number = document.getElementById('claimUtrInput').value.trim().toUpperCase();
-            const { error } = await supabaseClient.from('enrollments').insert([{ student_email, utr_number, status: 'pending' }]);
-            if (!error) {
-                closeModal('claimAccessModal');
-                showToast('അപേക്ഷ ലഭിച്ചു! ഉടൻ അൺലോക്ക് ചെയ്യുന്നതാണ്.');
-            } else {
-                showToast('ആദ്യം Google വഴി ലോഗിൻ ചെയ്യുക: ' + error.message);
+            const payment_id = document.getElementById('claimUtrInput').value.trim();
+
+            if (btn) { btn.disabled = true; btn.innerText = 'Instamojo-യിൽ പരിശോധിക്കുന്നു...'; }
+
+            try {
+                const res = await fetch(`${SUPABASE_URL}/functions/v1/instamojo-webhook`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'apikey': SUPABASE_ANON_KEY,
+                        'Authorization': `Bearer ${SUPABASE_ANON_KEY}`
+                    },
+                    body: JSON.stringify({ student_email, payment_id })
+                });
+                const result = await res.json();
+
+                if (res.ok && result.success) {
+                    closeModal('claimAccessModal');
+                    showToast('🎉 പേയ്‌മെന്റ് വിജയകരമായി വെരിഫൈ ചെയ്തു! 12 മൊഡ്യൂളുകളും തുറന്നു!');
+                    if (currentUser && currentUser.email.toLowerCase() === student_email) {
+                        isCourseUnlocked = true;
+                        document.getElementById('userRoleBadge').innerText = 'Paid Student ✓';
+                        document.getElementById('studentAccessBadge').innerText = 'Full Access (01–12) ✓';
+                        fetchProtectedLessons();
+                    }
+                } else {
+                    showToast(result.message || 'പരിശോധന പരാജയപ്പെട്ടു. നമ്പർ ശരിയാണോ എന്ന് നോക്കുക.');
+                }
+            } catch (err) {
+                showToast('നെറ്റ്‌വർക്ക് പിശക്: ദയവായി വീണ്ടും ശ്രമിക്കുക.');
+            } finally {
+                if (btn) { btn.disabled = false; btn.innerText = 'പേയ്‌മെന്റ് വെരിഫൈ ചെയ്ത് ക്ലാസ് തുറക്കുക ✓'; }
             }
         }
 
@@ -1381,7 +1535,7 @@
             const summary = document.getElementById('adminLessonSummary').value.trim();
             const points = document.getElementById('adminLessonPoints').value.trim().split('\n').filter(l => l.trim() !== '');
             const { error } = await supabaseClient.from('lessons').insert([{ tab_name, title, is_free: false, summary, points }]);
-            if (!error) { e.target.reset(); fetchProtectedLessons(); showToast('പുതിയ ക്ലാസ് ചേർത്തു!'); }
+            if (!error) { e.target.reset(); fetchProtectedLessons(); showToast('പുതിയ ഓൺലൈൻ ക്ലാസ് ചേർത്തു!'); }
         }
 
         async function logoutStudent() {
