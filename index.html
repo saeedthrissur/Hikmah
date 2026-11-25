@@ -19,9 +19,6 @@
     <!-- Supabase Open Source JS SDK -->
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
-    <!-- html2pdf.js for Clean Real PDF Downloads -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
-
     <script>
         tailwind.config = {
             theme: {
@@ -57,12 +54,18 @@
         }
         .arabic-calligraphy { font-family: 'Amiri', serif; line-height: 2; }
         .glass-nav { background: rgba(255, 255, 255, 0.96); backdrop-filter: blur(16px); }
-        body.dark-theme { background-color: #020617 !important; color: #f1f5f9 !important; }
-        body.dark-theme .glass-nav { background: rgba(15, 23, 42, 0.96) !important; border-color: #1e293b !important; }
-        body.dark-theme .bg-white { background-color: #0f172a !important; color: #f1f5f9 !important; border-color: #1e293b !important; }
-        body.dark-theme .bg-slate-50, body.dark-theme .bg-slate-100\/90 { background-color: #020617 !important; }
-        body.dark-theme .text-slate-900, body.dark-theme .text-slate-800, body.dark-theme .text-brand-950 { color: #f8fafc !important; }
-        body.dark-theme .text-slate-700, body.dark-theme .text-slate-600, body.dark-theme .text-slate-500 { color: #cbd5e1 !important; }
+        
+        /* High-Contrast Dark Mode Fixes */
+        body.dark-theme { background-color: #020617 !important; color: #f8fafc !important; }
+        body.dark-theme .glass-nav { background: rgba(15, 23, 42, 0.98) !important; border-color: #334155 !important; }
+        body.dark-theme .bg-white { background-color: #0f172a !important; color: #f8fafc !important; border-color: #334155 !important; }
+        body.dark-theme .bg-slate-50, body.dark-theme .bg-slate-100, body.dark-theme .bg-slate-100\/90 { background-color: #1e293b !important; color: #f8fafc !important; border-color: #334155 !important; }
+        body.dark-theme .bg-amber-50, body.dark-theme .bg-brand-50\/70, body.dark-theme .bg-sky-50\/70, body.dark-theme .bg-sky-50 { background-color: #1e293b !important; color: #f8fafc !important; border-color: #475569 !important; }
+        body.dark-theme .text-slate-900, body.dark-theme .text-slate-800, body.dark-theme .text-brand-950, body.dark-theme .text-amber-900, body.dark-theme .text-amber-950, body.dark-theme .text-sky-950 { color: #f8fafc !important; }
+        body.dark-theme .text-slate-700, body.dark-theme .text-slate-600, body.dark-theme .text-slate-500, body.dark-theme .text-slate-400 { color: #e2e8f0 !important; }
+        body.dark-theme select, body.dark-theme input, body.dark-theme textarea { background-color: #0f172a !important; color: #f8fafc !important; border-color: #475569 !important; }
+        body.dark-theme select option { background-color: #0f172a; color: #f8fafc; }
+        
         details > summary { list-style: none; }
         details > summary::-webkit-details-marker { display: none; }
         .goog-te-banner-frame.skiptranslate, .goog-te-gadget-icon { display: none !important; }
@@ -121,7 +124,7 @@
                     <!-- Settings Dropdown Panel -->
                     <div id="settingsDropdown" class="hidden absolute right-0 mt-2 w-72 bg-white rounded-3xl shadow-2xl border border-slate-200 p-4 z-50 text-xs space-y-4">
                         <div class="bg-slate-50 p-3 rounded-2xl border border-slate-200 space-y-2">
-                            <span class="text-[10px] font-extrabold uppercase tracking-wider text-slate-400 block">അക്കൗണ്ട് & പോർട്ടൽ</span>
+                            <span class="text-[10px] font-extrabold uppercase tracking-wider text-slate-500 block">അക്കൗണ്ട് & പോർട്ടൽ</span>
                             <div id="menuLoggedOut">
                                 <button onclick="loginWithGoogle(); toggleSettingsMenu();" class="w-full py-2 px-3 bg-brand-800 hover:bg-brand-900 text-white font-bold rounded-xl flex items-center justify-center gap-2">
                                     <i class="fa-brands fa-google"></i>
@@ -132,14 +135,14 @@
                                 <p id="menuUserEmail" class="font-bold text-slate-900 truncate"></p>
                                 <div class="flex gap-2">
                                     <button id="menuAdminBtn" onclick="openModal('adminModal'); toggleSettingsMenu();" class="hidden flex-1 py-2 bg-amber-500 text-brand-950 font-extrabold rounded-lg shadow">Admin Panel</button>
-                                    <button onclick="logoutStudent(); toggleSettingsMenu();" class="flex-1 py-2 bg-red-100 text-red-700 font-bold rounded-lg">ലോഗൗട്ട്</button>
+                                    <button onclick="logoutStudent(); toggleSettingsMenu();" class="flex-1 py-2 bg-red-600 text-white font-bold rounded-lg">ലോഗൗട്ട്</button>
                                 </div>
                             </div>
                         </div>
 
                         <!-- Clean Dropdown for Language (Default: Malayalam) -->
                         <div class="space-y-1.5 px-1">
-                            <label for="langSelect" class="font-bold text-slate-700 block"><i class="fa-solid fa-globe text-sky-600 mr-1.5"></i> ഭാഷ തിരഞ്ഞെടുക്കുക (Language)</label>
+                            <label for="langSelect" class="font-bold text-slate-700 block"><i class="fa-solid fa-globe text-sky-500 mr-1.5"></i> ഭാഷ തിരഞ്ഞെടുക്കുക (Language)</label>
                             <select id="langSelect" onchange="triggerFullPageTranslate(this.value)" class="w-full px-3 py-2 rounded-xl bg-slate-50 border border-slate-300 font-bold text-slate-800 outline-none">
                                 <option value="ml" selected>🇮🇳 മലയാളം (Default - Kerala)</option>
                                 <option value="en">🌐 English (Global)</option>
@@ -151,21 +154,21 @@
                         </div>
 
                         <div class="flex items-center justify-between px-1">
-                            <span class="font-bold text-slate-700"><i class="fa-solid fa-moon text-indigo-500 mr-1.5"></i> ഡാർക്ക് മോഡ്</span>
-                            <button onclick="toggleDarkMode()" id="darkModeBtn" class="px-3 py-1.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-800 font-bold border border-slate-200">Off</button>
+                            <span class="font-bold text-slate-700"><i class="fa-solid fa-moon text-indigo-400 mr-1.5"></i> ഡാർക്ക് മോഡ്</span>
+                            <button onclick="toggleDarkMode()" id="darkModeBtn" class="px-3 py-1.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-800 font-bold border border-slate-300">Off</button>
                         </div>
 
                         <div class="flex items-center justify-between px-1">
-                            <span class="font-bold text-slate-700"><i class="fa-solid fa-text-height text-brand-600 mr-1.5"></i> അക്ഷര വലുപ്പം</span>
+                            <span class="font-bold text-slate-700"><i class="fa-solid fa-text-height text-brand-500 mr-1.5"></i> അക്ഷര വലുപ്പം</span>
                             <div class="flex gap-1">
-                                <button onclick="setFontSize('92%')" class="px-2.5 py-1 rounded-lg bg-slate-100 font-bold border border-slate-200">A-</button>
-                                <button onclick="setFontSize('100%')" class="px-2.5 py-1 rounded-lg bg-slate-100 font-bold border border-slate-200">A</button>
-                                <button onclick="setFontSize('112%')" class="px-2.5 py-1 rounded-lg bg-slate-100 font-bold border border-slate-200">A+</button>
+                                <button onclick="setFontSize('92%')" class="px-2.5 py-1 rounded-lg bg-slate-100 text-slate-800 font-bold border border-slate-300">A-</button>
+                                <button onclick="setFontSize('100%')" class="px-2.5 py-1 rounded-lg bg-slate-100 text-slate-800 font-bold border border-slate-300">A</button>
+                                <button onclick="setFontSize('112%')" class="px-2.5 py-1 rounded-lg bg-slate-100 text-slate-800 font-bold border border-slate-300">A+</button>
                             </div>
                         </div>
 
-                        <button onclick="openModal('verifyModal'); toggleSettingsMenu();" class="w-full py-2.5 bg-amber-50 hover:bg-amber-100 text-amber-900 font-bold rounded-xl border border-amber-200 flex items-center justify-center gap-2">
-                            <i class="fa-solid fa-qrcode text-amber-600"></i>
+                        <button onclick="openModal('verifyModal'); toggleSettingsMenu();" class="w-full py-2.5 bg-amber-50 hover:bg-amber-100 text-amber-900 font-bold rounded-xl border border-amber-300 flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-qrcode text-amber-500"></i>
                             <span>സർട്ടിഫിക്കറ്റ് വെരിഫിക്കേഷൻ</span>
                         </button>
                     </div>
@@ -408,7 +411,7 @@
                 </span>
                 <h2 class="font-display text-2xl sm:text-4xl font-bold text-white">നേരിട്ടുള്ള ക്ലാസിൽ വരാൻ കഴിയാത്തവർക്കായി</h2>
                 <p class="text-emerald-100/85 text-sm sm:text-base">
-                    നമ്മുടെ യഥാർത്ഥ ദർസ് സിലബസ് അടിസ്ഥാനമാക്കിയുള്ള സമ്പൂർണ്ണ പഠന നോട്ടുകൾ, വിഷ്വൽ ഗൈഡുകൾ, ഓഡിയോ വോയ്സ് ക്ലാസ് (TTS), PDF ഡൗൺലോഡ് എന്നിവ ഇവിടെ ലഭ്യമാണ്.
+                    നമ്മുടെ യഥാർത്ഥ ദർസ് സിലബസ് അടിസ്ഥാനമാക്കിയുള്ള സമ്പൂർണ്ണ പഠന നോട്ടുകൾ, വീഡിയോ ഗൈഡുകൾ, ഓഡിയോ വോയ്സ് ക്ലാസ് (TTS), Gemini AI സ്വയം പഠന സഹായി എന്നിവ ഇവിടെ ലഭ്യമാണ്.
                 </p>
             </div>
 
@@ -429,7 +432,7 @@
                     <ul class="space-y-2.5 text-xs text-slate-600 mb-6">
                         <li class="flex items-center gap-2.5"><i class="fa-solid fa-book-open text-brand-600"></i> <strong>12 സമ്പൂർണ്ണ പാഠഭാഗങ്ങൾ & വർക്ക്ഷീറ്റുകൾ</strong></li>
                         <li class="flex items-center gap-2.5"><i class="fa-solid fa-volume-high text-amber-500"></i> <strong>ഓഡിയോ വോയ്സ് ക്ലാസ്:</strong> കേട്ട് പഠിക്കാനുള്ള സൗകര്യം</li>
-                        <li class="flex items-center gap-2.5"><i class="fa-solid fa-file-pdf text-red-600"></i> <strong>നേരിട്ടുള്ള PDF നോട്ട് ഡൗൺലോഡ്</strong></li>
+                        <li class="flex items-center gap-2.5"><i class="fa-solid fa-sparkles text-indigo-600"></i> <strong>Gemini AI Auto-Prompt:</strong> സംശയങ്ങൾ AI വഴി ചോദിക്കാൻ</li>
                         <li class="flex items-center gap-2.5"><i class="fa-solid fa-award text-sky-600"></i> 52 ആഗോള സൗജന്യ സർട്ടിഫിക്കറ്റ് കോഴ്സ് ലിങ്കുകൾ</li>
                     </ul>
 
@@ -579,6 +582,68 @@
         <i class="fa-brands fa-telegram text-3xl"></i>
     </a>
 
+    <!-- MODAL: IN-APP VIDEO TUTORIAL WINDOW (FIXED EMBED WITH VERIFIED VIDEO IDs) -->
+    <div id="videoModal" class="hidden fixed inset-0 z-50 bg-slate-950/90 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="bg-slate-900 border border-slate-700 rounded-3xl max-w-3xl w-full overflow-hidden shadow-2xl">
+            <div class="bg-slate-950 text-white p-4 sm:p-5 flex justify-between items-center border-b border-slate-800">
+                <div class="flex items-center gap-2">
+                    <i class="fa-brands fa-youtube text-red-500 text-xl"></i>
+                    <h3 id="videoModalTitle" class="font-bold text-sm sm:text-base text-white">വീഡിയോ ട്യൂട്ടോറിയൽ (മലയാളം / English)</h3>
+                </div>
+                <button onclick="closeVideoModal()" class="w-8 h-8 rounded-full bg-slate-800 hover:bg-slate-700 text-slate-300 flex items-center justify-center">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+            <div class="p-4 sm:p-6 space-y-4">
+                <div class="aspect-video w-full rounded-2xl overflow-hidden bg-black border border-slate-800 shadow-inner">
+                    <iframe id="videoModalIframe" class="w-full h-full" src="" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div>
+                <div class="flex flex-wrap items-center justify-between gap-3 bg-slate-950/80 p-3.5 rounded-2xl border border-slate-800 text-xs">
+                    <span class="text-slate-300">കൂടുതൽ വീഡിയോകൾ കാണാൻ YouTube-ൽ നേരിട്ട് തുറക്കാം:</span>
+                    <div class="flex gap-2">
+                        <a id="videoYoutubeMalayalamLink" href="#" target="_blank" rel="noopener noreferrer" class="px-3.5 py-2 bg-red-600 hover:bg-red-700 text-white font-bold rounded-xl flex items-center gap-1.5">
+                            <i class="fa-brands fa-youtube"></i> <span>മലയാളം വീഡിയോകൾ (YouTube)</span>
+                        </a>
+                        <a id="videoYoutubeEnglishLink" href="#" target="_blank" rel="noopener noreferrer" class="px-3.5 py-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold rounded-xl">
+                            <span>English</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL: GEMINI AI AUTO-PROMPT HELPER -->
+    <div id="geminiPromptModal" class="hidden fixed inset-0 z-50 bg-slate-950/85 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl max-w-lg w-full overflow-hidden shadow-2xl">
+            <div class="bg-gradient-to-r from-indigo-900 via-brand-900 to-brand-950 text-white p-5 flex justify-between items-center">
+                <div class="flex items-center gap-2">
+                    <i class="fa-solid fa-sparkles text-amber-300 text-lg"></i>
+                    <h3 class="font-bold text-base">Gemini AI-യുടെ സഹായത്തോടെ പഠിക്കുക</h3>
+                </div>
+                <button onclick="closeModal('geminiPromptModal')" class="text-slate-300 hover:text-white"><i class="fa-solid fa-xmark text-lg"></i></button>
+            </div>
+            <div class="p-6 space-y-4 text-xs">
+                <p class="text-slate-600 leading-relaxed">
+                    ഈ പാഠഭാഗത്തെക്കുറിച്ച് കൂടുതൽ എളുപ്പത്തിൽ മലയാളത്തിൽ മനസ്സിലാക്കാനും സംശയങ്ങൾ ചോദിക്കാനും താഴെ തയ്യാറാക്കിയ <strong>AI പ്രോംപ്റ്റ്</strong> ഉപയോഗിക്കാം:
+                </p>
+                <div class="bg-slate-50 border border-slate-300 rounded-2xl p-3.5 space-y-2">
+                    <span class="text-[10px] font-extrabold uppercase tracking-wider text-indigo-600 block">തയ്യാറാക്കിയ Gemini Prompt (Auto-Ready):</span>
+                    <textarea id="geminiReadyPromptText" rows="5" class="w-full bg-white border border-slate-200 rounded-xl p-2.5 text-xs text-slate-800 leading-relaxed outline-none"></textarea>
+                </div>
+                <div class="flex flex-col sm:flex-row gap-2.5">
+                    <button onclick="copyAndOpenGemini()" class="flex-1 py-3.5 bg-indigo-600 hover:bg-indigo-700 text-white font-extrabold rounded-2xl shadow-lg flex items-center justify-center gap-2 text-xs sm:text-sm">
+                        <i class="fa-solid fa-wand-magic-sparkles"></i>
+                        <span>പ്രോംപ്റ്റ് കോപ്പി ചെയ്ത് Gemini തുറക്കുക ↗</span>
+                    </button>
+                </div>
+                <p class="text-[11px] text-slate-500 text-center">
+                    * ബട്ടൺ അമർത്തുമ്പോൾ പ്രോംപ്റ്റ് ഓട്ടോമാറ്റിക് ആയി കോപ്പി ആകുകയും Gemini തുറന്നുവരികയും ചെയ്യും — അവിടെ <strong>Paste</strong> ചെയ്ത് <strong>Send (OK)</strong> അടിച്ചാൽ മതി!
+                </p>
+            </div>
+        </div>
+    </div>
+
     <!-- MODAL: STUDENT CLAIM UNLOCK AFTER PAYMENT -->
     <div id="claimAccessModal" class="hidden fixed inset-0 z-50 bg-slate-950/85 backdrop-blur-sm flex items-center justify-center p-4">
         <div class="bg-white rounded-3xl max-w-md w-full overflow-hidden shadow-2xl">
@@ -617,7 +682,6 @@
             </div>
 
             <div class="p-6 space-y-6 max-h-[82vh] overflow-y-auto text-xs">
-                <!-- Test Mode Switch for Admin -->
                 <div class="bg-sky-50 p-4 rounded-2xl border border-sky-200 flex items-center justify-between gap-3">
                     <div>
                         <h4 class="font-bold text-sm text-sky-950">🧪 വിദ്യാർത്ഥി കാഴ്ച ടെസ്റ്റ് ചെയ്യുക (Test Mode)</h4>
@@ -628,7 +692,6 @@
                     </button>
                 </div>
 
-                <!-- 1. Approve Pending Student Enrollments -->
                 <div class="space-y-3">
                     <h4 class="font-bold text-sm text-slate-900 border-b pb-2">1. പണമടച്ച വിദ്യാർത്ഥികൾ (1-Click Approve)</h4>
                     <div id="adminEnrollmentsList" class="space-y-2">
@@ -636,7 +699,6 @@
                     </div>
                 </div>
 
-                <!-- 2. Issue Official Certificate -->
                 <form onsubmit="adminIssueCertificate(event)" class="bg-amber-50/70 p-4 rounded-2xl border border-amber-200 space-y-3">
                     <h4 class="font-bold text-sm text-amber-950">2. പാസായ വിദ്യാർത്ഥികൾക്ക് സർട്ടിഫിക്കറ്റ് ഇഷ്യൂ ചെയ്യുക</h4>
                     <div class="grid sm:grid-cols-2 gap-2.5">
@@ -652,7 +714,6 @@
                     </button>
                 </form>
 
-                <!-- 3. Add New Lesson -->
                 <form onsubmit="adminAddLesson(event)" class="bg-slate-50 p-4 rounded-2xl border border-slate-200 space-y-3">
                     <h4 class="font-bold text-sm text-slate-900">3. പുതിയ ക്ലാസ് നോട്ട് ചേർക്കുക</h4>
                     <input type="text" id="adminLessonTab" required placeholder="ടാബ് പേര് (ഉദാ: മൊഡ്യൂൾ 13)" class="w-full px-3 py-2 rounded-xl border border-slate-300">
@@ -774,6 +835,66 @@
             }
         }
 
+        // Fixed In-App Video Tutorial Player Modal (Uses Verified Direct Video IDs)
+        function openVideoTutorial(title, youtubeVideoId, malayalamSearchQuery, englishSearchQuery) {
+            document.getElementById('videoModalTitle').innerText = title;
+            document.getElementById('videoModalIframe').src = `https://www.youtube.com/embed/${youtubeVideoId}?rel=0`;
+            document.getElementById('videoYoutubeMalayalamLink').href = `https://www.youtube.com/results?search_query=${encodeURIComponent(malayalamSearchQuery)}`;
+            document.getElementById('videoYoutubeEnglishLink').href = `https://www.youtube.com/results?search_query=${encodeURIComponent(englishSearchQuery)}`;
+            openModal('videoModal');
+        }
+
+        function closeVideoModal() {
+            document.getElementById('videoModalIframe').src = '';
+            closeModal('videoModal');
+        }
+
+        // Gemini AI Auto-Prompt Helper
+        function openGeminiStudyPrompt(lessonIndex) {
+            const lesson = serverLessons[lessonIndex];
+            if (!lesson) return;
+            const pointsArr = Array.isArray(lesson.points) ? lesson.points : [];
+            const promptText = `ഞാൻ HIKMA Digital Academy-യിലെ "${lesson.title}" എന്ന പാഠഭാഗം പഠിക്കുകയാണ്. ഈ പാഠഭാഗത്തെക്കുറിച്ച് (${lesson.summary}) തുടക്കക്കാർക്ക് എളുപ്പത്തിൽ മനസ്സിലാകുന്ന ലളിതമായ മലയാളത്തിൽ, ഓരോ സ്റ്റെപ്പും വിശദമായി ഉദാഹരണങ്ങൾ സഹിതം പഠിപ്പിച്ചു തരാമോ?\n\nപ്രധാന വിഷയങ്ങൾ:\n${pointsArr.slice(0, 3).join('\n')}`;
+            
+            document.getElementById('geminiReadyPromptText').value = promptText;
+            openModal('geminiPromptModal');
+        }
+
+        function copyAndOpenGemini() {
+            const textArea = document.getElementById('geminiReadyPromptText');
+            const text = textArea.value;
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(text).catch(() => {});
+            } else {
+                textArea.select();
+                document.execCommand('copy');
+            }
+            showToast('പ്രോംപ്റ്റ് കോപ്പി ചെയ്തു! Gemini-യിൽ Paste ചെയ്ത് Send അടിക്കൂ.');
+            setTimeout(() => {
+                window.open('https://gemini.google.com/app', '_blank', 'noopener,noreferrer');
+            }, 600);
+        }
+
+        // Clean Offline Text Note Download (Zero Blank Pages!)
+        function downloadCleanNote(lessonIndex) {
+            const lesson = serverLessons[lessonIndex];
+            if (!lesson) return;
+            const pointsArr = Array.isArray(lesson.points) ? lesson.points : [];
+            const cleanPoints = pointsArr.map((p, i) => `${i + 1}. ${p.replace(/<[^>]*>?/gm, '')}`).join('\n\n');
+            const content = `============================================================\nHIKMA DIGITAL ACADEMY — OFFICIAL STUDY NOTE\nപാരമ്പര്യ വിജ്ഞാനത്തോടൊപ്പം ആധുനിക സാങ്കേതിക തികവ്\n============================================================\n\nപാഠഭാഗം: ${lesson.title}\n\nസംഗ്രഹം:\n${lesson.summary}\n\n------------------------------------------------------------\nസ്റ്റെപ്പ്-ബൈ-സ്റ്റെപ്പ് പഠന നിർദ്ദേശങ്ങൾ:\n------------------------------------------------------------\n\n${cleanPoints}\n\n============================================================\nതുടർ ക്ലാസുകൾക്കും പൂർണ്ണ കോഴ്സിനും സന്ദർശിക്കുക:\nhttps://saeedthrissur.github.io/Hikmah/\nTelegram: @username_786313 | Email: saeed.anchangadi@gmail.com\n============================================================`;
+
+            const blob = new Blob([content], { type: 'text/plain;charset=utf-8' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `${(lesson.tab_name || 'HIKMA_Note').replace(/[^a-zA-Z0-9_\u0D00-\u0D7F]/g, '_')}.txt`;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+            showToast('പഠന നോട്ട് ഡൗൺലോഡ് ചെയ്തു!');
+        }
+
         // Audio Voice Class (Text-to-Speech)
         function speakCurrentLesson(title, summary, pointsText) {
             if (!('speechSynthesis' in window)) {
@@ -800,63 +921,12 @@
             window.speechSynthesis.speak(utterance);
         }
 
-        // Real Clean PDF Download with Header, Footer, Margins & Academy Link
-        function downloadLessonPDF(lessonIndex) {
-            const lesson = serverLessons[lessonIndex];
-            if (!lesson) return;
-            showToast('PDF തയ്യാറാക്കുന്നു... ദയവായി കാത്തിരിക്കുക');
-            const pointsArr = Array.isArray(lesson.points) ? lesson.points : [];
-            const pointsList = pointsArr.map(p => `<li style="margin-bottom:10px; line-height:1.7; padding-left:4px;">• ${p}</li>`).join('');
-            const diagramClean = (lesson.visual_diagram || '').replace(/class="[^"]*"/g, 'style="background:#f8fafc; border:1px solid #cbd5e1; padding:14px; border-radius:10px; margin:16px 0; color:#0f172a; font-size:12px; line-height:1.6;"');
-
-            const pdfContainer = document.createElement('div');
-            pdfContainer.style.padding = '32px';
-            pdfContainer.style.fontFamily = '"Noto Sans Malayalam", "Plus Jakarta Sans", sans-serif';
-            pdfContainer.style.color = '#0f172a';
-            pdfContainer.style.background = '#ffffff';
-            pdfContainer.innerHTML = `
-                <div style="border-bottom: 3px solid #064e3b; padding-bottom: 14px; margin-bottom: 20px; display:flex; justify-content:space-between; align-items:center;">
-                    <div>
-                        <div style="font-size: 20px; font-weight: 800; color: #064e3b;">HIKMA Digital Academy</div>
-                        <div style="font-size: 11px; color: #475569; margin-top:2px;">പാരമ്പര്യ വിജ്ഞാനത്തോടൊപ്പം ആധുനിക സാങ്കേതിക തികവ്</div>
-                    </div>
-                    <div style="text-align:right; font-size:10px; color:#047857; font-weight:700;">
-                        Official Study Guide<br>EDAC-AI Curriculum
-                    </div>
-                </div>
-
-                <h2 style="font-size: 17px; font-weight: 700; color: #022c22; margin-bottom: 10px;">${lesson.title}</h2>
-                <p style="font-size: 13px; color: #334155; line-height: 1.75; margin-bottom: 16px;">${lesson.summary}</p>
-                
-                ${diagramClean}
-                
-                <h3 style="font-size: 14px; font-weight: 700; color: #064e3b; margin-top: 18px; margin-bottom: 10px; border-bottom:1px solid #e2e8f0; padding-bottom:4px;">സ്റ്റെപ്പ്-ബൈ-സ്റ്റെപ്പ് പഠന നിർദ്ദേശങ്ങൾ:</h3>
-                <ul style="list-style: none; padding: 0; margin: 0; font-size: 12.5px; color: #1e293b;">${pointsList}</ul>
-
-                <div style="margin-top: 30px; padding-top: 14px; border-top: 2px solid #064e3b; font-size: 11px; color: #334155; text-align: center; background:#ecfdf5; padding:12px; border-radius:8px;">
-                    <strong>HIKMA Digital Academy — തുടർ ക്ലാസുകൾക്കും പൂർണ്ണ കോഴ്സിനും സന്ദർശിക്കുക:</strong><br>
-                    <a href="https://saeedthrissur.github.io/Hikmah/" style="color: #047857; font-weight: 700; text-decoration: underline;">https://saeedthrissur.github.io/Hikmah/</a>
-                    <div style="font-size:10px; color:#64748b; margin-top:4px;">Contact / Telegram: @username_786313 | Email: saeed.anchangadi@gmail.com</div>
-                </div>
-            `;
-
-            const safeFilename = (lesson.tab_name || 'HIKMA_Lesson').replace(/[^a-zA-Z0-9_\u0D00-\u0D7F]/g, '_') + '.pdf';
-            if (window.html2pdf) {
-                html2pdf().set({
-                    margin: [12, 12, 12, 12],
-                    filename: safeFilename,
-                    html2canvas: { scale: 2, useCORS: true },
-                    jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
-                }).from(pdfContainer).save();
-            }
-        }
-
         let currentUser = null;
         let isCourseUnlocked = false;
         let isServerAdmin = false;
         let isStudentPreviewMode = false;
 
-        // Modules 01 & 02 permanently embedded in GitHub HTML
+        // Modules 01 & 02 permanently embedded in GitHub HTML with Verified YouTube Video IDs
         const defaultFreeLessons = [
             {
                 tab_name: 'മൊഡ്യൂൾ 01 (Free)',
@@ -865,7 +935,7 @@
                 visual_diagram: `<div class="bg-slate-900 border border-emerald-500/40 rounded-2xl p-4 text-xs text-emerald-100 space-y-3">
                     <div class="font-bold text-amber-300 text-sm flex items-center gap-2">
                         <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-ping"></span>
-                        <span>വിഷ്വൽ സ്റ്റെപ്പ്-ബൈ-സ്റ്റെപ്പ് ഗൈഡ് (System Setup Flowchart)</span>
+                        <span>വിഷ്വൽ സ്റ്റെപ്പ്-ബൈ-സ്റ്റെപ്പ് ഗൈഡ് (System Setup)</span>
                     </div>
                     <div class="grid sm:grid-cols-3 gap-2.5">
                         <div class="bg-brand-950/90 border border-emerald-500/30 p-3 rounded-xl space-y-1">
@@ -884,9 +954,13 @@
                             <p class="text-[11px] text-amber-100/80">ഡെസ്ക്ടോപ്പിൽ <strong>HIKMA_CLASS</strong> എന്ന പ്രധാന ഫോൾഡറും ഉള്ളിൽ സബ്-ഫോൾഡറുകളും ഉണ്ടാക്കുക.</p>
                         </div>
                     </div>
-                    <div class="pt-2 border-t border-emerald-800/60 flex flex-wrap gap-3 text-[11px]">
-                        <a href="https://www.youtube.com/results?search_query=how+to+reset+windows+10+11+local+reinstall" target="_blank" rel="noopener noreferrer" class="text-amber-300 hover:underline font-bold"><i class="fa-brands fa-youtube text-red-500 mr-1"></i> Windows Reset വീഡിയോ കാണുക ↗</a>
-                        <a href="https://www.youtube.com/results?search_query=how+to+install+linux+mint+step+by+step" target="_blank" rel="noopener noreferrer" class="text-sky-300 hover:underline font-bold"><i class="fa-brands fa-youtube text-red-500 mr-1"></i> Linux Mint ഇൻസ്റ്റാൾ വീഡിയോ ↗</a>
+                    <div class="pt-2 border-t border-emerald-800/60 flex flex-wrap gap-2.5 text-[11px]">
+                        <button onclick="openVideoTutorial('Windows Reset ചെയ്യുന്ന വിധം (മലയാളം)', '1dP00kk-uvQ', 'how to reset windows 10 11 malayalam', 'how to reset windows 10 11 local reinstall')" class="px-3 py-1.5 bg-red-600 hover:bg-red-700 text-white font-bold rounded-xl flex items-center gap-1.5 shadow">
+                            <i class="fa-brands fa-youtube"></i> <span>Windows Reset വീഡിയോ (മലയാളം)</span>
+                        </button>
+                        <button onclick="openVideoTutorial('Linux Mint ഇൻസ്റ്റാൾ ചെയ്യുന്ന വിധം (മലയാളം)', 'ZkynGdBMcIo', 'how to install linux mint malayalam', 'how to install linux mint step by step')" class="px-3 py-1.5 bg-sky-600 hover:bg-sky-700 text-white font-bold rounded-xl flex items-center gap-1.5 shadow">
+                            <i class="fa-brands fa-youtube"></i> <span>Linux Mint വീഡിയോ (മലയാളം)</span>
+                        </button>
                     </div>
                 </div>`,
                 summary: 'പഴയതോ വേഗത കുറഞ്ഞതോ ആയ കമ്പ്യൂട്ടറുകൾ എളുപ്പത്തിൽ പുതുക്കി (Reset) ഉപയോഗിക്കാനും, സൗജന്യ ഓപ്പൺ സോഴ്സ് ഓപ്പറേറ്റിംഗ് സിസ്റ്റമായ Linux Mint ഇൻസ്റ്റാൾ ചെയ്യാനും, യൂസർ അക്കൗണ്ടുകളും ഫോൾഡറുകളും വൃത്തിയായി ക്രമീകരിക്കാനുമുള്ള ലളിതമായ ക്ലാസ്.',
@@ -915,10 +989,14 @@
                         </div>
                         <div class="text-[11px] text-sky-300">തള്ളവിരലുകൾ (Thumbs): <strong>[ Spacebar ]</strong> അമർത്താൻ ഉപയോഗിക്കുക.</div>
                     </div>
-                    <div class="flex flex-wrap gap-3 text-[11px] pt-1">
-                        <a href="https://www.typingclub.com/" target="_blank" rel="noopener noreferrer" class="px-3 py-1.5 bg-emerald-600 text-white font-bold rounded-lg">1. TypingClub തുറക്കുക ↗</a>
-                        <a href="https://www.youtube.com/results?search_query=how+to+create+google+account+and+chrome+profile" target="_blank" rel="noopener noreferrer" class="px-3 py-1.5 bg-red-600/80 text-white font-bold rounded-lg"><i class="fa-brands fa-youtube mr-1"></i> Google Account വീഡിയോ ↗</a>
-                        <a href="https://www.youtube.com/results?search_query=typingclub+tutorial+for+beginners" target="_blank" rel="noopener noreferrer" class="px-3 py-1.5 bg-sky-600/80 text-white font-bold rounded-lg"><i class="fa-brands fa-youtube mr-1"></i> TypingClub വീഡിയോ ↗</a>
+                    <div class="flex flex-wrap gap-2.5 text-[11px] pt-1">
+                        <a href="https://www.typingclub.com/" target="_blank" rel="noopener noreferrer" class="px-3 py-1.5 bg-emerald-600 hover:bg-emerald-700 text-white font-bold rounded-xl">1. TypingClub തുറക്കുക ↗</a>
+                        <button onclick="openVideoTutorial('Google Account നിർമ്മിക്കുന്ന വിധം (മലയാളം)', 'cIPldeCWUlI', 'how to create google account malayalam', 'how to create google account and chrome profile')" class="px-3 py-1.5 bg-red-600 hover:bg-red-700 text-white font-bold rounded-xl flex items-center gap-1.5">
+                            <i class="fa-brands fa-youtube"></i> <span>Google Account വീഡിയോ (മലയാളം)</span>
+                        </button>
+                        <button onclick="openVideoTutorial('TypingClub ടൈപ്പിംഗ് പഠനം (Tutorial)', 'YT8a77NCtKw', 'typingclub tutorial malayalam', 'typingclub tutorial for beginners')" class="px-3 py-1.5 bg-sky-600 hover:bg-sky-700 text-white font-bold rounded-xl flex items-center gap-1.5">
+                            <i class="fa-brands fa-youtube"></i> <span>TypingClub വീഡിയോ</span>
+                        </button>
                     </div>
                 </div>`,
                 summary: 'ഏതൊരു കമ്പ്യൂട്ടറിലും Google Chrome ഇൻസ്റ്റാൾ ചെയ്ത് സ്വന്തം Google Account & Chrome Profile സജ്ജമാക്കാനും, TypingClub വഴി കീബോർഡിലേക്ക് നോക്കാതെ വേഗത്തിൽ English & Arabic ടൈപ്പിംഗ് സ്വന്തമായി പഠിക്കാനുമുള്ള സമ്പൂർണ്ണ ഗൈഡ്.',
@@ -1143,14 +1221,18 @@
                         <span class="px-2.5 py-1 bg-emerald-500/20 text-emerald-300 rounded-md text-[11px] font-bold">
                             ${lesson.is_free ? 'സൗജന്യ ക്ലാസ് (Free Preview)' : 'Verified Student Access'}
                         </span>
-                        <div class="flex items-center gap-2">
+                        <div class="flex flex-wrap items-center gap-2">
                             <button onclick='speakCurrentLesson(${JSON.stringify(lesson.title)}, ${JSON.stringify(lesson.summary)}, ${JSON.stringify(plainPoints)})' class="px-3 py-1.5 bg-sky-500/20 hover:bg-sky-500/30 text-sky-300 border border-sky-400/40 rounded-xl text-xs font-bold flex items-center gap-1.5">
                                 <i class="fa-solid fa-volume-high"></i>
                                 <span id="ttsBtnLabel">ക്ലാസ് കേൾക്കുക (Audio)</span>
                             </button>
-                            <button onclick="downloadLessonPDF(${index})" class="px-3 py-1.5 bg-amber-500/20 hover:bg-amber-500/30 text-amber-300 border border-amber-400/40 rounded-xl text-xs font-bold flex items-center gap-1.5">
-                                <i class="fa-solid fa-file-pdf"></i>
-                                <span>PDF ഡൗൺലോഡ്</span>
+                            <button onclick="openGeminiStudyPrompt(${index})" class="px-3 py-1.5 bg-indigo-500/25 hover:bg-indigo-500/35 text-indigo-200 border border-indigo-400/50 rounded-xl text-xs font-bold flex items-center gap-1.5 shadow">
+                                <i class="fa-solid fa-sparkles text-amber-300"></i>
+                                <span>Gemini AI വഴി പഠിക്കുക</span>
+                            </button>
+                            <button onclick="downloadCleanNote(${index})" class="px-3 py-1.5 bg-emerald-500/20 hover:bg-emerald-500/30 text-emerald-200 border border-emerald-400/40 rounded-xl text-xs font-bold flex items-center gap-1.5">
+                                <i class="fa-solid fa-download"></i>
+                                <span>നോട്ട് ഡൗൺലോഡ്</span>
                             </button>
                         </div>
                     </div>
