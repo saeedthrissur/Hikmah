@@ -1,22 +1,18 @@
 {
-  "name": "HIKMA Digital Academy",
-  "short_name": "HIKMA LMS",
-  "description": "Ethical AI, Open Technology & Practical Digital Literacy Portal",
-  "start_url": "./index.html",
-  "display": "standalone",
-  "background_color": "#022c22",
-  "theme_color": "#065f46",
-  "orientation": "portrait-primary",
-  "icons": [
-    {
-      "src": "https://cdn-icons-png.flaticon.com/512/3135/3135755.png",
-      "sizes": "192x192",
-      "type": "image/png"
-    },
-    {
-      "src": "https://cdn-icons-png.flaticon.com/512/3135/3135755.png",
-      "sizes": "512x512",
-      "type": "image/png"
-    }
-  ]
+"name": "HIKMA Digital Academy",
+"short_name": "HIKMA LMS",
+"description": "Executive Diploma in Applied Computing & AI Technologies",
+"start_url": "./index.html",
+"display": "standalone",
+"background_color": "#022c22",
+"theme_color": "#065f46",
+"orientation": "portrait-primary",
+"icons": [
+{
+"src": "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'><rect width='512' height='512' rx='112' fill='%23022c22'/><rect x='24' y='24' width='464' height='464' rx='92' fill='none' stroke='%23d97706' stroke-width='10'/><g transform='translate(256,256)'><rect x='-115' y='-115' width='230' height='230' rx='24' fill='none' stroke='%2310b981' stroke-width='14'/><rect x='-115' y='-115' width='230' height='230' rx='24' fill='none' stroke='%23fbbf24' stroke-width='14' transform='rotate(45)'/><circle cx='0' cy='0' r='54' fill='%23065f46' stroke='%23fbbf24' stroke-width='8'/><path d='M-24 12 L0 -22 L24 12 M-14 -2 L14 -2' fill='none' stroke='%23ffffff' stroke-width='10' stroke-linecap='round' stroke-linejoin='round'/></g></svg>",
+"sizes": "192x192 512x512",
+"type": "image/svg+xml",
+"purpose": "any maskable"
+}
+]
 }
