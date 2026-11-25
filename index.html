@@ -19,6 +19,9 @@
     <!-- Supabase Open Source JS SDK -->
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
+    <!-- html2pdf.js for Clean Real PDF Downloads (Zero Blank Pages) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
     <script>
         tailwind.config = {
             theme: {
@@ -71,8 +74,35 @@
             line-height: 2;
         }
         .glass-nav {
-            background: rgba(255, 255, 255, 0.94);
+            background: rgba(255, 255, 255, 0.96);
             backdrop-filter: blur(16px);
+        }
+        body.dark-theme {
+            background-color: #020617 !important;
+            color: #f1f5f9 !important;
+        }
+        body.dark-theme .glass-nav {
+            background: rgba(15, 23, 42, 0.96) !important;
+            border-color: #1e293b !important;
+        }
+        body.dark-theme .bg-white {
+            background-color: #0f172a !important;
+            color: #f1f5f9 !important;
+            border-color: #1e293b !important;
+        }
+        body.dark-theme .bg-slate-50,
+        body.dark-theme .bg-slate-100\/90 {
+            background-color: #020617 !important;
+        }
+        body.dark-theme .text-slate-900,
+        body.dark-theme .text-slate-800,
+        body.dark-theme .text-brand-950 {
+            color: #f8fafc !important;
+        }
+        body.dark-theme .text-slate-700,
+        body.dark-theme .text-slate-600,
+        body.dark-theme .text-slate-500 {
+            color: #cbd5e1 !important;
         }
         .reveal {
             opacity: 0;
@@ -83,26 +113,8 @@
             opacity: 1;
             transform: translateY(0);
         }
-        details > summary {
-            list-style: none;
-        }
-        details > summary::-webkit-details-marker {
-            display: none;
-        }
-        @media print {
-            body * { visibility: hidden; }
-            #printableNoteArea, #printableNoteArea * { visibility: visible; }
-            #printableNoteArea {
-                position: absolute;
-                left: 0;
-                top: 0;
-                width: 100%;
-                background: white !important;
-                color: black !important;
-                padding: 24px !important;
-            }
-            .no-print { display: none !important; }
-        }
+        details > summary { list-style: none; }
+        details > summary::-webkit-details-marker { display: none; }
     </style>
 </head>
 <body class="bg-slate-50 text-slate-800 antialiased selection:bg-brand-800 selection:text-white">
@@ -116,26 +128,26 @@
 
     <!-- Navigation Bar -->
     <header class="sticky top-0 z-40 glass-nav border-b border-slate-200/80 shadow-sm">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-18 py-3">
-                <a href="#" class="flex items-center gap-3.5 group">
-                    <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-brand-950 via-brand-900 to-brand-700 p-1.5 shadow-lg flex items-center justify-center group-hover:scale-105 group-hover:rotate-3 transition-all duration-300 border border-amber-400/40">
+        <div class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-2.5 gap-2">
+                <a href="#" class="flex items-center gap-2.5 min-w-0 group">
+                    <div class="w-10 h-10 sm:w-11 sm:h-11 shrink-0 rounded-2xl bg-gradient-to-br from-brand-950 via-brand-900 to-brand-700 p-1.5 shadow-md flex items-center justify-center border border-amber-400/40">
                         <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full h-full">
-                            <rect x="11" y="11" width="42" height="42" rx="6" stroke="#fbbf24" stroke-width="2"/>
-                            <rect x="11" y="11" width="42" height="42" rx="6" transform="rotate(45 32 32)" stroke="#34d399" stroke-width="2"/>
+                            <rect x="11" y="11" width="42" height="42" rx="6" stroke="#fbbf24" stroke-width="2.5"/>
+                            <rect x="11" y="11" width="42" height="42" rx="6" transform="rotate(45 32 32)" stroke="#34d399" stroke-width="2.5"/>
                             <circle cx="32" cy="32" r="16" fill="#022c22" stroke="#fbbf24" stroke-width="1.5"/>
                             <text x="32" y="38" text-anchor="middle" fill="#fbbf24" font-family="Plus Jakarta Sans, sans-serif" font-weight="800" font-size="19">H</text>
-                            <circle cx="44" cy="20" r="2.5" fill="#34d399"/>
-                            <circle cx="20" cy="44" r="2.5" fill="#34d399"/>
                         </svg>
                     </div>
-                    <div>
-                        <span class="font-english font-extrabold text-xl sm:text-2xl text-brand-950 tracking-tight block">HIKMA <span class="text-brand-600">Digital Academy</span></span>
-                        <p class="text-[11px] text-slate-500 font-semibold tracking-wide">Ethical AI • Open-Tech • Media Literacy</p>
+                    <div class="min-w-0">
+                        <div class="font-english font-extrabold text-base sm:text-xl text-brand-950 tracking-tight leading-tight truncate">
+                            HIKMA <span class="text-brand-600">Digital Academy</span>
+                        </div>
+                        <p class="text-[10px] sm:text-[11px] text-slate-500 font-semibold truncate">Ethical AI • Open-Tech • Media</p>
                     </div>
                 </a>
 
-                <nav class="hidden lg:flex items-center gap-7 text-sm font-bold text-slate-700">
+                <nav class="hidden lg:flex items-center gap-6 text-sm font-bold text-slate-700">
                     <a href="#vision" class="hover:text-brand-700 transition-colors">ആദർശം</a>
                     <a href="#tracks" class="hover:text-brand-700 transition-colors">കോഴ്സുകൾ</a>
                     <a href="#online-academy" class="hover:text-brand-700 transition-colors text-brand-700">ഓൺലൈൻ ക്ലാസ്</a>
@@ -144,30 +156,63 @@
                     <a href="#contact" class="hover:text-brand-700 transition-colors">ബന്ധപ്പെടുക</a>
                 </nav>
 
-                <div class="flex items-center gap-2">
-                    <div class="relative">
-                        <button onclick="toggleLangMenu()" title="Change Language / ഭാഷ മാറ്റുക" class="px-3 py-2 text-xs font-bold text-slate-700 bg-slate-100 hover:bg-slate-200 rounded-xl border border-slate-200 flex items-center gap-1.5 transition-all">
-                            <i class="fa-solid fa-globe text-brand-700 text-sm animate-spin" style="animation-duration: 14s;"></i>
-                            <span id="currentLangLabel">മലയാളം</span>
-                            <i class="fa-solid fa-chevron-down text-[10px]"></i>
-                        </button>
-                        <div id="langDropdown" class="hidden absolute right-0 mt-2 w-40 bg-white rounded-2xl shadow-xl border border-slate-200 py-1.5 z-50 text-xs font-bold text-slate-700">
-                            <button onclick="changeLanguage('ml', 'മലയാളം')" class="w-full text-left px-4 py-2 hover:bg-brand-50 hover:text-brand-800">🇮🇳 മലയാളം</button>
-                            <button onclick="changeLanguage('en', 'English')" class="w-full text-left px-4 py-2 hover:bg-brand-50 hover:text-brand-800">🌐 English</button>
-                            <button onclick="changeLanguage('ar', 'العربية')" class="w-full text-left px-4 py-2 hover:bg-brand-50 hover:text-brand-800 font-arabic text-sm">🇸🇦 العربية</button>
-                            <button onclick="changeLanguage('hi', 'हिन्दी')" class="w-full text-left px-4 py-2 hover:bg-brand-50 hover:text-brand-800">🇮🇳 हिन्दी</button>
-                            <button onclick="changeLanguage('ta', 'தமிழ்')" class="w-full text-left px-4 py-2 hover:bg-brand-50 hover:text-brand-800">🇮🇳 தமிழ்</button>
-                        </div>
-                    </div>
+                <!-- Unified Clean Settings & Account Menu -->
+                <div class="relative shrink-0">
+                    <button onclick="toggleSettingsMenu()" aria-label="Settings and Account" class="px-3 py-2 bg-slate-100 hover:bg-slate-200 text-slate-800 rounded-xl border border-slate-200 flex items-center gap-2 text-xs font-bold shadow-sm transition-all">
+                        <i class="fa-solid fa-gear text-brand-700 text-sm"></i>
+                        <span id="navUserLabel" class="max-w-[85px] sm:max-w-[120px] truncate">സെറ്റിംഗ്സ്</span>
+                        <i class="fa-solid fa-chevron-down text-[10px]"></i>
+                    </button>
 
-                    <button onclick="openModal('verifyModal')" class="hidden md:flex px-3 py-2 text-xs font-bold text-brand-900 bg-brand-50 hover:bg-brand-100 rounded-xl border border-brand-200 transition-all items-center gap-1.5">
-                        <i class="fa-solid fa-qrcode text-brand-700"></i>
-                        <span>വെരിഫൈ</span>
-                    </button>
-                    <button id="navLoginBtn" onclick="openModal('loginModal')" class="px-3 py-2 text-xs font-bold text-slate-800 bg-slate-100 hover:bg-slate-200 rounded-xl border border-slate-200 transition-all flex items-center gap-1.5">
-                        <i class="fa-solid fa-user-graduate text-slate-600"></i>
-                        <span id="navUserLabel">പോർട്ടൽ</span>
-                    </button>
+                    <!-- Settings & Account Dropdown Panel -->
+                    <div id="settingsDropdown" class="hidden absolute right-0 mt-2 w-72 bg-white rounded-3xl shadow-2xl border border-slate-200 p-4 z-50 text-xs space-y-4">
+                        <div class="bg-slate-50 p-3 rounded-2xl border border-slate-200 space-y-2">
+                            <span class="text-[10px] font-extrabold uppercase tracking-wider text-slate-400 block">അക്കൗണ്ട് & പോർട്ടൽ</span>
+                            <div id="menuLoggedOut">
+                                <button onclick="loginWithGoogle(); toggleSettingsMenu();" class="w-full py-2 px-3 bg-brand-800 hover:bg-brand-900 text-white font-bold rounded-xl flex items-center justify-center gap-2">
+                                    <i class="fa-brands fa-google"></i>
+                                    <span>Google വഴി ലോഗിൻ ചെയ്യുക</span>
+                                </button>
+                            </div>
+                            <div id="menuLoggedIn" class="hidden space-y-2">
+                                <p id="menuUserEmail" class="font-bold text-slate-900 truncate"></p>
+                                <div class="flex gap-2">
+                                    <button id="menuAdminBtn" onclick="openModal('adminModal'); toggleSettingsMenu();" class="hidden flex-1 py-1.5 bg-amber-500 text-brand-950 font-extrabold rounded-lg">Admin Dashboard</button>
+                                    <button onclick="logoutStudent(); toggleSettingsMenu();" class="flex-1 py-1.5 bg-red-100 text-red-700 font-bold rounded-lg">ലോഗൗട്ട്</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center justify-between px-1">
+                            <span class="font-bold text-slate-700"><i class="fa-solid fa-moon text-indigo-500 mr-1.5"></i> ഡാർക്ക് മോഡ് (Dark)</span>
+                            <button onclick="toggleDarkMode()" id="darkModeBtn" class="px-3 py-1.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-800 font-bold border border-slate-200">Off</button>
+                        </div>
+
+                        <div class="flex items-center justify-between px-1">
+                            <span class="font-bold text-slate-700"><i class="fa-solid fa-text-height text-brand-600 mr-1.5"></i> അക്ഷര വലുപ്പം</span>
+                            <div class="flex gap-1">
+                                <button onclick="setFontSize('92%')" class="px-2.5 py-1 rounded-lg bg-slate-100 hover:bg-slate-200 font-bold border border-slate-200">A-</button>
+                                <button onclick="setFontSize('100%')" class="px-2.5 py-1 rounded-lg bg-slate-100 hover:bg-slate-200 font-bold border border-slate-200">A</button>
+                                <button onclick="setFontSize('112%')" class="px-2.5 py-1 rounded-lg bg-slate-100 hover:bg-slate-200 font-bold border border-slate-200">A+</button>
+                            </div>
+                        </div>
+
+                        <div class="space-y-1.5 px-1">
+                            <span class="font-bold text-slate-700 block"><i class="fa-solid fa-globe text-sky-600 mr-1.5"></i> ഭാഷ മാറ്റുക (Language)</span>
+                            <div class="grid grid-cols-2 gap-1.5">
+                                <button onclick="changeLanguage('ml', 'മലയാളം')" class="px-2.5 py-1.5 text-left rounded-xl bg-slate-50 hover:bg-brand-50 font-bold border border-slate-200">🇮🇳 മലയാളം</button>
+                                <button onclick="changeLanguage('en', 'English')" class="px-2.5 py-1.5 text-left rounded-xl bg-slate-50 hover:bg-brand-50 font-bold border border-slate-200">🌐 English</button>
+                                <button onclick="changeLanguage('ar', 'العربية')" class="px-2.5 py-1.5 text-left rounded-xl bg-slate-50 hover:bg-brand-50 font-bold border border-slate-200 font-arabic">🇸🇦 العربية</button>
+                                <button onclick="changeLanguage('hi', 'हिन्दी')" class="px-2.5 py-1.5 text-left rounded-xl bg-slate-50 hover:bg-brand-50 font-bold border border-slate-200">🇮🇳 हिन्दी</button>
+                                <button onclick="changeLanguage('ta', 'தமிழ்')" class="px-2.5 py-1.5 text-left rounded-xl bg-slate-50 hover:bg-brand-50 font-bold border border-slate-200 col-span-2">🇮🇳 தமிழ்</button>
+                            </div>
+                        </div>
+
+                        <button onclick="openModal('verifyModal'); toggleSettingsMenu();" class="w-full py-2.5 bg-amber-50 hover:bg-amber-100 text-amber-900 font-bold rounded-xl border border-amber-200 flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-qrcode text-amber-600"></i>
+                            <span>സർട്ടിഫിക്കറ്റ് വെരിഫിക്കേഷൻ</span>
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -175,9 +220,6 @@
 
     <!-- Hero Section -->
     <section class="hero-mesh text-white relative overflow-hidden">
-        <div class="absolute -top-24 -right-24 w-96 h-96 bg-emerald-500/10 rounded-full blur-3xl animate-pulse"></div>
-        <div class="absolute -bottom-24 -left-24 w-80 h-80 bg-amber-400/10 rounded-full blur-3xl animate-pulse"></div>
-
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 md:py-20 relative z-10">
             <div class="grid lg:grid-cols-12 gap-10 lg:gap-12 items-center">
                 <div class="lg:col-span-7 space-y-6">
@@ -204,20 +246,20 @@
                             <i class="fa-solid fa-laptop-code text-amber-300"></i>
                             <span>ഓൺലൈൻ ക്ലാസ്റൂം</span>
                         </a>
-                        <a href="https://t.me/username_786313" target="_blank" rel="noopener noreferrer" class="px-6 py-3.5 bg-sky-500 hover:bg-sky-400 hover:-translate-y-0.5 text-white font-bold rounded-2xl shadow-lg transition-all flex items-center gap-2 text-sm">
-                            <i class="fa-brands fa-telegram text-lg"></i>
-                            <span data-i18n="btnTelegram">Telegram വഴി ബന്ധപ്പെടുക</span>
-                        </a>
+                        <button onclick="openModal('verifyModal')" class="px-5 py-3.5 bg-white/10 hover:bg-white/20 text-amber-300 border border-amber-400/30 font-bold rounded-2xl shadow-lg transition-all flex items-center gap-2 text-sm">
+                            <i class="fa-solid fa-qrcode"></i>
+                            <span>സർട്ടിഫിക്കറ്റ് വെരിഫൈ</span>
+                        </button>
                     </div>
                 </div>
 
                 <div class="lg:col-span-5 space-y-4 animate-float-slow">
                     <div class="relative rounded-3xl overflow-hidden shadow-2xl border-2 border-amber-400/30 bg-brand-900 animate-pulse-glow">
-                        <div class="relative h-72 sm:h-80 w-full bg-brand-900">
-                            <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=900&q=80" 
-                                 alt="HIKMA Digital Academy Students" 
+                        <div class="relative h-64 sm:h-72 w-full bg-brand-900">
+                            <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=900&q=80" 
+                                 alt="HIKMA Digital Academy Technology & Coding" 
                                  class="w-full h-full object-cover hover:scale-105 transition-transform duration-700">
-                            <div class="absolute inset-0 bg-gradient-to-t from-brand-950 via-brand-950/30 to-transparent"></div>
+                            <div class="absolute inset-0 bg-gradient-to-t from-brand-950 via-brand-950/35 to-transparent"></div>
                             <div class="absolute bottom-4 left-4 right-4 bg-brand-950/85 backdrop-blur-md border border-emerald-500/30 p-3.5 rounded-2xl flex items-center justify-between">
                                 <div>
                                     <span class="text-[11px] font-bold text-amber-400 uppercase tracking-wider block">Executive Training</span>
@@ -277,44 +319,25 @@
                 </p>
 
                 <div class="grid sm:grid-cols-2 gap-4 pt-2">
-                    <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all space-y-2">
-                        <div class="w-10 h-10 rounded-xl bg-brand-50 text-brand-700 flex items-center justify-center text-lg">
-                            <i class="fa-solid fa-scale-balanced"></i>
-                        </div>
+                    <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-2">
+                        <div class="w-10 h-10 rounded-xl bg-brand-50 text-brand-700 flex items-center justify-center text-lg"><i class="fa-solid fa-scale-balanced"></i></div>
                         <h3 class="font-bold text-base text-slate-900">ഹലാൽ ലൈസൻസിംഗ് നയം</h3>
-                        <p class="text-xs text-slate-600 leading-relaxed">
-                            വ്യാജ സോഫ്റ്റ്‌വെയറുകളും അനധികൃത ഫോണ്ടുകളും ഒഴിവാക്കി, നിയമാനുസൃതമായ സ്വതന്ത്ര സോഫ്റ്റ്‌വെയറുകൾ മാത്രം ഉപയോഗിക്കുന്നു.
-                        </p>
+                        <p class="text-xs text-slate-600 leading-relaxed">വ്യാജ സോഫ്റ്റ്‌വെയറുകളും അനധികൃത ഫോണ്ടുകളും ഒഴിവാക്കി, നിയമാനുസൃതമായ സ്വതന്ത്ര സോഫ്റ്റ്‌വെയറുകൾ മാത്രം ഉപയോഗിക്കുന്നു.</p>
                     </div>
-
-                    <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all space-y-2">
-                        <div class="w-10 h-10 rounded-xl bg-amber-50 text-amber-600 flex items-center justify-center text-lg">
-                            <i class="fa-solid fa-user-shield"></i>
-                        </div>
+                    <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-2">
+                        <div class="w-10 h-10 rounded-xl bg-amber-50 text-amber-600 flex items-center justify-center text-lg"><i class="fa-solid fa-user-shield"></i></div>
                         <h3 class="font-bold text-base text-slate-900">ഡാറ്റാ പ്രൈവസി & സുരക്ഷ</h3>
-                        <p class="text-xs text-slate-600 leading-relaxed">
-                            സൗജന്യ ആപ്പുകളുടെ ഡാറ്റാ ശേഖരണ രീതികൾ ബോധവൽക്കരിക്കുകയും സുരക്ഷിത ഇമെയിൽ, പാസ്‌വേഡ് മാനേജറുകൾ എന്നിവ പരിശീലിപ്പിക്കുകയും ചെയ്യുന്നു.
-                        </p>
+                        <p class="text-xs text-slate-600 leading-relaxed">സൗജന്യ ആപ്പുകളുടെ ഡാറ്റാ ശേഖരണ രീതികൾ ബോധവൽക്കരിക്കുകയും സുരക്ഷിത ഇമെയിൽ, പാസ്‌വേഡ് മാനേജറുകൾ എന്നിവ പരിശീലിപ്പിക്കുകയും ചെയ്യുന്നു.</p>
                     </div>
-
-                    <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all space-y-2">
-                        <div class="w-10 h-10 rounded-xl bg-sky-50 text-sky-600 flex items-center justify-center text-lg">
-                            <i class="fa-solid fa-award"></i>
-                        </div>
+                    <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-2">
+                        <div class="w-10 h-10 rounded-xl bg-sky-50 text-sky-600 flex items-center justify-center text-lg"><i class="fa-solid fa-award"></i></div>
                         <h3 class="font-bold text-base text-slate-900">ആഗോള സർട്ടിഫിക്കേഷനുകൾ</h3>
-                        <p class="text-xs text-slate-600 leading-relaxed">
-                            ലോകോത്തര ടെക് സ്ഥാപനങ്ങളുടെയും സർക്കാർ ഏജൻസികളുടെയും വെരിഫൈഡ് സർട്ടിഫിക്കറ്റുകൾ സൗജന്യമായി നേടാൻ സഹായിക്കുന്നു.
-                        </p>
+                        <p class="text-xs text-slate-600 leading-relaxed">ലോകോത്തര ടെക് സ്ഥാപനങ്ങളുടെയും സർക്കാർ ഏജൻസികളുടെയും വെരിഫൈഡ് സർട്ടിഫിക്കറ്റുകൾ സൗജന്യമായി നേടാൻ സഹായിക്കുന്നു.</p>
                     </div>
-
-                    <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all space-y-2">
-                        <div class="w-10 h-10 rounded-xl bg-purple-50 text-purple-600 flex items-center justify-center text-lg">
-                            <i class="fa-solid fa-hands-holding-circle"></i>
-                        </div>
+                    <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-2">
+                        <div class="w-10 h-10 rounded-xl bg-purple-50 text-purple-600 flex items-center justify-center text-lg"><i class="fa-solid fa-hands-holding-circle"></i></div>
                         <h3 class="font-bold text-base text-slate-900">സാമൂഹിക & സംഘടനാ സേവനം</h3>
-                        <p class="text-xs text-slate-600 leading-relaxed">
-                            രേഖകൾ തയ്യാറാക്കൽ, കണക്കുകൾ, പോസ്റ്റർ ഡിസൈനിംഗ്, വീഡിയോ എഡിറ്റിംഗ് എന്നിവയിലൂടെ പൊതുപ്രവർത്തനങ്ങളെ കാര്യക്ഷമമാക്കുന്നു.
-                        </p>
+                        <p class="text-xs text-slate-600 leading-relaxed">രേഖകൾ തയ്യാറാക്കൽ, കണക്കുകൾ, പോസ്റ്റർ ഡിസൈനിംഗ്, വീഡിയോ എഡിറ്റിംഗ് എന്നിവയിലൂടെ പൊതുപ്രവർത്തനങ്ങളെ കാര്യക്ഷമമാക്കുന്നു.</p>
                     </div>
                 </div>
             </div>
@@ -334,12 +357,10 @@
 
             <div class="grid lg:grid-cols-2 gap-8">
                 <!-- Track 1: AL-BAYAN -->
-                <div class="bg-white rounded-3xl border-2 border-brand-800 shadow-xl hover:shadow-2xl transition-all overflow-hidden flex flex-col justify-between">
+                <div class="bg-white rounded-3xl border-2 border-brand-800 shadow-xl overflow-hidden flex flex-col justify-between">
                     <div>
-                        <div class="relative h-56 overflow-hidden bg-brand-950 group">
-                            <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=800&q=80" 
-                                 alt="AL-BAYAN Diploma Track" 
-                                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                        <div class="relative h-56 overflow-hidden bg-brand-950">
+                            <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=800&q=80" alt="AL-BAYAN" class="w-full h-full object-cover">
                             <div class="absolute inset-0 bg-gradient-to-t from-brand-950 via-brand-950/60 to-transparent"></div>
                             <div class="absolute bottom-4 left-6 right-6 flex justify-between items-end text-white">
                                 <div>
@@ -358,20 +379,15 @@
                                 ദർസുകളിലെയും മത-ഭൗതിക കലാലയങ്ങളിലെയും വിദ്യാർത്ഥികൾക്കായി അവധി ദിവസങ്ങളിൽ (മാസത്തിൽ 4 ക്ലാസുകൾ വീതം) ക്രമീകരിച്ചിട്ടുള്ള ഒരു വർഷത്തെ പ്രാക്ടിക്കൽ ഡിപ്ലോമ.
                             </p>
 
-                            <ul class="space-y-2 text-xs sm:text-sm text-slate-700">
-                                <li class="flex items-start gap-2.5"><i class="fa-solid fa-circle-check text-brand-600 mt-1"></i><span><strong>ക്രമീകരണം:</strong> മാസത്തിൽ 4 ക്ലാസുകൾ വീതം 1 വർഷം (അവധി ദിനങ്ങളിൽ).</span></li>
-                                <li class="flex items-start gap-2.5"><i class="fa-solid fa-circle-check text-brand-600 mt-1"></i><span><strong>സേവന നയം:</strong> സാമ്പത്തികമായി പിന്നാക്കം നിൽക്കുന്ന ദർസുകൾക്ക് സൗജന്യ സേവനമായും ലഭ്യമാണ്.</span></li>
-                            </ul>
-
                             <details class="bg-brand-50/70 border border-brand-200 rounded-2xl p-3.5 text-xs group">
                                 <summary class="font-bold text-brand-950 cursor-pointer flex items-center justify-between select-none">
                                     <span><i class="fa-solid fa-circle-info text-brand-700 mr-1.5"></i> ദർസ് & സ്ഥാപന നിബന്ധനകൾ (ക്ലിക്ക് ചെയ്ത് വായിക്കുക)</span>
                                     <i class="fa-solid fa-chevron-down text-brand-700 group-open:rotate-180 transition-transform"></i>
                                 </summary>
                                 <div class="mt-3 pt-3 border-t border-brand-200/80 space-y-2 text-slate-700 leading-relaxed">
-                                    <p>• <strong>ക്ലാസ് & ഓണറേറിയം:</strong> മാസത്തിൽ 4 ക്ലാസുകളാണ് നടക്കുക. അടിസ്ഥാന നിരക്ക് ഒരു ക്ലാസിന് ₹1,000 ആണ്. എന്നാൽ സാമ്പത്തിക ബുദ്ധിമുട്ടുള്ള ദർസുകൾക്ക് പൂർണ്ണമായും <strong>സൗജന്യ സേവനമായി</strong> ക്ലാസുകൾ നൽകുന്നതാണ്.</p>
+                                    <p>• <strong>ക്ലാസ് & ഓണറേറിയം:</strong> മാസത്തിൽ 4 ക്ലാസുകളാണ് നടക്കുക. അടിസ്ഥാന നിരക്ക് ഒരു ക്ലാസിന് ₹1,000 ആണ്. സാമ്പത്തിക ബുദ്ധിമുട്ടുള്ള ദർസുകൾക്ക് പൂർണ്ണമായും <strong>സൗജന്യ സേവനമായി</strong> ക്ലാസുകൾ നൽകുന്നതാണ്.</p>
                                     <p>• <strong>സ്ഥലവും യാത്രാചെലവും:</strong> നിലവിൽ മലപ്പുറം ജില്ല കേന്ദ്രീകരിച്ചാണ് ക്ലാസുകൾ നടക്കുന്നത്. കേരളത്തിലെ മറ്റ് ജില്ലകളിലേക്ക് ദൂരത്തിനനുസരിച്ചുള്ള യാത്രാചെലവ്, ഭക്ഷണം, താമസസൗകര്യം എന്നിവ സ്ഥാപനം ഒരുക്കേണ്ടതാണ്.</p>
-                                    <p>• <strong>ബാച്ച് & കമ്പ്യൂട്ടർ ലാബ്:</strong> ഒരു ബാച്ചിൽ പരമാവധി <strong>10 വിദ്യാർത്ഥികൾ</strong> മാത്രമേ ഉണ്ടാകാവൂ (ഒന്നിലധികം ബാച്ചുകൾ ആകാം). സ്ഥാപനത്തിൽ പ്രായോഗിക പരിശീലനത്തിന് ആവശ്യമായ കമ്പ്യൂട്ടർ സൗകര്യം ഉണ്ടായിരിക്കണം; കമ്പ്യൂട്ടറുകളുടെ എണ്ണം കുറവാണെങ്കിൽ ക്ലാസ് സമയം അതിനനുസരിച്ച് വർദ്ധിപ്പിക്കുന്നതാണ്.</p>
+                                    <p>• <strong>ബാച്ച് & കമ്പ്യൂട്ടർ ലാബ്:</strong> ഒരു ബാച്ചിൽ പരമാവധി <strong>10 വിദ്യാർത്ഥികൾ</strong> മാത്രമേ ഉണ്ടാകാവൂ. സ്ഥാപനത്തിൽ കമ്പ്യൂട്ടർ സൗകര്യം ഉണ്ടായിരിക്കണം; കമ്പ്യൂട്ടറുകളുടെ എണ്ണം കുറവാണെങ്കിൽ ക്ലാസ് സമയം വർദ്ധിപ്പിക്കുന്നതാണ്.</p>
                                 </div>
                             </details>
                         </div>
@@ -386,12 +402,10 @@
                 </div>
 
                 <!-- Track 2: AN-NOOR -->
-                <div class="bg-white rounded-3xl border border-slate-200 shadow-lg hover:shadow-xl transition-all overflow-hidden flex flex-col justify-between">
+                <div class="bg-white rounded-3xl border border-slate-200 shadow-lg overflow-hidden flex flex-col justify-between">
                     <div>
-                        <div class="relative h-56 overflow-hidden bg-slate-900 group">
-                            <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=800&q=80" 
-                                 alt="AN-NOOR Workshop Track" 
-                                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                        <div class="relative h-56 overflow-hidden bg-slate-900">
+                            <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=800&q=80" alt="AN-NOOR" class="w-full h-full object-cover">
                             <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/60 to-transparent"></div>
                             <div class="absolute bottom-4 left-6 right-6 flex justify-between items-end text-white">
                                 <div>
@@ -409,11 +423,6 @@
                             <p class="text-sm text-slate-600 leading-relaxed">
                                 സംഘടനാ യൂണിറ്റുകൾ, മീഡിയ വിംഗ് പ്രവർത്തകർ, അധ്യാപകർ, പൊതുജനങ്ങൾ എന്നിവർക്കായി രൂപകൽപ്പന ചെയ്ത ഏകദിന അല്ലെങ്കിൽ ഹ്രസ്വകാല വർക്ക്ഷോപ്പ്.
                             </p>
-
-                            <ul class="space-y-2 text-xs sm:text-sm text-slate-700">
-                                <li class="flex items-start gap-2.5"><i class="fa-solid fa-circle-check text-sky-600 mt-1"></i><span><strong>കാലാവധി:</strong> 1 ദിവസത്തെ തീവ്ര പരിശീലന ക്യാമ്പ് അല്ലെങ്കിൽ 1 മാസത്തെ ഹ്രസ്വകാല ബാച്ച്.</span></li>
-                                <li class="flex items-start gap-2.5"><i class="fa-solid fa-circle-check text-sky-600 mt-1"></i><span><strong>പാഠ്യപദ്ധതി:</strong> പോസ്റ്റർ & റീൽസ് എഡിറ്റിംഗ്, AI റിപ്പോർട്ടിംഗ്, വരവ്-ചെലവ് കണക്കുകൾ, സൈബർ സുരക്ഷ.</span></li>
-                            </ul>
 
                             <details class="bg-sky-50/70 border border-sky-200 rounded-2xl p-3.5 text-xs group">
                                 <summary class="font-bold text-slate-900 cursor-pointer flex items-center justify-between select-none">
@@ -448,16 +457,12 @@
                 </span>
                 <h2 class="font-display text-2xl sm:text-4xl font-bold text-white">നേരിട്ടുള്ള ക്ലാസിൽ വരാൻ കഴിയാത്തവർക്കായി</h2>
                 <p class="text-emerald-100/85 text-sm sm:text-base">
-                    വിഷ്വൽ സ്റ്റെപ്പ്-ബൈ-സ്റ്റെപ്പ് ഗൈഡുകൾ, ഓഡിയോ വോയ്സ് ക്ലാസ് (TTS), ഡൗൺലോഡ് ചെയ്യാവുന്ന PDF നോട്ടുകൾ എന്നിവയോടെ സ്വന്തം വേഗതയിൽ പഠിക്കാം.
+                    വിഷ്വൽ സ്റ്റെപ്പ്-ബൈ-സ്റ്റെപ്പ് ഗൈഡുകൾ, ഓഡിയോ വോയ്സ് ക്ലാസ് (TTS), നേരിട്ട് ഡൗൺലോഡ് ചെയ്യാവുന്ന PDF നോട്ടുകൾ എന്നിവയോടെ സ്വന്തം വേഗതയിൽ പഠിക്കാം.
                 </p>
-                <div class="inline-block bg-amber-500/15 border border-amber-400/30 rounded-2xl px-4 py-2 text-xs text-amber-200 max-w-2xl">
-                    <i class="fa-solid fa-circle-info mr-1.5 text-amber-400"></i>
-                    <strong>ശ്രദ്ധിക്കുക:</strong> നേരിട്ടുള്ള ലാബ് ക്ലാസുകളാണ് ഏറ്റവും മികച്ചത്; ഓൺലൈൻ പഠനത്തിന് അതിന്റേതായ പരിമിതികൾ ഉണ്ടായിരിക്കും.
-                </div>
             </div>
 
             <div class="grid lg:grid-cols-12 gap-8 items-start">
-                <!-- Left: Email-Locked Access Card -->
+                <!-- Left: Access Card -->
                 <div class="lg:col-span-4 bg-white text-slate-800 rounded-3xl p-6 shadow-2xl border-2 border-amber-400">
                     <div class="flex items-center justify-between border-b border-slate-100 pb-4 mb-5">
                         <div>
@@ -471,9 +476,9 @@
                     </div>
 
                     <ul class="space-y-2.5 text-xs text-slate-600 mb-6">
-                        <li class="flex items-center gap-2.5"><i class="fa-solid fa-image text-brand-600"></i> <strong>വിഷ്വൽ സ്റ്റെപ്പ്-ബൈ-സ്റ്റെപ്പ് ഗൈഡുകൾ</strong> (എവിടെ ക്ലിക്ക് ചെയ്യണമെന്ന് കാണിക്കുന്ന ഡയഗ്രമുകൾ)</li>
-                        <li class="flex items-center gap-2.5"><i class="fa-solid fa-volume-high text-amber-500"></i> <strong>ഓഡിയോ വോയ്സ് ക്ലാസ്:</strong> ഓരോ പാഠവും കേട്ട് പഠിക്കാനുള്ള സൗകര്യം</li>
-                        <li class="flex items-center gap-2.5"><i class="fa-solid fa-file-pdf text-red-600"></i> <strong>PDF നോട്ട് ഡൗൺലോഡ്:</strong> എല്ലാ ക്ലാസുകളും PDF ആയി സൂക്ഷിക്കാം</li>
+                        <li class="flex items-center gap-2.5"><i class="fa-solid fa-image text-brand-600"></i> <strong>വിഷ്വൽ സ്റ്റെപ്പ്-ബൈ-സ്റ്റെപ്പ് ഗൈഡുകൾ</strong></li>
+                        <li class="flex items-center gap-2.5"><i class="fa-solid fa-volume-high text-amber-500"></i> <strong>ഓഡിയോ വോയ്സ് ക്ലാസ്:</strong> കേട്ട് പഠിക്കാനുള്ള സൗകര്യം</li>
+                        <li class="flex items-center gap-2.5"><i class="fa-solid fa-file-pdf text-red-600"></i> <strong>നേരിട്ടുള്ള PDF നോട്ട് ഡൗൺലോഡ്</strong></li>
                         <li class="flex items-center gap-2.5"><i class="fa-solid fa-award text-sky-600"></i> Google, IBM, Cisco സർട്ടിഫിക്കറ്റ് കോഴ്സ് ലിങ്കുകൾ</li>
                     </ul>
 
@@ -514,15 +519,12 @@
                                 <p id="classroomStatusText" class="text-xs text-emerald-300">ആദ്യ 2 മൊഡ്യൂളുകൾ സൗജന്യമാണ് • തുടർ ക്ലാസുകൾ അഡ്മിഷൻ നേടിയവർക്ക്</p>
                             </div>
                         </div>
-                        <button id="adminPanelBtn" onclick="openModal('adminModal')" class="hidden px-3 py-1.5 bg-amber-500 hover:bg-amber-400 text-brand-950 font-extrabold rounded-xl text-xs shadow-md">
-                            <i class="fa-solid fa-shield-halved mr-1"></i> Admin Manager
+                        <button id="adminPanelBtn" onclick="openModal('adminModal')" class="hidden px-3.5 py-2 bg-amber-500 hover:bg-amber-400 text-brand-950 font-extrabold rounded-xl text-xs shadow-md">
+                            <i class="fa-solid fa-shield-halved mr-1"></i> Admin Dashboard
                         </button>
                     </div>
 
-                    <!-- Module Tabs -->
                     <div class="flex gap-2 overflow-x-auto pb-3 mb-4" id="lessonTabs"></div>
-
-                    <!-- Printable Lesson Content Area -->
                     <div id="printableNoteArea" class="bg-brand-950/90 border border-brand-800 rounded-2xl p-5 sm:p-6 space-y-5 min-h-[340px]"></div>
                 </div>
             </div>
@@ -534,22 +536,21 @@
         <div class="text-center max-w-3xl mx-auto space-y-3 mb-12">
             <span class="text-xs font-bold tracking-wider uppercase text-brand-700 bg-brand-100 px-3.5 py-1.5 rounded-full">പാഠ്യപദ്ധതി</span>
             <h2 class="font-display text-2xl sm:text-4xl font-bold text-slate-900">12 പ്രായോഗിക മൊഡ്യൂളുകൾ</h2>
-            <p class="text-slate-600 text-sm">അടിസ്ഥാന ഡിജിറ്റൽ സാക്ഷരത മുതൽ AI, സൈബർ സുരക്ഷ, വെബ് നിർമ്മാണം വരെയുള്ള സമഗ്ര സിലബസ്.</p>
         </div>
 
         <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 text-xs">
-            <div class="bg-white p-4 rounded-2xl border border-slate-200 shadow-sm hover:border-brand-500 transition-all"><span class="font-bold text-brand-700 block mb-1">01. Digital Security (Free)</span><h4 class="font-bold text-sm text-slate-900">ഡിജിറ്റൽ സുരക്ഷ & 2FA</h4></div>
-            <div class="bg-white p-4 rounded-2xl border border-slate-200 shadow-sm hover:border-brand-500 transition-all"><span class="font-bold text-brand-700 block mb-1">02. Multilingual Typing (Free)</span><h4 class="font-bold text-sm text-slate-900">ബഹുഭാഷാ ടൈപ്പിംഗ്</h4></div>
-            <div class="bg-white p-4 rounded-2xl border border-slate-200 shadow-sm hover:border-brand-500 transition-all"><span class="font-bold text-brand-700 block mb-1">03. Documentation</span><h4 class="font-bold text-sm text-slate-900">ഓഫീസ് & ഡോക്യുമെന്റേഷൻ</h4></div>
-            <div class="bg-white p-4 rounded-2xl border border-slate-200 shadow-sm hover:border-brand-500 transition-all"><span class="font-bold text-brand-700 block mb-1">04. Smart Spreadsheets</span><h4 class="font-bold text-sm text-slate-900">സ്പ്രെഡ്ഷീറ്റ് & കണക്കുകൾ</h4></div>
-            <div class="bg-white p-4 rounded-2xl border border-slate-200 shadow-sm hover:border-brand-500 transition-all"><span class="font-bold text-brand-700 block mb-1">05. Graphic Design & DTP</span><h4 class="font-bold text-sm text-slate-900">പോസ്റ്റർ & പ്രിന്റ് DTP</h4></div>
-            <div class="bg-white p-4 rounded-2xl border border-slate-200 shadow-sm hover:border-brand-500 transition-all"><span class="font-bold text-brand-700 block mb-1">06. Generative AI</span><h4 class="font-bold text-sm text-slate-900">AI ടൂളുകൾ & പ്രോംപ്റ്റിംഗ്</h4></div>
-            <div class="bg-white p-4 rounded-2xl border border-slate-200 shadow-sm hover:border-brand-500 transition-all"><span class="font-bold text-brand-700 block mb-1">07. Audio & Video</span><h4 class="font-bold text-sm text-slate-900">ഓഡിയോ & റീൽസ് എഡിറ്റിംഗ്</h4></div>
-            <div class="bg-white p-4 rounded-2xl border border-slate-200 shadow-sm hover:border-brand-500 transition-all"><span class="font-bold text-brand-700 block mb-1">08. Media Governance</span><h4 class="font-bold text-sm text-slate-900">മീഡിയ & പബ്ലിഷിംഗ്</h4></div>
-            <div class="bg-white p-4 rounded-2xl border border-slate-200 shadow-sm hover:border-brand-500 transition-all"><span class="font-bold text-brand-700 block mb-1">09. Linux & FOSS</span><h4 class="font-bold text-sm text-slate-900">ലിനക്സ് OS & സ്വതന്ത്ര സോഫ്റ്റ്‌വെയർ</h4></div>
-            <div class="bg-white p-4 rounded-2xl border border-slate-200 shadow-sm hover:border-brand-500 transition-all"><span class="font-bold text-brand-700 block mb-1">10. Cybersecurity</span><h4 class="font-bold text-sm text-slate-900">സൈബർ സുരക്ഷ & തട്ടിപ്പ് പ്രതിരോധം</h4></div>
-            <div class="bg-white p-4 rounded-2xl border border-slate-200 shadow-sm hover:border-brand-500 transition-all"><span class="font-bold text-brand-700 block mb-1">11. Coding & Web</span><h4 class="font-bold text-sm text-slate-900">Python & വെബ് ഡെവലപ്മെന്റ്</h4></div>
-            <div class="bg-white p-4 rounded-2xl border border-slate-200 shadow-sm hover:border-brand-500 transition-all"><span class="font-bold text-brand-700 block mb-1">12. e-Gov & Capstone</span><h4 class="font-bold text-sm text-slate-900">ഡിജിറ്റൽ ഗവേണൻസ് & പ്രൊജക്റ്റ്</h4></div>
+            <div class="bg-white p-4 rounded-2xl border border-slate-200 shadow-sm"><span class="font-bold text-brand-700 block mb-1">01. Digital Security (Free)</span><h4 class="font-bold text-sm text-slate-900">ഡിജിറ്റൽ സുരക്ഷ & 2FA</h4></div>
+            <div class="bg-white p-4 rounded-2xl border border-slate-200 shadow-sm"><span class="font-bold text-brand-700 block mb-1">02. Multilingual Typing (Free)</span><h4 class="font-bold text-sm text-slate-900">ബഹുഭാഷാ ടൈപ്പിംഗ്</h4></div>
+            <div class="bg-white p-4 rounded-2xl border border-slate-200 shadow-sm"><span class="font-bold text-brand-700 block mb-1">03. Documentation</span><h4 class="font-bold text-sm text-slate-900">ഓഫീസ് & ഡോക്യുമെന്റേഷൻ</h4></div>
+            <div class="bg-white p-4 rounded-2xl border border-slate-200 shadow-sm"><span class="font-bold text-brand-700 block mb-1">04. Smart Spreadsheets</span><h4 class="font-bold text-sm text-slate-900">സ്പ്രെഡ്ഷീറ്റ് & കണക്കുകൾ</h4></div>
+            <div class="bg-white p-4 rounded-2xl border border-slate-200 shadow-sm"><span class="font-bold text-brand-700 block mb-1">05. Graphic Design & DTP</span><h4 class="font-bold text-sm text-slate-900">പോസ്റ്റർ & പ്രിന്റ് DTP</h4></div>
+            <div class="bg-white p-4 rounded-2xl border border-slate-200 shadow-sm"><span class="font-bold text-brand-700 block mb-1">06. Generative AI</span><h4 class="font-bold text-sm text-slate-900">AI ടൂളുകൾ & പ്രോംപ്റ്റിംഗ്</h4></div>
+            <div class="bg-white p-4 rounded-2xl border border-slate-200 shadow-sm"><span class="font-bold text-brand-700 block mb-1">07. Audio & Video</span><h4 class="font-bold text-sm text-slate-900">ഓഡിയോ & റീൽസ് എഡിറ്റിംഗ്</h4></div>
+            <div class="bg-white p-4 rounded-2xl border border-slate-200 shadow-sm"><span class="font-bold text-brand-700 block mb-1">08. Media Governance</span><h4 class="font-bold text-sm text-slate-900">മീഡിയ & പബ്ലിഷിംഗ്</h4></div>
+            <div class="bg-white p-4 rounded-2xl border border-slate-200 shadow-sm"><span class="font-bold text-brand-700 block mb-1">09. Linux & FOSS</span><h4 class="font-bold text-sm text-slate-900">ലിനക്സ് OS & സ്വതന്ത്ര സോഫ്റ്റ്‌വെയർ</h4></div>
+            <div class="bg-white p-4 rounded-2xl border border-slate-200 shadow-sm"><span class="font-bold text-brand-700 block mb-1">10. Cybersecurity</span><h4 class="font-bold text-sm text-slate-900">സൈബർ സുരക്ഷ & തട്ടിപ്പ് പ്രതിരോധം</h4></div>
+            <div class="bg-white p-4 rounded-2xl border border-slate-200 shadow-sm"><span class="font-bold text-brand-700 block mb-1">11. Coding & Web</span><h4 class="font-bold text-sm text-slate-900">Python & വെബ് ഡെവലപ്മെന്റ്</h4></div>
+            <div class="bg-white p-4 rounded-2xl border border-slate-200 shadow-sm"><span class="font-bold text-brand-700 block mb-1">12. e-Gov & Capstone</span><h4 class="font-bold text-sm text-slate-900">ഡിജിറ്റൽ ഗവേണൻസ് & പ്രൊജക്റ്റ്</h4></div>
         </div>
     </section>
 
@@ -559,9 +560,6 @@
             <div class="text-center max-w-3xl mx-auto space-y-3 mb-12">
                 <span class="font-english text-xs font-bold tracking-wider uppercase text-brand-700 bg-brand-100 px-3.5 py-1.5 rounded-full">Global Credentials</span>
                 <h2 class="font-display text-2xl sm:text-4xl font-bold text-slate-900">കോഴ്സിലൂടെ നേടാവുന്ന ആഗോള സർട്ടിഫിക്കേഷനുകൾ</h2>
-                <p class="text-slate-600 text-sm">
-                    ലോകോത്തര ടെക് സ്ഥാപനങ്ങളുടെ അംഗീകൃത സർട്ടിഫിക്കറ്റുകൾ നേടാനുള്ള മാർഗ്ഗനിർദ്ദേശവും <strong>നേരിട്ടുള്ള കോഴ്സ് ലിങ്കുകളും</strong> അഡ്മിഷൻ നേടിയ വിദ്യാർത്ഥികൾക്ക് ക്ലാസ്റൂമിനുള്ളിൽ ലഭ്യമാണ്.
-                </p>
             </div>
             <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6" id="certGrid"></div>
         </div>
@@ -582,10 +580,10 @@
                     <i class="fa-brands fa-telegram text-2xl"></i>
                     <span>Telegram വഴി നേരിട്ട് ബന്ധപ്പെടുക</span>
                 </a>
-                <a href="#online-academy" class="w-full sm:w-auto px-8 py-4 bg-amber-500 hover:bg-amber-400 text-brand-950 font-extrabold rounded-2xl shadow-xl transition-all flex items-center justify-center gap-2 text-base">
-                    <i class="fa-solid fa-book-open"></i>
-                    <span>ഓൺലൈൻ കോഴ്സ് കാണുക</span>
-                </a>
+                <button onclick="openModal('verifyModal')" class="w-full sm:w-auto px-8 py-4 bg-amber-500 hover:bg-amber-400 text-brand-950 font-extrabold rounded-2xl shadow-xl transition-all flex items-center justify-center gap-2 text-base">
+                    <i class="fa-solid fa-qrcode"></i>
+                    <span>സർട്ടിഫിക്കറ്റ് വെരിഫിക്കേഷൻ</span>
+                </button>
             </div>
         </div>
     </section>
@@ -632,35 +630,53 @@
     </a>
 
     <!-- ========================================== -->
-    <!-- MODAL: ADMIN MANAGER (FOR SAEED ONLY)      -->
+    <!-- MODAL: ADMIN DASHBOARD (SERVER-PROTECTED)  -->
     <!-- ========================================== -->
     <div id="adminModal" class="hidden fixed inset-0 z-50 bg-slate-950/85 backdrop-blur-sm flex items-center justify-center p-4">
         <div class="bg-white rounded-3xl max-w-2xl w-full overflow-hidden shadow-2xl">
             <div class="bg-brand-950 text-white p-5 flex justify-between items-center">
                 <div class="flex items-center gap-2">
                     <i class="fa-solid fa-shield-halved text-amber-400"></i>
-                    <h3 class="font-bold text-base">HIKMA Admin Manager</h3>
+                    <h3 class="font-bold text-base">HIKMA Admin Dashboard (Protected)</h3>
                 </div>
                 <button onclick="closeModal('adminModal')" class="text-emerald-200 hover:text-white">
                     <i class="fa-solid fa-xmark text-lg"></i>
                 </button>
             </div>
 
-            <div class="p-6 space-y-6 max-h-[80vh] overflow-y-auto text-xs">
+            <div class="p-6 space-y-6 max-h-[82vh] overflow-y-auto text-xs">
+                <!-- 1. Issue Official Certificate for Passed Students -->
+                <form onsubmit="adminIssueCertificate(event)" class="bg-amber-50/70 p-4 rounded-2xl border border-amber-200 space-y-3">
+                    <h4 class="font-bold text-sm text-amber-950"><i class="fa-solid fa-award text-amber-600 mr-1.5"></i> പാസായ വിദ്യാർത്ഥികൾക്ക് സർട്ടിഫിക്കറ്റ് ഇഷ്യൂ ചെയ്യുക</h4>
+                    <div class="grid sm:grid-cols-2 gap-2.5">
+                        <input type="text" id="certIssueId" required placeholder="സർട്ടിഫിക്കറ്റ് ID (ഉദാ: HIKMA-2026-001)" class="px-3 py-2 rounded-xl border border-amber-300 font-mono uppercase bg-white">
+                        <input type="text" id="certIssueName" required placeholder="വിദ്യാർത്ഥിയുടെ മുഴുവൻ പേര്" class="px-3 py-2 rounded-xl border border-amber-300 bg-white">
+                    </div>
+                    <div class="grid sm:grid-cols-2 gap-2.5">
+                        <input type="text" id="certIssueCourse" required placeholder="കോഴ്സ് (ഉദാ: AL-BAYAN 1-Year Diploma)" class="px-3 py-2 rounded-xl border border-amber-300 bg-white">
+                        <input type="text" id="certIssueDate" required placeholder="തീയതി / സ്ഥാപനം (ഉദാ: Nov 2026 - Malappuram)" class="px-3 py-2 rounded-xl border border-amber-300 bg-white">
+                    </div>
+                    <button type="submit" class="w-full py-2.5 bg-amber-500 hover:bg-amber-600 text-brand-950 font-extrabold rounded-xl shadow-sm">
+                        + സർട്ടിഫിക്കറ്റ് വെരിഫിക്കേഷൻ ഡാറ്റാബേസിൽ ചേർക്കുക
+                    </button>
+                </form>
+
+                <!-- 2. Add New Visual Lesson -->
                 <form onsubmit="adminAddLesson(event)" class="bg-slate-50 p-4 rounded-2xl border border-slate-200 space-y-3">
-                    <h4 class="font-bold text-sm text-slate-900">പുതിയ ക്ലാസ് / വിഷ്വൽ നോട്ട് ഡാറ്റാബേസിലേക്ക് ചേർക്കുക</h4>
+                    <h4 class="font-bold text-sm text-slate-900"><i class="fa-solid fa-book-open text-brand-700 mr-1.5"></i> പുതിയ ക്ലാസ് / വിഷ്വൽ നോട്ട് ചേർക്കുക</h4>
                     <input type="text" id="adminLessonTab" required placeholder="ടാബ് പേര് (ഉദാ: മൊഡ്യൂൾ 13)" class="w-full px-3 py-2 rounded-xl border border-slate-300">
                     <input type="text" id="adminLessonTitle" required placeholder="പാഠത്തിന്റെ തലക്കെട്ട്" class="w-full px-3 py-2 rounded-xl border border-slate-300">
                     <input type="url" id="adminLessonImg" placeholder="വിഷ്വൽ ഡയഗ്രം / ചിത്രത്തിന്റെ ലിങ്ക് (Optional)" class="w-full px-3 py-2 rounded-xl border border-slate-300">
                     <textarea id="adminLessonSummary" required rows="2" placeholder="പാഠത്തിന്റെ ചുരുക്കം..." class="w-full px-3 py-2 rounded-xl border border-slate-300"></textarea>
-                    <textarea id="adminLessonPoints" required rows="3" placeholder="പ്രധാന പോയിന്റുകൾ (ഓരോ വരിയിലും ഓരോ പോയിന്റ് വീതം എഴുതുക)" class="w-full px-3 py-2 rounded-xl border border-slate-300"></textarea>
+                    <textarea id="adminLessonPoints" required rows="3" placeholder="പ്രധാന പോയിന്റുകൾ (ഓരോ വരിയിലും ഓരോ പോയിന്റ് വീതം)" class="w-full px-3 py-2 rounded-xl border border-slate-300"></textarea>
                     <button type="submit" class="w-full py-2.5 bg-brand-800 hover:bg-brand-900 text-white font-bold rounded-xl">
                         + സുരക്ഷിതമായി ഡാറ്റാബേസിൽ സേവ് ചെയ്യുക
                     </button>
                 </form>
 
+                <!-- 3. Student Enrollments List -->
                 <div class="space-y-3">
-                    <h4 class="font-bold text-sm text-slate-900 border-b pb-2">അഡ്മിഷൻ നേടിയ വിദ്യാർത്ഥികളുടെ പട്ടിക</h4>
+                    <h4 class="font-bold text-sm text-slate-900 border-b pb-2">ഓൺലൈൻ അഡ്മിഷൻ നേടിയ വിദ്യാർത്ഥികളുടെ പട്ടിക</h4>
                     <div id="adminEnrollmentsList" class="space-y-2">
                         <p class="text-slate-500">ലോഡ് ചെയ്യുന്നു...</p>
                     </div>
@@ -670,54 +686,7 @@
     </div>
 
     <!-- ========================================== -->
-    <!-- MODAL 2: STUDENT LOGIN                     -->
-    <!-- ========================================== -->
-    <div id="loginModal" class="hidden fixed inset-0 z-50 bg-slate-950/75 backdrop-blur-sm flex items-center justify-center p-4">
-        <div class="bg-white rounded-3xl max-w-md w-full overflow-hidden shadow-2xl">
-            <div class="bg-brand-900 text-white p-5 flex justify-between items-center">
-                <div class="flex items-center gap-2">
-                    <i class="fa-solid fa-user-graduate text-amber-400"></i>
-                    <h3 class="font-bold text-base">സ്റ്റുഡന്റ് പോർട്ടൽ ലോഗിൻ</h3>
-                </div>
-                <button onclick="closeModal('loginModal')" class="text-emerald-200 hover:text-white">
-                    <i class="fa-solid fa-xmark text-lg"></i>
-                </button>
-            </div>
-
-            <div id="studentLoginView" class="p-6 space-y-4">
-                <button type="button" onclick="loginWithGoogle()" class="w-full py-3 px-4 bg-white hover:bg-slate-50 text-slate-800 font-bold rounded-xl border-2 border-slate-200 shadow-sm flex items-center justify-center gap-3 text-sm transition-all">
-                    <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" alt="Google" class="w-5 h-5">
-                    <span>Continue with Google</span>
-                </button>
-            </div>
-
-            <div id="studentDashboardView" class="hidden p-6 space-y-5 max-h-[80vh] overflow-y-auto">
-                <div class="flex items-center justify-between border-b border-slate-100 pb-3">
-                    <div>
-                        <h4 class="font-bold text-slate-900" id="studentEmailDisplay">വിദ്യാർത്ഥി പ്രൊഫൈൽ</h4>
-                        <p class="text-xs text-slate-500">Digital Portfolio Hub</p>
-                    </div>
-                    <button onclick="logoutStudent()" class="text-xs text-red-600 font-semibold hover:underline">ലോഗൗട്ട്</button>
-                </div>
-
-                <div class="bg-slate-50 p-4 rounded-2xl border border-slate-200 space-y-3">
-                    <h5 class="text-xs font-bold text-slate-800 uppercase">പുതിയ സർട്ടിഫിക്കറ്റ് ലിങ്ക് ചേർക്കുക</h5>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
-                        <input type="text" id="newCertTitle" placeholder="കോഴ്സിന്റെ പേര്" class="px-3 py-2 rounded-lg border border-slate-300 text-xs">
-                        <input type="text" id="newCertId" placeholder="Credential ID / Link" class="px-3 py-2 rounded-lg border border-slate-300 text-xs">
-                    </div>
-                    <button onclick="addStudentCert()" class="w-full py-2 bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold rounded-lg text-xs">
-                        + സർട്ടിഫിക്കറ്റ് സേവ് ചെയ്യുക
-                    </button>
-                </div>
-
-                <div class="space-y-2.5" id="studentCertList"></div>
-            </div>
-        </div>
-    </div>
-
-    <!-- ========================================== -->
-    <!-- MODAL 3: CERTIFICATE VERIFICATION          -->
+    <!-- MODAL: CERTIFICATE VERIFICATION            -->
     <!-- ========================================== -->
     <div id="verifyModal" class="hidden fixed inset-0 z-50 bg-slate-950/75 backdrop-blur-sm flex items-center justify-center p-4">
         <div class="bg-white rounded-3xl max-w-md w-full overflow-hidden shadow-2xl">
@@ -731,8 +700,9 @@
                 </button>
             </div>
             <div class="p-6 space-y-4">
+                <p class="text-xs text-slate-600">HIKMA Digital Academy-യിൽ നിന്ന് പഠിച്ച് പാസായ വിദ്യാർത്ഥികളുടെ സർട്ടിഫിക്കറ്റ് നമ്പർ നൽകി ആധികാരികത പരിശോധിക്കുക:</p>
                 <div class="flex gap-2">
-                    <input type="text" id="verifyInput" placeholder="ഉദാ: HIKMA-DEMO-01" class="flex-1 px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm uppercase font-mono outline-none">
+                    <input type="text" id="verifyInput" placeholder="ഉദാ: HIKMA-2026-001" class="flex-1 px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm uppercase font-mono outline-none">
                     <button onclick="runVerification()" class="px-4 py-2.5 bg-brand-800 text-white font-bold rounded-xl text-xs">പരിശോധിക്കുക</button>
                 </div>
                 <div id="verifyResult" class="hidden p-4 rounded-2xl text-xs space-y-1.5"></div>
@@ -755,7 +725,7 @@
         </div>
     </div>
 
-    <!-- Terms and Conditions Modal (Complete Legal Terms) -->
+    <!-- Terms and Conditions Modal -->
     <div id="termsModal" class="hidden fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-sm flex items-center justify-center p-4">
         <div class="bg-white rounded-3xl max-w-3xl w-full overflow-hidden shadow-2xl">
             <div class="bg-slate-900 text-white p-5 flex justify-between items-center">
@@ -765,10 +735,8 @@
             <div class="p-6 space-y-3 text-xs text-slate-700 leading-relaxed max-h-[75vh] overflow-y-auto font-english">
                 <p>By accessing this webpage (<strong>https://saeedthrissur.github.io/Hikmah/</strong>), you are agreeing to be bound by these Terms and Conditions (&ldquo;Terms&rdquo;) in a legally binding agreement between HIKMA Digital Academy (&ldquo;Merchant&rdquo;, &ldquo;us&rdquo;, &ldquo;we&rdquo;, or &ldquo;our&rdquo;) and the User (&ldquo;you&rdquo; or &ldquo;your&rdquo;).</p>
                 <p><strong>ELIGIBILITY:</strong> You hereby represent and warrant that you have the right, power, and authority to agree to the Terms and to become a party to a legally binding agreement.</p>
-                <p><strong>MERCHANT'S RIGHTS & YOUR RESPONSIBILITIES:</strong> You agree that we may collect, store, and use the information provided by you (name, email address, phone number) in order to deliver the digital educational services availed by you. You agree to provide true, complete, and up-to-date information.</p>
                 <p><strong>PROHIBITED ACTIONS:</strong> You may not systematically retrieve data, copy, redistribute, resell, or reverse-engineer any course notes, visual guides, or platform code without written permission. Access is strictly for individual educational use.</p>
-                <p><strong>LIMITATION OF LIABILITY & DISCLAIMER:</strong> The content on our Platform is provided for educational purposes. All payments undertaken by you are processed via secure payment instruments. We disclaim any liability for unauthorized use of a User's Payment Instrument.</p>
-                <p><strong>GOVERNING LAWS & GRIEVANCE REDRESSAL:</strong> These terms are governed by the laws of India. For any queries, support, or grievances, please contact us at <strong>saeed.anchangadi@gmail.com</strong>.</p>
+                <p><strong>GOVERNING LAWS & GRIEVANCE REDRESSAL:</strong> These terms are governed by the laws of India. For any queries or support, please contact us at <strong>saeed.anchangadi@gmail.com</strong>.</p>
             </div>
         </div>
     </div>
@@ -782,13 +750,13 @@
             </div>
             <div class="p-6 space-y-3 text-xs text-slate-700 leading-relaxed max-h-[75vh] overflow-y-auto font-english">
                 <p><strong>1. Digital Course Access:</strong> Upon completing a Transaction on HIKMA Digital Academy, you enter into a legally binding agreement to purchase digital access to the online study modules and resources.</p>
-                <p><strong>2. Cancellation & Refund Eligibility:</strong> Since our offerings are digital educational materials and instant portal access, cancellations are generally not permitted once access is granted. The only event where a User may request a refund is if the service does not match the description provided on the Platform or due to a duplicate technical charge.</p>
-                <p><strong>3. Submission Timeline:</strong> Any request for a refund must be submitted within <strong>3 days</strong> from the date of the Transaction by contacting us at <strong>saeed.anchangadi@gmail.com</strong> with transaction proof and a clear reason.</p>
+                <p><strong>2. Cancellation & Refund Eligibility:</strong> Since our offerings are digital educational materials and instant portal access, cancellations are generally not permitted once access is granted. Refunds may be requested within 3 days only if the service does not match the description or in case of a duplicate technical payment.</p>
+                <p><strong>3. Contact:</strong> Email <strong>saeed.anchangadi@gmail.com</strong> with transaction proof.</p>
             </div>
         </div>
     </div>
 
-    <!-- Shipping & Digital Delivery Policy Modal -->
+    <!-- Digital Delivery Policy Modal -->
     <div id="deliveryModal" class="hidden fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-sm flex items-center justify-center p-4">
         <div class="bg-white rounded-3xl max-w-2xl w-full overflow-hidden shadow-2xl">
             <div class="bg-purple-900 text-white p-5 flex justify-between items-center">
@@ -798,7 +766,6 @@
             <div class="p-6 space-y-3 text-xs text-slate-700 leading-relaxed max-h-[75vh] overflow-y-auto font-english">
                 <p><strong>1. 100% Digital Service:</strong> HIKMA Digital Academy provides online educational modules, visual guides, audio lessons, and downloadable PDF study notes. No physical goods are shipped.</p>
                 <p><strong>2. Instant Access Delivery:</strong> Upon successful payment confirmation, digital access to the locked modules is unlocked electronically for your registered Google email account within <strong>0 to 24 hours</strong> (typically instant).</p>
-                <p><strong>3. Support:</strong> If you do not receive access after payment, please contact <strong>saeed.anchangadi@gmail.com</strong> or message us on Telegram (<strong>@username_786313</strong>).</p>
             </div>
         </div>
     </div>
@@ -813,7 +780,6 @@
     <script>
         const SUPABASE_URL = 'https://grpvarwtvbzeysmnrdko.supabase.co';
         const SUPABASE_ANON_KEY = 'sb_publishable_2dSVWhC71ueYPPfvDzUogg_t2HopYbr';
-        const ADMIN_EMAIL = 'saeed.anchangadi@gmail.com';
         const PAYMENT_GATEWAY_URL = 'https://www.instamojo.com/@saeed_anchangadi';
 
         let supabaseClient = null;
@@ -821,7 +787,6 @@
             supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
         }
 
-        // Open Specific Policy Modal Automatically via URL Hash (e.g., #terms, #refund, #delivery, #privacy)
         function handleHashPolicy() {
             const hash = window.location.hash.toLowerCase();
             if (hash === '#terms') openModal('termsModal');
@@ -832,7 +797,7 @@
         window.addEventListener('hashchange', handleHashPolicy);
         window.addEventListener('DOMContentLoaded', handleHashPolicy);
 
-        // Scroll Reveal Observer
+        // Scroll Reveal Animation
         const revealObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) entry.target.classList.add('active');
@@ -840,7 +805,16 @@
         }, { threshold: 0.1 });
         document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
-        function toggleLangMenu() { document.getElementById('langDropdown').classList.toggle('hidden'); }
+        function toggleSettingsMenu() { document.getElementById('settingsDropdown').classList.toggle('hidden'); }
+        function toggleDarkMode() {
+            const isDark = document.body.classList.toggle('dark-theme');
+            document.getElementById('darkModeBtn').innerText = isDark ? 'On ✓' : 'Off';
+            showToast(isDark ? 'ഡാർക്ക് മോഡ് ഓൺ ആക്കി' : 'ലൈറ്റ് മോഡ് ഓൺ ആക്കി');
+        }
+        function setFontSize(size) {
+            document.documentElement.style.fontSize = size;
+            showToast('അക്ഷര വലുപ്പം മാറ്റി (' + size + ')');
+        }
         function openModal(id) {
             document.getElementById(id).classList.remove('hidden');
             if (id === 'adminModal') loadAdminEnrollments();
@@ -881,8 +855,57 @@
             document.getElementById('ttsBtnLabel').innerText = 'നിർത്തുക (Stop Audio)';
         }
 
-        function downloadLessonPDF() {
-            window.print();
+        // Clean Real PDF Download (Zero Blank Pages on Mobile & Desktop)
+        function downloadLessonPDF(lessonIndex) {
+            const lesson = serverLessons[lessonIndex];
+            if (!lesson) return;
+            showToast('PDF തയ്യാറാക്കുന്നു... ദയവായി കാത്തിരിക്കുക');
+
+            const pointsArr = Array.isArray(lesson.points) ? lesson.points : [];
+            const pointsList = pointsArr.map(p => `<li style="margin-bottom:8px; line-height:1.6;">• ${p}</li>`).join('');
+            const diagramClean = (lesson.visual_diagram || '').replace(/class="[^"]*"/g, 'style="background:#f8fafc; border:1px solid #cbd5e1; padding:12px; border-radius:8px; margin:14px 0; color:#0f172a; font-size:13px;"');
+
+            const pdfContainer = document.createElement('div');
+            pdfContainer.style.padding = '28px';
+            pdfContainer.style.fontFamily = '"Noto Sans Malayalam", "Plus Jakarta Sans", sans-serif';
+            pdfContainer.style.color = '#0f172a';
+            pdfContainer.style.background = '#ffffff';
+            pdfContainer.innerHTML = `
+                <div style="border-bottom: 3px solid #064e3b; padding-bottom: 12px; margin-bottom: 18px; display:flex; justify-content:space-between; align-items:center;">
+                    <div>
+                        <div style="font-size: 18px; font-weight: 800; color: #064e3b;">HIKMA Digital Academy</div>
+                        <div style="font-size: 11px; color: #475569;">Ethical AI • Open-Tech • Global Certifications</div>
+                    </div>
+                    <div style="font-size: 11px; font-weight: 700; color: #b45309;">Study Notes</div>
+                </div>
+                <h2 style="font-size: 17px; font-weight: 700; color: #022c22; margin-bottom: 10px;">${lesson.title}</h2>
+                <p style="font-size: 13px; color: #334155; line-height: 1.7; margin-bottom: 14px;">${lesson.summary}</p>
+                ${diagramClean}
+                <h3 style="font-size: 14px; font-weight: 700; color: #064e3b; margin-top: 16px; margin-bottom: 10px;">പ്രായോഗിക പഠന കുറിപ്പുകൾ & ലിങ്കുകൾ:</h3>
+                <ul style="list-style: none; padding: 0; margin: 0; font-size: 13px; color: #1e293b;">
+                    ${pointsList}
+                </ul>
+                <div style="margin-top: 28px; padding-top: 10px; border-top: 1px solid #e2e8f0; font-size: 10px; color: #64748b; text-align: center;">
+                    © HIKMA Digital Academy • https://saeedthrissur.github.io/Hikmah/
+                </div>
+            `;
+
+            const safeFilename = (lesson.tab_name || 'HIKMA_Lesson').replace(/[^a-zA-Z0-9_\u0D00-\u0D7F]/g, '_') + '.pdf';
+            const opt = {
+                margin: 10,
+                filename: safeFilename,
+                image: { type: 'jpeg', quality: 0.98 },
+                html2canvas: { scale: 2, useCORS: true },
+                jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
+            };
+
+            if (window.html2pdf) {
+                html2pdf().set(opt).from(pdfContainer).save().then(() => {
+                    showToast('PDF ഡൗൺലോഡ് പൂർത്തിയായി!');
+                });
+            } else {
+                window.print();
+            }
         }
 
         function startSecureGatewayPayment() {
@@ -895,18 +918,16 @@
             window.open(`${PAYMENT_GATEWAY_URL}?email=${emailParam}`, '_blank');
         }
 
-        // Multi-Language Translations
         const translations = {
-            ml: { heroBadge: 'സ്വതന്ത്ര സോഫ്റ്റ്‌വെയർ • ധാർമ്മിക AI • ആഗോള സർട്ടിഫിക്കേഷനുകൾ', heroTitle: 'പാരമ്പര്യ വിജ്ഞാനത്തോടൊപ്പം <br><span class="text-amber-400">ആധുനിക സാങ്കേതിക തികവ്</span>', heroSub: 'ഇസ്ലാമിക മൂല്യങ്ങളിലും സ്വതന്ത്ര സോഫ്റ്റ്‌വെയർ നയങ്ങളിലും അധിഷ്ഠിതമായി വിദ്യാർത്ഥികളെയും സംഘടനാ പ്രവർത്തകരെയും പൊതുസമൂഹത്തെയും ഡിജിറ്റൽ യുഗത്തിന് സജ്ജരാക്കുന്ന പരിശീലന സംരംഭമാണ് HIKMA Digital Academy.', btnTracks: 'നേരിട്ടുള്ള ക്ലാസുകൾ കാണുക', btnTelegram: 'Telegram വഴി ബന്ധപ്പെടുക' },
-            en: { heroBadge: 'Free & Open Source • Ethical AI • Global Certifications', heroTitle: 'Traditional Wisdom Meets <br><span class="text-amber-400">Modern Tech Excellence</span>', heroSub: 'HIKMA Digital Academy empowers students, community leaders, and educators with ethical AI, open-source software, and globally recognized digital skills.', btnTracks: 'Explore Offline Courses', btnTelegram: 'Connect on Telegram' },
-            ar: { heroBadge: 'البرمجيات الحرة • الذكاء الاصطناعي الأخلاقي • شهادات عالمية', heroTitle: 'الجمع بين الأصالة العلمية <br><span class="text-amber-400">والإتقان التقني الحديث</span>', heroSub: 'أكاديمية حكمة الرقمية مبادرة تدريبية شاملة لتمكين الطلاب والباحثين من مهارات العصر الرقمي والذكاء الاصطناعي وفق القيم الإسلامية.', btnTracks: 'استكشف الدورات الحضورية', btnTelegram: 'تواصل معنا عبر تيليجرام' },
-            hi: { heroBadge: 'ओपन-सोर्स सॉफ्टवेयर • नैतिक AI • वैश्विक प्रमाणपत्र', heroTitle: 'पारंपरिक ज्ञान के साथ <br><span class="text-amber-400">आधुनिक तकनीकी दक्षता</span>', heroSub: 'HIKMA Digital Academy छात्रों और समाज को नैतिक AI और ओपन-सोर्स तकनीक से सशक्त बनाने वाला एक समग्र प्रशिक्षण संस्थान है।', btnTracks: 'प्रत्यक्ष पाठ्यक्रम देखें', btnTelegram: 'Telegram पर संपर्क करें' },
-            ta: { heroBadge: 'திறந்த மூல மென்பொருள் • அறநெறி AI • உலகளாவிய சான்றிதழ்கள்', heroTitle: 'பாரம்பரிய அறிவுடன் <br><span class="text-amber-400">நவீன தொழில்நுட்பத் திறன்</span>', heroSub: 'HIKMA Digital Academy மாணவர்களையும் சமூகத்தையும் அறநெறி AI மற்றும் திறந்த மூல மென்பொருள் மூலம் டிஜிட்டல் யுகத்திற்கு தயார்படுத்துகிறது.', btnTracks: 'நேரடி வகுப்புகளைப் பார்க்கவும்', btnTelegram: 'Telegram மூலம் தொடர்பு கொள்ளவும்' }
+            ml: { heroBadge: 'സ്വതന്ത്ര സോഫ്റ്റ്‌വെയർ • ധാർമ്മിക AI • ആഗോള സർട്ടിഫിക്കേഷനുകൾ', heroTitle: 'പാരമ്പര്യ വിജ്ഞാനത്തോടൊപ്പം <br><span class="text-amber-400">ആധുനിക സാങ്കേതിക തികവ്</span>', heroSub: 'ഇസ്ലാമിക മൂല്യങ്ങളിലും സ്വതന്ത്ര സോഫ്റ്റ്‌വെയർ നയങ്ങളിലും അധിഷ്ഠിതമായി വിദ്യാർത്ഥികളെയും സംഘടനാ പ്രവർത്തകരെയും പൊതുസമൂഹത്തെയും ഡിജിറ്റൽ യുഗത്തിന് സജ്ജരാക്കുന്ന പരിശീലന സംരംഭമാണ് HIKMA Digital Academy.', btnTracks: 'നേരിട്ടുള്ള ക്ലാസുകൾ കാണുക' },
+            en: { heroBadge: 'Free & Open Source • Ethical AI • Global Certifications', heroTitle: 'Traditional Wisdom Meets <br><span class="text-amber-400">Modern Tech Excellence</span>', heroSub: 'HIKMA Digital Academy empowers students, community leaders, and educators with ethical AI, open-source software, and globally recognized digital skills.', btnTracks: 'Explore Offline Courses' },
+            ar: { heroBadge: 'البرمجيات الحرة • الذكاء الاصطناعي الأخلاقي • شهادات عالمية', heroTitle: 'الجمع بين الأصالة العلمية <br><span class="text-amber-400">والإتقان التقني الحديث</span>', heroSub: 'أكاديمية حكمة الرقمية مبادرة تدريبية شاملة لتمكين الطلاب والباحثين من مهارات العصر الرقمي والذكاء الاصطناعي وفق القيم الإسلامية.', btnTracks: 'استكشف الدورات الحضورية' },
+            hi: { heroBadge: 'ओपन-सोर्स सॉफ्टवेयर • नैतिक AI • वैश्विक प्रमाणपत्र', heroTitle: 'पारंपरिक ज्ञान के साथ <br><span class="text-amber-400">आधुनिक तकनीकी दक्षता</span>', heroSub: 'HIKMA Digital Academy छात्रों और समाज को नैतिक AI और ओपन-सोर्स तकनीक से सशक्त बनाने वाला एक समग्र प्रशिक्षण संस्थान है।', btnTracks: 'प्रत्यक्ष पाठ्यक्रम देखें' },
+            ta: { heroBadge: 'திறந்த மூல மென்பொருள் • அறநெறி AI • உலகளாவிய சான்றிதழ்கள்', heroTitle: 'பாரம்பரிய அறிவுடன் <br><span class="text-amber-400">நவீன தொழில்நுட்பத் திறன்</span>', heroSub: 'HIKMA Digital Academy மாணவர்களையும் சமூகத்தையும் அறநெறி AI மற்றும் திறந்த மூல மென்பொருள் மூலம் டிஜிட்டல் யுகத்திற்கு தயார்படுத்துகிறது.', btnTracks: 'நேரடி வகுப்புகளைப் பார்க்கவும்' }
         };
 
         function changeLanguage(lang, label) {
-            document.getElementById('currentLangLabel').innerText = label;
-            document.getElementById('langDropdown').classList.add('hidden');
+            document.getElementById('settingsDropdown').classList.add('hidden');
             document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
             const dict = translations[lang] || translations.ml;
             document.querySelectorAll('[data-i18n]').forEach(el => {
@@ -918,72 +939,24 @@
 
         let currentUser = null;
         let isCourseUnlocked = false;
+        let isServerAdmin = false;
         
         const defaultFreeLessons = [
             {
                 tab_name: 'മൊഡ്യൂൾ 01 (Free)',
                 title: 'മൊഡ്യൂൾ 01: ഡിജിറ്റൽ സുരക്ഷ & 2FA സംരക്ഷണം',
                 is_free: true,
-                visual_diagram: `
-                    <div class="bg-slate-900 border border-emerald-500/40 rounded-2xl p-4 space-y-3">
-                        <div class="flex items-center justify-between text-[11px] text-emerald-300 font-bold border-b border-slate-800 pb-2">
-                            <span><i class="fa-solid fa-desktop mr-1.5"></i> STEP-BY-STEP VISUAL GUIDE (എവിടെ ക്ലിക്ക് ചെയ്യണം?)</span>
-                            <span class="px-2 py-0.5 bg-emerald-500/20 rounded">Security UI</span>
-                        </div>
-                        <div class="grid sm:grid-cols-3 gap-2.5 text-center text-xs">
-                            <div class="bg-brand-950 border border-brand-700 p-3 rounded-xl">
-                                <span class="w-6 h-6 rounded-full bg-amber-400 text-brand-950 font-extrabold inline-flex items-center justify-center mb-1.5">1</span>
-                                <p class="font-bold text-white">Google Account</p>
-                                <p class="text-[11px] text-emerald-200 mt-1">മുകളിൽ വലതുവശത്തെ പ്രൊഫൈൽ ചിത്രത്തിൽ ക്ലിക്ക് ചെയ്ത് <strong>Manage Account</strong> തുറക്കുക.</p>
-                            </div>
-                            <div class="bg-brand-950 border border-brand-700 p-3 rounded-xl">
-                                <span class="w-6 h-6 rounded-full bg-amber-400 text-brand-950 font-extrabold inline-flex items-center justify-center mb-1.5">2</span>
-                                <p class="font-bold text-white">Security ടാബ്</p>
-                                <p class="text-[11px] text-emerald-200 mt-1">ഇടതുവശത്തെ മെനുവിൽ <strong>Security (സുരക്ഷ)</strong> എന്നതിൽ ക്ലിക്ക് ചെയ്യുക.</p>
-                            </div>
-                            <div class="bg-brand-950 border border-amber-400/60 p-3 rounded-xl">
-                                <span class="w-6 h-6 rounded-full bg-emerald-400 text-brand-950 font-extrabold inline-flex items-center justify-center mb-1.5">3</span>
-                                <p class="font-bold text-amber-300">2-Step Verification</p>
-                                <p class="text-[11px] text-emerald-200 mt-1"><strong>Turn On</strong> അമർത്തി നിങ്ങളുടെ ഫോൺ നമ്പർ നൽകി സുരക്ഷ ഉറപ്പാക്കുക.</p>
-                            </div>
-                        </div>
-                    </div>
-                `,
+                visual_diagram: `<div class="bg-slate-900 border border-emerald-500/40 rounded-2xl p-4 text-xs text-emerald-200"><strong>Step-by-Step Visual Guide:</strong> Google Account → Security → 2-Step Verification → Turn On</div>`,
                 summary: 'ഇന്റർനെറ്റിൽ നമ്മുടെ സ്വകാര്യ വിവരങ്ങളും അക്കൗണ്ടുകളും ഹാക്കർമാരിൽ നിന്ന് എങ്ങനെ സുരക്ഷിതമാക്കാം എന്ന് ഈ പാഠത്തിൽ പഠിക്കാം.',
-                points: [
-                    '<strong>Proton Mail:</strong> പരസ്യങ്ങളില്ലാത്ത, എൻക്രിപ്റ്റ് ചെയ്ത സുരക്ഷിത ഇമെയിൽ അക്കൗണ്ട് നിർമ്മിക്കുന്ന രീതി.',
-                    '<strong>Bitwarden:</strong> എല്ലാ അക്കൗണ്ടുകൾക്കും വ്യത്യസ്തവും ശക്തവുമായ പാസ്‌വേഡുകൾ ഓർമ്മിച്ചുവെക്കാൻ ഓപ്പൺ സോഴ്സ് പാസ്‌വേഡ് മാനേജർ ഉപയോഗിക്കൽ.',
-                    '<strong>2FA സുരക്ഷ:</strong> WhatsApp, Gmail, Telegram എന്നിവയിൽ Two-Step Verification നിർബന്ധമായും ഓൺ ആക്കുക.'
-                ]
+                points: ['Proton Mail: പരസ്യങ്ങളില്ലാത്ത സുരക്ഷിത ഇമെയിൽ അക്കൗണ്ട് നിർമ്മിക്കുന്ന രീതി.', 'Bitwarden: ഓപ്പൺ സോഴ്സ് പാസ്‌വേഡ് മാനേജർ ഉപയോഗിക്കൽ.', '2FA സുരക്ഷ: WhatsApp, Gmail, Telegram എന്നിവയിൽ Two-Step Verification ഓൺ ആക്കുക.']
             },
             {
                 tab_name: 'മൊഡ്യൂൾ 02 (Free)',
-                title: 'മൊഡ്യൂൾ 02: ശാസ്ത്രീയ ബഹുഭാഷാ ടൈപ്പിംഗ് (Malayalam, Arabic, English)',
+                title: 'മൊഡ്യൂൾ 02: ശാസ്ത്രീയ ബഹുഭാഷാ ടൈപ്പിംഗ്',
                 is_free: true,
-                visual_diagram: `
-                    <div class="bg-slate-900 border border-sky-500/40 rounded-2xl p-4 space-y-3">
-                        <div class="flex items-center justify-between text-[11px] text-sky-300 font-bold border-b border-slate-800 pb-2">
-                            <span><i class="fa-solid fa-keyboard mr-1.5"></i> HOME ROW FINGER PLACEMENT DIAGRAM</span>
-                            <span class="px-2 py-0.5 bg-sky-500/20 rounded">Keyboard Layout</span>
-                        </div>
-                        <div class="flex flex-wrap justify-center gap-2 py-2 font-mono text-xs font-extrabold">
-                            <span class="px-3 py-2 bg-amber-500/20 border border-amber-400 text-amber-300 rounded-lg">A (ചെറുവിരൽ)</span>
-                            <span class="px-3 py-2 bg-amber-500/20 border border-amber-400 text-amber-300 rounded-lg">S (മോതിരവിരൽ)</span>
-                            <span class="px-3 py-2 bg-amber-500/20 border border-amber-400 text-amber-300 rounded-lg">D (നടുവിരൽ)</span>
-                            <span class="px-3 py-2 bg-emerald-500/30 border border-emerald-400 text-white rounded-lg">F (ചൂണ്ടുവിരൽ)</span>
-                            <span class="px-2 py-2 text-slate-500">|</span>
-                            <span class="px-3 py-2 bg-emerald-500/30 border border-emerald-400 text-white rounded-lg">J (ചൂണ്ടുവിരൽ)</span>
-                            <span class="px-3 py-2 bg-sky-500/20 border border-sky-400 text-sky-300 rounded-lg">K (നടുവിരൽ)</span>
-                            <span class="px-3 py-2 bg-sky-500/20 border border-sky-400 text-sky-300 rounded-lg">L (മോതിരവിരൽ)</span>
-                            <span class="px-3 py-2 bg-sky-500/20 border border-sky-400 text-sky-300 rounded-lg">; (ചെറുവിരൽ)</span>
-                        </div>
-                    </div>
-                `,
+                visual_diagram: `<div class="bg-slate-900 border border-sky-500/40 rounded-2xl p-4 text-xs text-sky-200"><strong>Home Row Key Map:</strong> Left Hand [A S D F] — Right Hand [J K L ;]</div>`,
                 summary: 'കീബോർഡിലേക്ക് നോക്കാതെ വേഗത്തിൽ ഇംഗ്ലീഷ്, അറബിക്, മലയാളം ഭാഷകൾ ടൈപ്പ് ചെയ്യാനുള്ള പ്രായോഗിക പരിശീലനം.',
-                points: [
-                    '<strong>Home Row നിയമം:</strong> ഇടതുകൈ വിരലുകൾ ASDF എന്നീ കീകളിലും വലതുകൈ വിരലുകൾ JKL; എന്നീ കീകളിലും വെച്ച് പരിശീലിക്കുക.',
-                    '<strong>അറബിക് & മലയാളം:</strong> Google Input Tools, Varnam (മലയാളം), Arabic 101 ലേഔട്ട് എന്നിവ ഉപയോഗിച്ച് വേഗത്തിൽ പ്രബന്ധങ്ങൾ തയ്യാറാക്കാം.'
-                ]
+                points: ['Home Row വിരലുകളുടെ സ്ഥാനം കൃത്യമായി പരിശീലിക്കൽ.', 'Google Input Tools, Varnam, Arabic 101 ലേഔട്ടുകൾ ഉപയോഗിച്ച് വേഗത്തിൽ ടൈപ്പ് ചെയ്യൽ.']
             }
         ];
 
@@ -1004,71 +977,89 @@
                 selectLesson(0);
                 return;
             }
-            const { data, error } = await supabaseClient
-                .from('lessons')
-                .select('*')
-                .order('id', { ascending: true });
-
-            if (!error && data && data.length > 0) {
-                serverLessons = data;
-            } else {
-                serverLessons = [...defaultFreeLessons];
-            }
+            const { data, error } = await supabaseClient.from('lessons').select('*').order('id', { ascending: true });
+            if (!error && data && data.length > 0) serverLessons = data;
+            else serverLessons = [...defaultFreeLessons];
             renderLessonTabs();
             selectLesson(0);
         }
 
-        function updateUserUI(user) {
+        async function verifyServerAdminRole() {
+            if (!supabaseClient || !currentUser) return false;
+            const { data, error } = await supabaseClient.rpc('check_is_admin');
+            return !error && data === true;
+        }
+
+        async function updateUserUI(user) {
             currentUser = user;
             if (user) {
                 const email = user.email.toLowerCase();
                 document.getElementById('navUserLabel').innerText = email.split('@')[0];
-                document.getElementById('studentEmailDisplay').innerText = email;
-                document.getElementById('studentLoginView').classList.add('hidden');
-                document.getElementById('studentDashboardView').classList.remove('hidden');
+                document.getElementById('menuUserEmail').innerText = email;
+                document.getElementById('menuLoggedOut').classList.add('hidden');
+                document.getElementById('menuLoggedIn').classList.remove('hidden');
                 document.getElementById('academyLoggedOutView').classList.add('hidden');
                 document.getElementById('academyLoggedInView').classList.remove('hidden');
                 document.getElementById('academyUserEmail').innerText = email;
 
-                if (email === ADMIN_EMAIL.toLowerCase()) {
+                isServerAdmin = await verifyServerAdminRole();
+                if (isServerAdmin) {
                     isCourseUnlocked = true;
-                    document.getElementById('userRoleBadge').innerText = 'Admin (Full Access)';
+                    document.getElementById('userRoleBadge').innerText = 'Admin Dashboard';
                     document.getElementById('adminPanelBtn').classList.remove('hidden');
+                    document.getElementById('menuAdminBtn').classList.remove('hidden');
                     applyUnlockedUI();
                 } else {
                     checkUserCourseAccess(email);
                 }
-                loadStudentCertificates();
             } else {
                 isCourseUnlocked = false;
-                document.getElementById('navUserLabel').innerText = 'പോർട്ടൽ';
-                document.getElementById('studentDashboardView').classList.add('hidden');
-                document.getElementById('studentLoginView').classList.remove('hidden');
+                isServerAdmin = false;
+                document.getElementById('navUserLabel').innerText = 'സെറ്റിംഗ്സ്';
+                document.getElementById('menuLoggedIn').classList.add('hidden');
+                document.getElementById('menuLoggedOut').classList.remove('hidden');
                 document.getElementById('academyLoggedInView').classList.add('hidden');
                 document.getElementById('academyLoggedOutView').classList.remove('hidden');
                 document.getElementById('adminPanelBtn').classList.add('hidden');
+                document.getElementById('menuAdminBtn').classList.add('hidden');
             }
             fetchProtectedLessons();
         }
 
         if (supabaseClient) {
-            supabaseClient.auth.getSession().then(({ data: { session } }) => {
-                updateUserUI(session ? session.user : null);
-            });
-            supabaseClient.auth.onAuthStateChange((_event, session) => {
-                updateUserUI(session ? session.user : null);
-            });
+            supabaseClient.auth.getSession().then(({ data: { session } }) => updateUserUI(session ? session.user : null));
+            supabaseClient.auth.onAuthStateChange((_event, session) => updateUserUI(session ? session.user : null));
         } else {
             renderLessonTabs();
             selectLesson(0);
         }
 
+        async function adminIssueCertificate(e) {
+            e.preventDefault();
+            if (!isServerAdmin) return;
+            const credential_id = document.getElementById('certIssueId').value.trim().toUpperCase();
+            const student_name = document.getElementById('certIssueName').value.trim();
+            const course_title = document.getElementById('certIssueCourse').value.trim();
+            const issue_date = document.getElementById('certIssueDate').value.trim();
+
+            const { error } = await supabaseClient.from('certificates').insert([{
+                credential_id, student_name, course_title, issue_date
+            }]);
+
+            if (!error) {
+                e.target.reset();
+                showToast(`സർട്ടിഫിക്കറ്റ് (${credential_id}) വിജയകരമായി രജിസ്റ്റർ ചെയ്തു!`);
+            } else {
+                showToast('പിശക്: ' + error.message);
+            }
+        }
+
         async function loadAdminEnrollments() {
-            if (!supabaseClient) return;
+            if (!supabaseClient || !isServerAdmin) return;
             const list = document.getElementById('adminEnrollmentsList');
             const { data, error } = await supabaseClient.from('enrollments').select('*');
             if (error || !data || data.length === 0) {
-                list.innerHTML = '<p class="text-slate-500">ഇതുവരെ വിദ്യാർത്ഥികളൊന്നും അഡ്മിഷൻ എടുത്തിട്ടില്ല.</p>';
+                list.innerHTML = '<p class="text-slate-500">ഇതുവരെ വിദ്യാർത്ഥികളൊന്നും ഓൺലൈൻ അഡ്മിഷൻ എടുത്തിട്ടില്ല.</p>';
                 return;
             }
             list.innerHTML = data.map(row => `
@@ -1084,12 +1075,12 @@
 
         async function adminAddLesson(e) {
             e.preventDefault();
+            if (!isServerAdmin) return;
             const tab_name = document.getElementById('adminLessonTab').value.trim();
             const title = document.getElementById('adminLessonTitle').value.trim();
             const imgUrl = document.getElementById('adminLessonImg').value.trim();
             const summary = document.getElementById('adminLessonSummary').value.trim();
             const points = document.getElementById('adminLessonPoints').value.trim().split('\n').filter(l => l.trim() !== '');
-
             const visual_diagram = imgUrl ? `<img src="${imgUrl}" alt="${title}" class="w-full max-h-64 object-cover rounded-2xl border border-brand-700">` : '';
 
             const { error } = await supabaseClient.from('lessons').insert([{
@@ -1160,12 +1151,12 @@
                         <span class="px-2.5 py-1 bg-emerald-500/20 text-emerald-300 rounded-md text-[11px] font-bold">
                             ${lesson.is_free ? 'സൗജന്യ ക്ലാസ് (Free Preview)' : 'Verified Student Access'}
                         </span>
-                        <div class="flex items-center gap-2 no-print">
+                        <div class="flex items-center gap-2">
                             <button onclick='speakCurrentLesson(${JSON.stringify(lesson.title)}, ${JSON.stringify(lesson.summary)}, ${JSON.stringify(plainPoints)})' class="px-3 py-1.5 bg-sky-500/20 hover:bg-sky-500/30 text-sky-300 border border-sky-400/40 rounded-xl text-xs font-bold flex items-center gap-1.5 transition-all">
                                 <i class="fa-solid fa-volume-high"></i>
                                 <span id="ttsBtnLabel">ക്ലാസ് കേൾക്കുക (Audio)</span>
                             </button>
-                            <button onclick="downloadLessonPDF()" class="px-3 py-1.5 bg-amber-500/20 hover:bg-amber-500/30 text-amber-300 border border-amber-400/40 rounded-xl text-xs font-bold flex items-center gap-1.5 transition-all">
+                            <button onclick="downloadLessonPDF(${index})" class="px-3 py-1.5 bg-amber-500/20 hover:bg-amber-500/30 text-amber-300 border border-amber-400/40 rounded-xl text-xs font-bold flex items-center gap-1.5 transition-all">
                                 <i class="fa-solid fa-file-pdf"></i>
                                 <span>PDF ഡൗൺലോഡ്</span>
                             </button>
@@ -1174,9 +1165,7 @@
 
                     <h4 class="font-bold text-lg sm:text-xl text-white">${lesson.title}</h4>
                     <p class="text-xs sm:text-sm text-emerald-100/90 leading-relaxed">${lesson.summary}</p>
-                    
                     ${diagramHtml}
-
                     <div class="bg-brand-900/60 border border-brand-800 rounded-2xl p-4 space-y-2.5 text-xs sm:text-sm text-emerald-50">
                         <h5 class="font-bold text-amber-300 text-xs uppercase tracking-wider mb-2">പ്രായോഗിക പഠന കുറിപ്പുകൾ & ലിങ്കുകൾ:</h5>
                         <ul class="space-y-2.5">${pointsHtml}</ul>
@@ -1202,7 +1191,6 @@
             `;
         }
 
-        // Global Certifications Showcase
         const globalCerts = [
             { title: 'Google AI Essentials', provider: 'Google', icon: 'fa-brands fa-google text-blue-600', desc: 'പഠനത്തിലും ദൈനംദിന പ്രവർത്തനങ്ങളിലും ജനറേറ്റീവ് AI ഫലപ്രദമായി ഉപയോഗിക്കാൻ.' },
             { title: 'AI Fundamentals Badge', provider: 'IBM SkillsBuild', icon: 'fa-solid fa-microchip text-indigo-600', desc: 'AI ചരിത്രം, NLP, കമ്പ്യൂട്ടർ വിഷൻ എന്നിവയിൽ ആഗോള Credly ഡിജിറ്റൽ ബാഡ്ജ്.' },
@@ -1213,7 +1201,7 @@
         ];
 
         document.getElementById('certGrid').innerHTML = globalCerts.map(cert => `
-            <div class="bg-white p-6 rounded-3xl border border-slate-200 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all flex flex-col justify-between space-y-4">
+            <div class="bg-white p-6 rounded-3xl border border-slate-200 shadow-sm flex flex-col justify-between space-y-4">
                 <div>
                     <div class="flex items-center justify-between gap-2 mb-3">
                         <div class="flex items-center gap-2">
@@ -1238,50 +1226,28 @@
             showToast('ലോഗൗട്ട് ചെയ്തു.');
         }
 
-        async function loadStudentCertificates() {
-            if (!supabaseClient || !currentUser) return;
-            const { data, error } = await supabaseClient.from('certificates').select('*').eq('student_email', currentUser.email);
-            if (!error && data) {
-                const list = document.getElementById('studentCertList');
-                list.innerHTML = data.length === 0 ? '<p class="text-xs text-slate-400">സർട്ടിഫിക്കറ്റുകൾ ഒന്നും ചേർത്തിട്ടില്ല.</p>' : '';
-                data.forEach(item => {
-                    list.innerHTML += `<div class="p-3 bg-white border border-slate-200 rounded-xl flex justify-between items-center text-xs"><div><p class="font-bold text-slate-900">${item.course_title}</p><p class="text-slate-500">ID: ${item.credential_id}</p></div><span class="px-2 py-1 bg-emerald-100 text-emerald-800 rounded-md font-semibold">Saved</span></div>`;
-                });
-            }
-        }
-
-        async function addStudentCert() {
-            const title = document.getElementById('newCertTitle').value.trim();
-            const id = document.getElementById('newCertId').value.trim();
-            if (!title || !id || !supabaseClient || !currentUser) return;
-            await supabaseClient.from('certificates').insert([{ student_email: currentUser.email, course_title: title, credential_id: id }]);
-            loadStudentCertificates();
-            document.getElementById('newCertTitle').value = '';
-            document.getElementById('newCertId').value = '';
-            showToast('സർട്ടിഫിക്കറ്റ് ലിങ്ക് സേവ് ചെയ്തു!');
-        }
-
         async function runVerification() {
-            const input = document.getElementById('verifyInput').value.trim();
+            const input = document.getElementById('verifyInput').value.trim().toUpperCase();
             const resultBox = document.getElementById('verifyResult');
             resultBox.classList.remove('hidden');
             if (!input) return;
 
             if (supabaseClient) {
-                const { data } = await supabaseClient.from('certificates').select('*').ilike('credential_id', input).maybeSingle();
+                const { data } = await supabaseClient.from('certificates').select('*').eq('credential_id', input).maybeSingle();
                 if (data) {
-                    resultBox.className = 'p-4 rounded-2xl text-xs bg-emerald-50 border border-emerald-300 text-emerald-950 space-y-1';
-                    resultBox.innerHTML = `<div class="font-bold text-emerald-800">✓ ആധികാരിക സർട്ടിഫിക്കറ്റ്</div><p><strong>കോഴ്സ്:</strong> ${data.course_title}</p><p><strong>ID:</strong> ${data.credential_id}</p>`;
+                    resultBox.className = 'p-4 rounded-2xl text-xs bg-emerald-50 border border-emerald-300 text-emerald-950 space-y-1.5';
+                    resultBox.innerHTML = `
+                        <div class="font-bold text-emerald-800 text-sm">✓ ആധികാരിക സർട്ടിഫിക്കറ്റ് (Verified)</div>
+                        <p><strong>വിദ്യാർത്ഥി:</strong> ${data.student_name}</p>
+                        <p><strong>കോഴ്സ്:</strong> ${data.course_title}</p>
+                        <p><strong>തീയതി/സ്ഥാപനം:</strong> ${data.issue_date}</p>
+                        <p class="font-mono text-[11px] text-slate-500">ID: ${data.credential_id}</p>
+                    `;
                     return;
                 }
             }
-            if (input.toUpperCase() === 'HIKMA-DEMO-01') {
-                resultBox.className = 'p-4 rounded-2xl text-xs bg-emerald-50 border border-emerald-300 text-emerald-950 space-y-1';
-                resultBox.innerHTML = `<div class="font-bold text-emerald-800">✓ ആധികാരിക സർട്ടിഫിക്കറ്റ്</div><p><strong>കോഴ്സ്:</strong> HIKMA Digital Academy — AL-BAYAN Diploma</p>`;
-            } else {
-                resultBox.className = 'p-4 rounded-2xl text-xs bg-red-50 border border-red-200 text-red-900';
-                resultBox.innerHTML = `<div>✕ ഈ നമ്പറിൽ രേഖകൾ കണ്ടെത്താനായില്ല.</div>`;
-            }
+            resultBox.className = 'p-4 rounded-2xl text-xs bg-red-50 border border-red-200 text-red-900';
+            resultBox.innerHTML = `<div>✕ ഈ നമ്പറിൽ രേഖകൾ കണ്ടെത്താനായില്ല. നമ്പർ ശരിയാണോ എന്ന് പരിശോധിക്കുക.</div>`;
         }
     </script>
 </body>
