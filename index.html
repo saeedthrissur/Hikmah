@@ -65,7 +65,6 @@
         body.dark-theme .text-slate-700, body.dark-theme .text-slate-600, body.dark-theme .text-slate-500 { color: #cbd5e1 !important; }
         details > summary { list-style: none; }
         details > summary::-webkit-details-marker { display: none; }
-        /* Hide Google Translate top banner bar cleanly */
         .goog-te-banner-frame.skiptranslate, .goog-te-gadget-icon { display: none !important; }
         body { top: 0px !important; }
     </style>
@@ -452,7 +451,7 @@
                         </div>
                     </div>
 
-                    <!-- Step 2: Simple Payment + Telegram Option (No Complex Webhooks Needed!) -->
+                    <!-- Step 2: Simple Payment + Telegram Option -->
                     <div class="space-y-2.5">
                         <a href="https://www.instamojo.com/@saeed_anchangadi" target="_blank" rel="noopener noreferrer" class="w-full py-3.5 bg-brand-800 hover:bg-brand-900 text-white font-extrabold rounded-2xl shadow-lg transition-all flex items-center justify-center gap-2 text-xs sm:text-sm">
                             <i class="fa-solid fa-credit-card text-amber-400"></i>
@@ -722,6 +721,85 @@
         if (SUPABASE_URL && SUPABASE_ANON_KEY && window.supabase) {
             supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
         }
+
+        let isSpeaking = false;
+
+        // Settings Menu & UI Controls
+        function toggleSettingsMenu() {
+            const menu = document.getElementById('settingsDropdown');
+            if (menu) menu.classList.toggle('hidden');
+        }
+
+        function toggleDarkMode() {
+            document.body.classList.toggle('dark-theme');
+            const isDark = document.body.classList.contains('dark-theme');
+            const btn = document.getElementById('darkModeBtn');
+            if (btn) btn.innerText = isDark ? 'On ✓' : 'Off';
+        }
+
+        function setFontSize(size) {
+            document.documentElement.style.fontSize = size;
+            showToast('അക്ഷര വലുപ്പം ക്രമീകരിച്ചു');
+        }
+
+        function triggerFullPageTranslate(langCode) {
+            const combo = document.querySelector('.goog-te-combo');
+            if (combo) {
+                combo.value = langCode;
+                combo.dispatchEvent(new Event('change'));
+                showToast('ഭാഷ മാറ്റുന്നു...');
+            } else {
+                showToast('ഇന്റർനെറ്റ് കണക്ഷൻ പരിശോധിക്കുക');
+            }
+        }
+
+        function openModal(id) {
+            const el = document.getElementById(id);
+            if (el) el.classList.remove('hidden');
+            if (id === 'adminModal') loadAdminEnrollments();
+        }
+
+        function closeModal(id) {
+            const el = document.getElementById(id);
+            if (el) el.classList.add('hidden');
+        }
+
+        function showToast(msg) {
+            const toast = document.getElementById('toast');
+            const toastMsg = document.getElementById('toastMsg');
+            if (toast && toastMsg) {
+                toastMsg.innerText = msg;
+                toast.classList.remove('hidden');
+                setTimeout(() => toast.classList.add('hidden'), 3500);
+            }
+        }
+
+        // Audio Voice Class (Text-to-Speech)
+        function speakCurrentLesson(title, summary, pointsText) {
+            if (!('speechSynthesis' in window)) {
+                showToast('ഈ ബ്രൗസറിൽ ഓഡിയോ പിന്തുണയില്ല');
+                return;
+            }
+            const btnLabel = document.getElementById('ttsBtnLabel');
+            if (isSpeaking) {
+                window.speechSynthesis.cancel();
+                isSpeaking = false;
+                if (btnLabel) btnLabel.innerText = 'ക്ലാസ് കേൾക്കുക (Audio)';
+                return;
+            }
+            window.speechSynthesis.cancel();
+            const utterance = new SpeechSynthesisUtterance(`${title}. ${summary}. ${pointsText}`);
+            utterance.lang = 'ml-IN';
+            utterance.rate = 0.95;
+            utterance.onend = () => {
+                isSpeaking = false;
+                if (btnLabel) btnLabel.innerText = 'ക്ലാസ് കേൾക്കുക (Audio)';
+            };
+            isSpeaking = true;
+            if (btnLabel) btnLabel.innerText = 'നിർത്തുക (Stop Audio)';
+            window.speechSynthesis.speak(utterance);
+        }
+
         // Real Clean PDF Download with Header, Footer, Margins & Academy Link
         function downloadLessonPDF(lessonIndex) {
             const lesson = serverLessons[lessonIndex];
@@ -778,7 +856,7 @@
         let isServerAdmin = false;
         let isStudentPreviewMode = false;
 
-        // Modules 01 & 02 permanently embedded in GitHub HTML (Step-by-step Malayalam + Visual Diagrams + Video Guides)
+        // Modules 01 & 02 permanently embedded in GitHub HTML
         const defaultFreeLessons = [
             {
                 tab_name: 'മൊഡ്യൂൾ 01 (Free)',
@@ -872,7 +950,6 @@
             }
             const { data, error } = await supabaseClient.from('lessons').select('*').order('id', { ascending: true });
             if (!error && data && data.length > 0 && !isStudentPreviewMode) {
-                // Always keep Modules 01 & 02 from GitHub + Modules 03-12 from Supabase
                 serverLessons = [...defaultFreeLessons, ...data];
             } else {
                 serverLessons = [...defaultFreeLessons];
@@ -1045,7 +1122,7 @@
         }
 
         function selectLesson(index) {
-            if (isSpeaking) { window.speechSynthesis.cancel(); isSpeaking = false; }
+            if (isSpeaking && 'speechSynthesis' in window) { window.speechSynthesis.cancel(); isSpeaking = false; }
             const lesson = serverLessons[index];
             if (!lesson) return;
             const viewer = document.getElementById('printableNoteArea');
