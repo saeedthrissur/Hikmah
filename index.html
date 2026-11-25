@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AL-HIKMAH (الْحِكْمَةُ) | ഡിജിറ്റൽ & AI അക്കാദമി പോർട്ടൽ</title>
+    <title>HIKMA Digital Academy | Ethical AI, Open-Tech & Media</title>
     
-    <!-- Google Fonts: Noto Sans Malayalam, Manjari & Amiri (Arabic) -->
+    <!-- Google Fonts: Noto Sans Malayalam, Manjari, Plus Jakarta Sans & Amiri -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Inter:wght@400;500;600;700;800&family=Manjari:wght@400;700&family=Noto+Sans+Malayalam:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Manjari:wght@400;700&family=Noto+Sans+Malayalam:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
     
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -24,13 +24,14 @@
             theme: {
                 extend: {
                     fontFamily: {
-                        sans: ['"Noto Sans Malayalam"', 'Inter', 'sans-serif'],
+                        sans: ['"Noto Sans Malayalam"', '"Plus Jakarta Sans"', 'sans-serif'],
                         display: ['Manjari', '"Noto Sans Malayalam"', 'sans-serif'],
+                        english: ['"Plus Jakarta Sans"', 'sans-serif'],
                         arabic: ['Amiri', 'serif'],
                     },
                     colors: {
                         brand: {
-                            950: '#042f2e',
+                            950: '#022c22',
                             900: '#064e3b',
                             800: '#065f46',
                             700: '#047857',
@@ -51,54 +52,62 @@
         }
     </script>
     <style>
-        .islamic-pattern {
-            background-color: #042f2e;
-            background-image: radial-gradient(rgba(251, 191, 36, 0.14) 1.5px, transparent 1.5px), radial-gradient(rgba(16, 185, 129, 0.12) 1.5px, #042f2e 1.5px);
-            background-size: 40px 40px;
-            background-position: 0 0, 20px 20px;
+        .hero-mesh {
+            background-color: #022c22;
+            background-image: 
+                radial-gradient(at 85% 15%, rgba(16, 185, 129, 0.22) 0px, transparent 50%),
+                radial-gradient(at 15% 85%, rgba(245, 158, 11, 0.16) 0px, transparent 50%);
         }
-        .arabic-text {
+        .arabic-calligraphy {
             font-family: 'Amiri', serif;
-            line-height: 1.9;
+            line-height: 2;
         }
-        .glass-card {
-            background: rgba(255, 255, 255, 0.96);
-            backdrop-filter: blur(12px);
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.94);
+            backdrop-filter: blur(16px);
         }
     </style>
 </head>
-<body class="bg-slate-50 text-slate-800 antialiased selection:bg-brand-700 selection:text-white">
+<body class="bg-slate-50 text-slate-800 antialiased selection:bg-brand-800 selection:text-white">
 
-    <!-- Top Quranic Bar -->
-    <div class="bg-brand-950 text-amber-300 text-xs py-2.5 px-4 text-center border-b border-brand-800">
-        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-3">
-            <span class="arabic-text text-base sm:text-lg font-bold tracking-wide" dir="rtl">﴿ادْعُ إِلَىٰ سَبِيلِ رَبِّكَ بِالْحِكْمَةِ وَالْمَوْعِظَةِ الْحَسَنَةِ﴾</span>
-            <span class="text-emerald-200 text-[11px] sm:text-xs font-medium">"യുക്തിദീക്ഷയോടും (ഹിക്മത്ത്) സദുപദേശത്തോടും കൂടി താങ്കളുടെ നാഥന്റെ മാർഗ്ഗത്തിലേക്ക് ക്ഷണിക്കുക" (അന്നഹ്‌ൽ: 125)</span>
-        </div>
+    <!-- Minimal Quranic Calligraphy Strip (Pure Arabic Only) -->
+    <div class="bg-brand-950 text-amber-300 py-2 px-4 text-center border-b border-brand-900">
+        <p class="arabic-calligraphy text-base sm:text-lg font-bold tracking-wide" dir="rtl">
+            ﴿ادْعُ إِلَىٰ سَبِيلِ رَبِّكَ بِالْحِكْمَةِ وَالْمَوْعِظَةِ الْحَسَنَةِ﴾
+        </p>
     </div>
 
     <!-- Navigation Bar -->
-    <header class="sticky top-0 z-40 glass-card border-b border-slate-200/80 shadow-sm">
+    <header class="sticky top-0 z-40 glass-nav border-b border-slate-200/80 shadow-sm">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-16 md:h-20">
-                <!-- Brand Logo -->
-                <a href="#" class="flex items-center gap-3 group">
-                    <div class="w-11 h-11 rounded-2xl bg-gradient-to-br from-brand-900 to-brand-700 flex items-center justify-center text-amber-400 shadow-md group-hover:scale-105 transition-transform">
-                        <span class="arabic-text text-2xl font-bold">ح</span>
+            <div class="flex justify-between items-center h-18 py-3">
+                <!-- Custom Professional SVG Logo with H & ح Monogram -->
+                <a href="#" class="flex items-center gap-3.5 group">
+                    <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-brand-950 via-brand-900 to-brand-700 p-1.5 shadow-lg flex items-center justify-center group-hover:scale-105 transition-transform border border-amber-400/40">
+                        <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full h-full">
+                            <!-- Outer Geometric Octagram -->
+                            <rect x="11" y="11" width="42" height="42" rx="6" stroke="#fbbf24" stroke-width="2"/>
+                            <rect x="11" y="11" width="42" height="42" rx="6" transform="rotate(45 32 32)" stroke="#34d399" stroke-width="2"/>
+                            <!-- Inner Shield -->
+                            <circle cx="32" cy="32" r="16" fill="#022c22" stroke="#fbbf24" stroke-width="1.5"/>
+                            <!-- Monogram Letter 'H' & Arabic 'ح' -->
+                            <text x="32" y="38" text-anchor="middle" fill="#fbbf24" font-family="Plus Jakarta Sans, sans-serif" font-weight="800" font-size="19">H</text>
+                            <circle cx="44" cy="20" r="2.5" fill="#34d399"/>
+                            <circle cx="20" cy="44" r="2.5" fill="#34d399"/>
+                        </svg>
                     </div>
                     <div>
                         <div class="flex items-center gap-2">
-                            <span class="font-extrabold text-lg md:text-xl text-brand-950 tracking-tight">AL-HIKMAH</span>
-                            <span class="arabic-text text-base text-brand-700 font-bold">(الْحِكْمَةُ)</span>
+                            <span class="font-english font-extrabold text-xl sm:text-2xl text-brand-950 tracking-tight">HIKMA <span class="text-brand-600">Digital Academy</span></span>
                         </div>
-                        <p class="text-[10px] md:text-xs text-slate-500 font-medium">വിവേകത്തോടെയുള്ള വിജ്ഞാന വിനിമയം</p>
+                        <p class="text-[11px] text-slate-500 font-semibold tracking-wide">Ethical AI • Open-Tech • Media Literacy</p>
                     </div>
                 </a>
 
-                <!-- Desktop Menu -->
-                <nav class="hidden lg:flex items-center gap-6 text-sm font-semibold text-slate-700">
-                    <a href="#vision" class="hover:text-brand-700 transition-colors">ലക്ഷ്യം</a>
-                    <a href="#tracks" class="hover:text-brand-700 transition-colors">പഠന വിഭാഗങ്ങൾ</a>
+                <!-- Desktop Navigation -->
+                <nav class="hidden lg:flex items-center gap-7 text-sm font-bold text-slate-700">
+                    <a href="#vision" class="hover:text-brand-700 transition-colors">ആദർശം</a>
+                    <a href="#tracks" class="hover:text-brand-700 transition-colors">കോഴ്സുകൾ</a>
                     <a href="#syllabus" class="hover:text-brand-700 transition-colors">സിലബസ്</a>
                     <a href="#toolkit" class="hover:text-brand-700 transition-colors">ടൂൾകിറ്റ്</a>
                     <a href="#certifications" class="hover:text-brand-700 transition-colors">സർട്ടിഫിക്കറ്റുകൾ</a>
@@ -107,21 +116,21 @@
 
                 <!-- Action Buttons -->
                 <div class="hidden md:flex items-center gap-2.5">
-                    <button onclick="openModal('verifyModal')" class="px-3.5 py-2 text-xs font-bold text-brand-900 bg-brand-50 hover:bg-brand-100 rounded-xl border border-brand-200 transition-all flex items-center gap-1.5">
+                    <button onclick="openModal('verifyModal')" class="px-3.5 py-2.5 text-xs font-bold text-brand-900 bg-brand-50 hover:bg-brand-100 rounded-xl border border-brand-200 transition-all flex items-center gap-1.5">
                         <i class="fa-solid fa-qrcode text-brand-700"></i>
                         <span>വെരിഫിക്കേഷൻ</span>
                     </button>
-                    <button onclick="openModal('loginModal')" class="px-3.5 py-2 text-xs font-bold text-slate-800 bg-slate-100 hover:bg-slate-200 rounded-xl border border-slate-200 transition-all flex items-center gap-1.5">
+                    <button onclick="openModal('loginModal')" class="px-3.5 py-2.5 text-xs font-bold text-slate-800 bg-slate-100 hover:bg-slate-200 rounded-xl border border-slate-200 transition-all flex items-center gap-1.5">
                         <i class="fa-solid fa-user-graduate text-slate-600"></i>
-                        <span>ലോഗിൻ</span>
+                        <span>പോർട്ടൽ</span>
                     </button>
-                    <a href="#admission" class="px-4 py-2 text-xs font-bold text-white bg-brand-800 hover:bg-brand-900 rounded-xl shadow-sm transition-all">
+                    <a href="#admission" class="px-4 py-2.5 text-xs font-bold text-white bg-brand-800 hover:bg-brand-900 rounded-xl shadow-sm transition-all">
                         അഡ്മിഷൻ
                     </a>
                 </div>
 
                 <!-- Mobile Menu Button -->
-                <button onclick="toggleMobileMenu()" class="lg:hidden p-2.5 rounded-xl text-slate-700 hover:bg-slate-100 focus:outline-none">
+                <button onclick="toggleMobileMenu()" class="lg:hidden p-2.5 rounded-xl text-slate-700 hover:bg-slate-100">
                     <i class="fa-solid fa-bars text-xl"></i>
                 </button>
             </div>
@@ -129,18 +138,18 @@
 
         <!-- Mobile Dropdown -->
         <div id="mobileMenu" class="hidden lg:hidden bg-white border-t border-slate-100 px-4 pt-3 pb-6 space-y-2 shadow-xl">
-            <a href="#vision" onclick="toggleMobileMenu()" class="block py-2.5 px-3 rounded-xl text-sm font-semibold text-slate-700 hover:bg-brand-50">ലക്ഷ്യവും ആദർശവും</a>
-            <a href="#tracks" onclick="toggleMobileMenu()" class="block py-2.5 px-3 rounded-xl text-sm font-semibold text-slate-700 hover:bg-brand-50">പഠന വിഭാഗങ്ങൾ (BAYAN & NOOR)</a>
-            <a href="#syllabus" onclick="toggleMobileMenu()" class="block py-2.5 px-3 rounded-xl text-sm font-semibold text-slate-700 hover:bg-brand-50">12 മൊഡ്യൂൾ സിലബസ്</a>
-            <a href="#toolkit" onclick="toggleMobileMenu()" class="block py-2.5 px-3 rounded-xl text-sm font-semibold text-slate-700 hover:bg-brand-50">സ്വതന്ത്ര സോഫ്റ്റ്‌വെയർ ടൂൾകിറ്റ്</a>
-            <a href="#certifications" onclick="toggleMobileMenu()" class="block py-2.5 px-3 rounded-xl text-sm font-semibold text-slate-700 hover:bg-brand-50">ആഗോള സർട്ടിഫിക്കേഷനുകൾ</a>
-            <a href="#faq" onclick="toggleMobileMenu()" class="block py-2.5 px-3 rounded-xl text-sm font-semibold text-slate-700 hover:bg-brand-50">പതിവ് ചോദ്യങ്ങൾ (FAQ)</a>
+            <a href="#vision" onclick="toggleMobileMenu()" class="block py-2.5 px-3 rounded-xl text-sm font-bold text-slate-700 hover:bg-brand-50">ആദർശവും നയങ്ങളും</a>
+            <a href="#tracks" onclick="toggleMobileMenu()" class="block py-2.5 px-3 rounded-xl text-sm font-bold text-slate-700 hover:bg-brand-50">പ്രധാന കോഴ്സുകൾ</a>
+            <a href="#syllabus" onclick="toggleMobileMenu()" class="block py-2.5 px-3 rounded-xl text-sm font-bold text-slate-700 hover:bg-brand-50">12 മൊഡ്യൂൾ സിലബസ്</a>
+            <a href="#toolkit" onclick="toggleMobileMenu()" class="block py-2.5 px-3 rounded-xl text-sm font-bold text-slate-700 hover:bg-brand-50">സ്വതന്ത്ര ടൂൾകിറ്റ്</a>
+            <a href="#certifications" onclick="toggleMobileMenu()" class="block py-2.5 px-3 rounded-xl text-sm font-bold text-slate-700 hover:bg-brand-50">ആഗോള സർട്ടിഫിക്കറ്റുകൾ</a>
+            <a href="#faq" onclick="toggleMobileMenu()" class="block py-2.5 px-3 rounded-xl text-sm font-bold text-slate-700 hover:bg-brand-50">പതിവ് ചോദ്യങ്ങൾ</a>
             <div class="pt-3 grid grid-cols-2 gap-2 border-t border-slate-100">
                 <button onclick="toggleMobileMenu(); openModal('verifyModal')" class="py-2.5 px-3 text-xs font-bold text-brand-900 bg-brand-50 rounded-xl border border-brand-200">
                     <i class="fa-solid fa-qrcode mr-1"></i> വെരിഫിക്കേഷൻ
                 </button>
                 <button onclick="toggleMobileMenu(); openModal('loginModal')" class="py-2.5 px-3 text-xs font-bold text-slate-800 bg-slate-100 rounded-xl border border-slate-200">
-                    <i class="fa-solid fa-user-graduate mr-1"></i> സ്റ്റുഡന്റ് ലോഗിൻ
+                    <i class="fa-solid fa-user-graduate mr-1"></i> സ്റ്റുഡന്റ് പോർട്ടൽ
                 </button>
                 <a href="#admission" onclick="toggleMobileMenu()" class="col-span-2 py-3 text-center text-xs font-bold text-white bg-brand-800 rounded-xl shadow-md">
                     അഡ്മിഷൻ / സ്ഥാപന രജിസ്ട്രേഷൻ
@@ -149,93 +158,87 @@
         </div>
     </header>
 
-    <!-- Hero Section -->
-    <section class="islamic-pattern text-white relative overflow-hidden">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24 relative z-10">
-            <div class="grid lg:grid-cols-12 gap-12 items-center">
+    <!-- Hero Section with Modern Split Imagery -->
+    <section class="hero-mesh text-white relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 md:py-24 relative z-10">
+            <div class="grid lg:grid-cols-12 gap-10 lg:gap-12 items-center">
                 <!-- Left Content -->
                 <div class="lg:col-span-7 space-y-6">
-                    <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-900/90 border border-brand-600/60 text-amber-300 text-xs font-semibold">
-                        <i class="fa-solid fa-shield-halved text-emerald-400"></i>
-                        <span>100% ഓപ്പൺ സോഴ്സ് • ധാർമ്മിക AI • ആഗോള സർട്ടിഫിക്കേഷനുകൾ</span>
+                    <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-brand-900/90 border border-emerald-500/30 text-amber-300 text-xs font-bold">
+                        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                        <span>സ്വതന്ത്ര സോഫ്റ്റ്‌വെയർ • ധാർമ്മിക AI • ആഗോള സർട്ടിഫിക്കേഷനുകൾ</span>
                     </div>
 
-                    <h1 class="font-display text-3xl sm:text-5xl lg:text-[52px] font-bold leading-tight text-white">
+                    <h1 class="font-display text-3xl sm:text-5xl lg:text-[54px] font-bold leading-tight text-white">
                         പാരമ്പര്യ വിജ്ഞാനത്തോടൊപ്പം <br>
                         <span class="text-amber-400">ആധുനിക സാങ്കേതിക തികവ്</span>
                     </h1>
 
                     <p class="text-emerald-100/90 text-sm sm:text-base md:text-lg leading-relaxed max-w-2xl">
-                        <strong>AL-HIKMAH (الْحِكْمَةُ)</strong> — <em>Academy for Learning, Holistic Innovation, Knowledge, Media & AI</em>. ഇസ്ലാമിക മൂല്യങ്ങളിലും സ്വതന്ത്ര സോഫ്റ്റ്‌വെയർ (FOSS) നയങ്ങളിലും അധിഷ്ഠിതമായി വിദ്യാർത്ഥികളെയും സംഘടനാ പ്രവർത്തകരെയും പൊതുസമൂഹത്തെയും ഡിജിറ്റൽ യുഗത്തിന് സജ്ജരാക്കുന്ന സമഗ്ര പരിശീലന പദ്ധതി.
+                        ഇസ്ലാമിക മൂല്യങ്ങളിലും സ്വതന്ത്ര സോഫ്റ്റ്‌വെയർ നയങ്ങളിലും അധിഷ്ഠിതമായി വിദ്യാർത്ഥികളെയും സംഘടനാ പ്രവർത്തകരെയും പൊതുസമൂഹത്തെയും ഡിജിറ്റൽ യുഗത്തിന് സജ്ജരാക്കുന്ന സമഗ്ര പരിശീലന സംരംഭമാണ് <strong class="font-english text-white">HIKMA Digital Academy</strong>.
                     </p>
 
                     <div class="flex flex-wrap gap-3.5 pt-2">
                         <a href="#admission" class="px-6 py-3.5 bg-amber-500 hover:bg-amber-400 text-brand-950 font-extrabold rounded-2xl shadow-lg transition-all flex items-center gap-2 text-sm">
-                            <span>കോഴ്സിൽ ചേരുക / സ്ഥാപന അപേക്ഷ</span>
+                            <span>കോഴ്സിൽ ചേരുക</span>
                             <i class="fa-solid fa-arrow-left rotate-180"></i>
                         </a>
-                        <a href="#tracks" class="px-6 py-3.5 bg-brand-900/80 hover:bg-brand-800 text-white font-semibold rounded-2xl border border-brand-600/60 transition-all text-sm">
+                        <a href="#tracks" class="px-6 py-3.5 bg-white/10 hover:bg-white/15 text-white font-bold rounded-2xl border border-white/20 transition-all text-sm backdrop-blur-sm">
                             പഠന വിഭാഗങ്ങൾ കാണുക
                         </a>
                     </div>
 
-                    <!-- Key Highlights -->
+                    <!-- Stats Bar -->
                     <div class="grid grid-cols-3 gap-4 pt-6 border-t border-brand-800/80 max-w-lg">
                         <div>
-                            <div class="text-2xl sm:text-3xl font-extrabold text-amber-400">12</div>
-                            <div class="text-xs text-emerald-200">സമഗ്ര മൊഡ്യൂളുകൾ</div>
+                            <div class="font-english text-2xl sm:text-3xl font-extrabold text-amber-400">12</div>
+                            <div class="text-xs text-emerald-200 font-medium">പ്രാക്ടിക്കൽ മൊഡ്യൂളുകൾ</div>
                         </div>
                         <div>
-                            <div class="text-2xl sm:text-3xl font-extrabold text-amber-400">50+</div>
-                            <div class="text-xs text-emerald-200">ആഗോള കോഴ്സുകൾ</div>
+                            <div class="font-english text-2xl sm:text-3xl font-extrabold text-amber-400">50+</div>
+                            <div class="text-xs text-emerald-200 font-medium">ആഗോള സർട്ടിഫിക്കറ്റുകൾ</div>
                         </div>
                         <div>
-                            <div class="text-2xl sm:text-3xl font-extrabold text-amber-400">100%</div>
-                            <div class="text-xs text-emerald-200">ഹലാൽ ലൈസൻസിംഗ്</div>
+                            <div class="font-english text-2xl sm:text-3xl font-extrabold text-amber-400">100%</div>
+                            <div class="text-xs text-emerald-200 font-medium">ഹലാൽ ലൈസൻസിംഗ്</div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Right Quranic Wisdom Card -->
-                <div class="lg:col-span-5">
-                    <div class="bg-brand-900/75 backdrop-blur-md border border-brand-700/80 rounded-3xl p-6 sm:p-8 shadow-2xl space-y-6">
-                        <div class="flex items-center justify-between border-b border-brand-700/60 pb-4">
-                            <span class="text-xs font-bold uppercase tracking-wider text-amber-400">ഖുർആനിക അടിത്തറ</span>
-                            <span class="arabic-text text-xl text-white font-bold">الْحِكْمَةُ • الْبَيَانُ • النُّورُ</span>
+                <!-- Right Visual Collage & Pure Arabic Verse -->
+                <div class="lg:col-span-5 space-y-5">
+                    <div class="relative rounded-3xl overflow-hidden shadow-2xl border-2 border-brand-700/60 group bg-brand-900 h-64 sm:h-72">
+                        <!-- AI Generated Image Container: Kerala Dars Students in White Turban Learning Computing -->
+                        <div id="heroImgLoader" class="absolute inset-0 flex flex-col items-center justify-center bg-brand-900 text-emerald-200 text-xs gap-2">
+                            <i class="fa-solid fa-circle-notch fa-spin text-2xl text-amber-400"></i>
+                            <span>ചിത്രം തയ്യാറാക്കുന്നു...</span>
                         </div>
-
-                        <div class="bg-brand-950/65 p-5 rounded-2xl border border-brand-800 space-y-2.5 text-center">
-                            <p class="arabic-text text-2xl sm:text-3xl text-amber-300 font-bold" dir="rtl">
-                                ﴿وَمَن يُؤْتَ الْحِكْمَةَ فَقَدْ أُوتِيَ خَيْرًا كَثِيرًا﴾
-                            </p>
-                            <p class="text-xs sm:text-sm text-emerald-100 leading-relaxed">
-                                "ആർക്കാണോ വിവേകം (ഹിക്മത്ത്) നൽകപ്പെടുന്നത്, തീർച്ചയായും അവന് ധാരാളം നന്മ നൽകപ്പെട്ടിരിക്കുന്നു." <span class="text-amber-400/90 font-semibold">(അൽ-ബഖറ: 269)</span>
-                            </p>
+                        <img id="heroDarsImg" 
+                             src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=900&q=80" 
+                             alt="Kerala Dars Students Learning Computing" 
+                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-brand-950 via-brand-950/30 to-transparent"></div>
+                        <div class="absolute bottom-4 left-4 right-4 flex items-center justify-between">
+                            <span class="px-3 py-1 bg-brand-950/90 border border-brand-700 rounded-xl text-xs font-bold text-emerald-300">
+                                <i class="fa-solid fa-laptop-code text-amber-400 mr-1.5"></i> ഹാൻഡ്സ്-ഓൺ പ്രാക്ടിക്കൽ ലാബ്
+                            </span>
+                            <span class="px-3 py-1 bg-amber-500 text-brand-950 rounded-xl text-xs font-extrabold">
+                                FOSS & AI
+                            </span>
                         </div>
+                    </div>
 
-                        <!-- Semantic Pillars -->
-                        <div class="space-y-3">
-                            <div class="flex items-start gap-3 bg-brand-950/40 p-3.5 rounded-2xl border border-brand-800/60">
-                                <div class="w-9 h-9 rounded-xl bg-amber-500/20 text-amber-400 flex items-center justify-center font-bold shrink-0">1</div>
-                                <div>
-                                    <h4 class="font-bold text-sm text-white">AL-HIKMAH (الْحِكْمَةُ - വിവേകം)</h4>
-                                    <p class="text-xs text-emerald-200/85">സാങ്കേതികവിദ്യയെ ധാർമ്മികതയോടെയും കൃത്യമായ ലക്ഷ്യബോധത്തോടെയും ഉപയോഗിക്കാനുള്ള വിവേകം.</p>
-                                </div>
-                            </div>
-                            <div class="flex items-start gap-3 bg-brand-950/40 p-3.5 rounded-2xl border border-brand-800/60">
-                                <div class="w-9 h-9 rounded-xl bg-emerald-500/20 text-emerald-300 flex items-center justify-center font-bold shrink-0">2</div>
-                                <div>
-                                    <h4 class="font-bold text-sm text-white">AL-BAYAN (الْبَيَانُ - വ്യക്തമായ അവതരണം)</h4>
-                                    <p class="text-xs text-emerald-200/85">മത-ഭൗതിക കലാലയങ്ങളിലെ വിദ്യാർത്ഥികൾക്കായി രൂപകൽപ്പന ചെയ്ത 1-വർഷത്തെ എക്സിക്യൂട്ടീവ് ഡിപ്ലോമ.</p>
-                                </div>
-                            </div>
-                            <div class="flex items-start gap-3 bg-brand-950/40 p-3.5 rounded-2xl border border-brand-800/60">
-                                <div class="w-9 h-9 rounded-xl bg-sky-500/20 text-sky-300 flex items-center justify-center font-bold shrink-0">3</div>
-                                <div>
-                                    <h4 class="font-bold text-sm text-white">AL-NOOR (النُّورُ - അറിവിന്റെ വെളിച്ചം)</h4>
-                                    <p class="text-xs text-emerald-200/85">സംഘടനാ യൂണിറ്റുകൾക്കും പൊതുസമൂഹത്തിനും ഡിജിറ്റൽ സാക്ഷരതയും സൈബർ സുരക്ഷയും നൽകുന്ന ക്യാമ്പുകൾ.</p>
-                                </div>
-                            </div>
+                    <!-- Pure Arabic Quranic Verse Card (No Malayalam Translation) -->
+                    <div class="bg-brand-900/80 backdrop-blur-md border border-brand-700/80 rounded-3xl p-5 text-center shadow-xl">
+                        <p class="arabic-calligraphy text-2xl sm:text-3xl text-amber-300 font-bold" dir="rtl">
+                            ﴿وَمَن يُؤْتَ الْحِكْمَةَ فَقَدْ أُوتِيَ خَيْرًا كَثِيرًا﴾
+                        </p>
+                        <div class="mt-2 flex items-center justify-center gap-4 text-xs font-bold text-emerald-200 tracking-widest">
+                            <span class="arabic-calligraphy text-lg text-white">الْحِكْمَةُ</span>
+                            <span>•</span>
+                            <span class="arabic-calligraphy text-lg text-white">الْبَيَانُ</span>
+                            <span>•</span>
+                            <span class="arabic-calligraphy text-lg text-white">النُّورُ</span>
                         </div>
                     </div>
                 </div>
@@ -243,53 +246,81 @@
         </div>
     </section>
 
-    <!-- Vision & Ethics Section -->
+    <!-- Vision & Core Values Section -->
     <section id="vision" class="py-16 md:py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center max-w-3xl mx-auto space-y-3 mb-14">
-            <span class="text-xs font-bold tracking-wider uppercase text-brand-700 bg-brand-100 px-3.5 py-1.5 rounded-full">നമ്മുടെ ആദർശവും നയങ്ങളും</span>
-            <h2 class="font-display text-2xl sm:text-4xl font-bold text-slate-900">എന്തുകൊണ്ട് AL-HIKMAH വ്യത്യസ്തമാകുന്നു?</h2>
-            <p class="text-slate-600 text-sm sm:text-base">കേവലം സോഫ്റ്റ്‌വെയറുകൾ പഠിപ്പിക്കുന്നതിന് പകരം, ഡിജിറ്റൽ ലോകത്തെ ചതിക്കുഴികളും ധാർമ്മിക മൂല്യങ്ങളും തിരിച്ചറിയാൻ പഠിതാക്കളെ പ്രാപ്തരാക്കുന്നു.</p>
-        </div>
-
-        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <div class="bg-white p-6 rounded-3xl border border-slate-200/90 shadow-sm hover:shadow-md transition-all space-y-3">
-                <div class="w-12 h-12 rounded-2xl bg-brand-50 text-brand-700 flex items-center justify-center text-xl">
-                    <i class="fa-solid fa-scale-balanced"></i>
+        <div class="grid lg:grid-cols-12 gap-12 items-center mb-16">
+            <div class="lg:col-span-5">
+                <div class="relative rounded-3xl overflow-hidden shadow-xl border border-slate-200 bg-slate-900">
+                    <div class="relative h-72 sm:h-80">
+                        <div id="visionImgLoader" class="absolute inset-0 flex flex-col items-center justify-center bg-slate-900 text-emerald-200 text-xs gap-2">
+                            <i class="fa-solid fa-circle-notch fa-spin text-2xl text-amber-400"></i>
+                            <span>ചിത്രം തയ്യാറാക്കുന്നു...</span>
+                        </div>
+                        <img id="visionDarsImg" 
+                             src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=800&q=80" 
+                             alt="Ethical Digital Literacy" 
+                             class="w-full h-full object-cover">
+                    </div>
+                    <div class="bg-white p-5 border-t border-slate-100 flex items-center gap-4">
+                        <div class="w-12 h-12 rounded-2xl bg-brand-100 text-brand-800 flex items-center justify-center text-xl shrink-0">
+                            <i class="fa-solid fa-shield-halved"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-sm text-slate-900">ധാർമ്മിക ഡിജിറ്റൽ സാക്ഷരത</h4>
+                            <p class="text-xs text-slate-500">വിജ്ഞാനവും സ്വഭാവമൂല്യങ്ങളും ഒത്തുചേരുന്ന പരിശീലന രീതി</p>
+                        </div>
+                    </div>
                 </div>
-                <h3 class="font-bold text-lg text-slate-900">ഹലാൽ ലൈസൻസിംഗ് നയം</h3>
-                <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
-                    വ്യാജ (Cracked) സോഫ്റ്റ്‌വെയറുകളും പകർപ്പവകാശമുള്ള ഫോണ്ടുകളും ചിത്രങ്ങളും പൂർണ്ണമായും ഒഴിവാക്കി, നിയമാനുസൃതമായ ഓപ്പൺ സോഴ്സ് ടൂളുകൾ മാത്രം ഉപയോഗിക്കുന്നു.
-                </p>
             </div>
 
-            <div class="bg-white p-6 rounded-3xl border border-slate-200/90 shadow-sm hover:shadow-md transition-all space-y-3">
-                <div class="w-12 h-12 rounded-2xl bg-amber-50 text-amber-600 flex items-center justify-center text-xl">
-                    <i class="fa-solid fa-user-shield"></i>
-                </div>
-                <h3 class="font-bold text-lg text-slate-900">ഡാറ്റാ പ്രൈവസി & സുരക്ഷ</h3>
-                <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
-                    സൗജന്യ ആപ്പുകൾ എങ്ങനെയാണ് ഉപയോക്താക്കളുടെ വിവരങ്ങൾ ശേഖരിക്കുന്നതെന്ന് ബോധവൽക്കരിക്കുകയും, Proton Mail, Bitwarden, 2FA എന്നിവയിലൂടെ സുരക്ഷ ഉറപ്പാക്കുകയും ചെയ്യുന്നു.
+            <div class="lg:col-span-7 space-y-5">
+                <span class="text-xs font-bold tracking-wider uppercase text-brand-700 bg-brand-100 px-3.5 py-1.5 rounded-full">നമ്മുടെ ആദർശവും നയങ്ങളും</span>
+                <h2 class="font-display text-2xl sm:text-4xl font-bold text-slate-900">എന്തുകൊണ്ട് HIKMA Digital Academy വ്യത്യസ്തമാകുന്നു?</h2>
+                <p class="text-slate-600 text-sm sm:text-base leading-relaxed">
+                    കേവലം സോഫ്റ്റ്‌വെയറുകൾ പഠിപ്പിക്കുന്നതിന് പകരം, ഡിജിറ്റൽ ലോകത്തെ ചതിക്കുഴികളും പകർപ്പവകാശ നിയമങ്ങളും തിരിച്ചറിയാനും സാങ്കേതികവിദ്യയെ സമൂഹനന്മയ്ക്ക് ഉപയോഗിക്കാനും പഠിതാക്കളെ പ്രാപ്തരാക്കുന്നു.
                 </p>
-            </div>
 
-            <div class="bg-white p-6 rounded-3xl border border-slate-200/90 shadow-sm hover:shadow-md transition-all space-y-3">
-                <div class="w-12 h-12 rounded-2xl bg-sky-50 text-sky-600 flex items-center justify-center text-xl">
-                    <i class="fa-solid fa-globe"></i>
-                </div>
-                <h3 class="font-bold text-lg text-slate-900">ആഗോള സർട്ടിഫിക്കേഷനുകൾ</h3>
-                <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
-                    Google, IBM, Cisco, Microsoft, Harvard CS50, Skill India തുടങ്ങിയ അന്താരാഷ്ട്ര പ്ലാറ്റ്‌ഫോമുകളിൽ നിന്ന് സൗജന്യമായി വെരിഫൈഡ് സർട്ടിഫിക്കറ്റുകൾ നേടാൻ പരിശീലിപ്പിക്കുന്നു.
-                </p>
-            </div>
+                <div class="grid sm:grid-cols-2 gap-4 pt-2">
+                    <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-2">
+                        <div class="w-10 h-10 rounded-xl bg-brand-50 text-brand-700 flex items-center justify-center text-lg">
+                            <i class="fa-solid fa-scale-balanced"></i>
+                        </div>
+                        <h3 class="font-bold text-base text-slate-900">ഹലാൽ ലൈസൻസിംഗ് നയം</h3>
+                        <p class="text-xs text-slate-600 leading-relaxed">
+                            വ്യാജ സോഫ്റ്റ്‌വെയറുകളും അനധികൃത ഫോണ്ടുകളും ഒഴിവാക്കി, നിയമാനുസൃതമായ സ്വതന്ത്ര സോഫ്റ്റ്‌വെയറുകൾ മാത്രം ഉപയോഗിക്കുന്നു.
+                        </p>
+                    </div>
 
-            <div class="bg-white p-6 rounded-3xl border border-slate-200/90 shadow-sm hover:shadow-md transition-all space-y-3">
-                <div class="w-12 h-12 rounded-2xl bg-purple-50 text-purple-600 flex items-center justify-center text-xl">
-                    <i class="fa-solid fa-hands-holding-circle"></i>
+                    <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-2">
+                        <div class="w-10 h-10 rounded-xl bg-amber-50 text-amber-600 flex items-center justify-center text-lg">
+                            <i class="fa-solid fa-user-shield"></i>
+                        </div>
+                        <h3 class="font-bold text-base text-slate-900">ഡാറ്റാ പ്രൈവസി & സുരക്ഷ</h3>
+                        <p class="text-xs text-slate-600 leading-relaxed">
+                            സൗജന്യ ആപ്പുകളുടെ ഡാറ്റാ ശേഖരണ രീതികൾ ബോധവൽക്കരിക്കുകയും സുരക്ഷിത ഇമെയിൽ, പാസ്‌വേഡ് മാനേജറുകൾ എന്നിവ പരിശീലിപ്പിക്കുകയും ചെയ്യുന്നു.
+                        </p>
+                    </div>
+
+                    <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-2">
+                        <div class="w-10 h-10 rounded-xl bg-sky-50 text-sky-600 flex items-center justify-center text-lg">
+                            <i class="fa-solid fa-award"></i>
+                        </div>
+                        <h3 class="font-bold text-base text-slate-900">ആഗോള സർട്ടിഫിക്കേഷനുകൾ</h3>
+                        <p class="text-xs text-slate-600 leading-relaxed">
+                            ലോകോത്തര ടെക് സ്ഥാപനങ്ങളുടെയും സർക്കാർ ഏജൻസികളുടെയും വെരിഫൈഡ് സർട്ടിഫിക്കറ്റുകൾ സൗജന്യമായി നേടാൻ സഹായിക്കുന്നു.
+                        </p>
+                    </div>
+
+                    <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-2">
+                        <div class="w-10 h-10 rounded-xl bg-purple-50 text-purple-600 flex items-center justify-center text-lg">
+                            <i class="fa-solid fa-hands-holding-circle"></i>
+                        </div>
+                        <h3 class="font-bold text-base text-slate-900">സാമൂഹിക & സംഘടനാ സേവനം</h3>
+                        <p class="text-xs text-slate-600 leading-relaxed">
+                            രേഖകൾ തയ്യാറാക്കൽ, കണക്കുകൾ, പോസ്റ്റർ ഡിസൈനിംഗ്, വീഡിയോ എഡിറ്റിംഗ് എന്നിവയിലൂടെ പൊതുപ്രവർത്തനങ്ങളെ കാര്യക്ഷമമാക്കുന്നു.
+                        </p>
+                    </div>
                 </div>
-                <h3 class="font-bold text-lg text-slate-900">സാമൂഹിക & പ്രബോധന സേവനം</h3>
-                <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
-                    കമ്മിറ്റി മിനിറ്റ്സ്, വരവ്-ചെലവ് കണക്കുകൾ, പോസ്റ്റർ ഡിസൈനിംഗ്, വീഡിയോ എഡിറ്റിംഗ്, AI വിവർത്തനം എന്നിവയിലൂടെ പൊതുപ്രവർത്തനങ്ങളെ കാര്യക്ഷമമാക്കുന്നു.
-                </p>
             </div>
         </div>
     </section>
@@ -299,7 +330,7 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center max-w-3xl mx-auto space-y-3 mb-14">
                 <span class="text-xs font-bold tracking-wider uppercase text-amber-800 bg-amber-100 px-3.5 py-1.5 rounded-full">പഠന വിഭാഗങ്ങൾ</span>
-                <h2 class="font-display text-2xl sm:text-4xl font-bold text-slate-900">AL-HIKMAH പദ്ധതിക്ക് കീഴിലെ 2 പ്രധാന കോഴ്സുകൾ</h2>
+                <h2 class="font-display text-2xl sm:text-4xl font-bold text-slate-900">HIKMA പദ്ധതിക്ക് കീഴിലെ 2 പ്രധാന കോഴ്സുകൾ</h2>
                 <p class="text-slate-600 text-sm sm:text-base">സ്ഥാപനങ്ങളുടെയും പഠിതാക്കളുടെയും ആവശ്യങ്ങൾക്കനുസരിച്ച് തിരഞ്ഞെടുക്കാവുന്ന രണ്ട് പ്രത്യേക പാഠ്യപദ്ധതികൾ.</p>
             </div>
 
@@ -307,43 +338,45 @@
                 <!-- Track 1: BAYAN -->
                 <div class="bg-white rounded-3xl border-2 border-brand-800 shadow-xl overflow-hidden flex flex-col justify-between">
                     <div>
-                        <div class="bg-brand-900 text-white p-6 sm:p-8">
-                            <div class="flex justify-between items-start gap-4">
-                                <div>
-                                    <span class="inline-block px-3 py-1 bg-amber-400 text-brand-950 text-xs font-extrabold rounded-lg mb-2">TRACK 01 • 1-വർഷത്തെ ഡിപ്ലോമ</span>
-                                    <h3 class="text-2xl sm:text-3xl font-extrabold flex items-center gap-2">
-                                        <span>BAYAN</span>
-                                        <span class="arabic-text text-amber-400 text-2xl">(الْبَيَانُ)</span>
-                                    </h3>
-                                    <p class="text-xs text-emerald-200 mt-1">Applied Youth Academy for AI & New-Tech</p>
-                                </div>
-                                <div class="w-12 h-12 rounded-2xl bg-brand-800 flex items-center justify-center text-amber-400 text-2xl shrink-0">
-                                    <i class="fa-solid fa-graduation-cap"></i>
-                                </div>
+                        <div class="relative h-56 overflow-hidden bg-brand-950">
+                            <div id="bayanImgLoader" class="absolute inset-0 flex flex-col items-center justify-center bg-brand-950 text-emerald-200 text-xs gap-2">
+                                <i class="fa-solid fa-circle-notch fa-spin text-2xl text-amber-400"></i>
+                                <span>BAYAN ചിത്രം തയ്യാറാക്കുന്നു...</span>
                             </div>
-                            <div class="mt-4 pt-4 border-t border-brand-800 text-xs text-emerald-100 flex items-center justify-between">
-                                <span class="arabic-text text-base text-amber-300" dir="rtl">﴿خَلَقَ الْإِنسَانَ ۝ عَلَّمَهُ الْبَيَانَ﴾</span>
-                                <span>അർറഹ്‌മാൻ: 3-4</span>
+                            <img id="bayanTrackImg" 
+                                 src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=800&q=80" 
+                                 alt="BAYAN Diploma Track - Dars Students" 
+                                 class="w-full h-full object-cover">
+                            <div class="absolute inset-0 bg-gradient-to-t from-brand-950 via-brand-950/60 to-transparent"></div>
+                            <div class="absolute bottom-4 left-6 right-6 flex justify-between items-end text-white">
+                                <div>
+                                    <span class="inline-block px-2.5 py-1 bg-amber-400 text-brand-950 text-[11px] font-extrabold rounded-md mb-1.5">1-വർഷത്തെ ഡിപ്ലോമ</span>
+                                    <h3 class="font-english text-2xl sm:text-3xl font-extrabold flex items-center gap-3">
+                                        <span>BAYAN</span>
+                                        <span class="arabic-calligraphy text-amber-400 text-2xl">الْبَيَانُ</span>
+                                    </h3>
+                                </div>
+                                <span class="arabic-calligraphy text-base text-emerald-200 hidden sm:inline" dir="rtl">﴿عَلَّمَهُ الْبَيَانَ﴾</span>
                             </div>
                         </div>
 
                         <div class="p-6 sm:p-8 space-y-5">
                             <p class="text-sm text-slate-600 leading-relaxed">
-                                മത-ഭൗതിക കലാലയങ്ങളിലെ വിദ്യാർത്ഥികൾക്കായി അവധി ദിവസങ്ങളിൽ (ഞായറാഴ്ചകളിലും മറ്റ് ഒഴിവുദിനങ്ങളിലും) ക്രമീകരിച്ചിട്ടുള്ള ഒരു വർഷത്തെ സമഗ്ര പ്രാക്ടിക്കൽ ഡിപ്ലോമ കോഴ്സ്.
+                                മത-ഭൗതിക കലാലയങ്ങളിലെ വിദ്യാർത്ഥികൾക്കായി അവധി ദിവസങ്ങളിൽ ക്രമീകരിച്ചിട്ടുള്ള ഒരു വർഷത്തെ സമഗ്ര പ്രാക്ടിക്കൽ ഡിപ്ലോമ കോഴ്സ്.
                             </p>
 
                             <div class="space-y-3 text-sm">
                                 <div class="flex items-start gap-2.5">
                                     <i class="fa-solid fa-circle-check text-brand-600 mt-1"></i>
-                                    <span><strong>കാലാവധി & സമയം:</strong> 1 വർഷം (അവധി ദിനങ്ങളിൽ രാവിലെ 9:00 മുതൽ 4:45 വരെ).</span>
+                                    <span><strong>കാലാവധി & സമയം:</strong> 1 വർഷം, അവധി ദിനങ്ങളിൽ രാവിലെ 9:00 മുതൽ 4:45 വരെ.</span>
                                 </div>
                                 <div class="flex items-start gap-2.5">
                                     <i class="fa-solid fa-circle-check text-brand-600 mt-1"></i>
-                                    <span><strong>പാഠ്യപദ്ധതി:</strong> 12 സമഗ്ര മൊഡ്യൂളുകൾ (Linux, ഓഫീസ് സ്യൂട്ട്, പ്രൊഫഷണൽ DTP, ബഹുഭാഷാ ടൈപ്പിംഗ്, AI ടൂളുകൾ, സൈബർ സുരക്ഷ, Python, വെബ് ഡിസൈൻ).</span>
+                                    <span><strong>പാഠ്യപദ്ധതി:</strong> 12 സമഗ്ര മൊഡ്യൂളുകൾ, ഓഫീസ് സ്യൂട്ട്, പ്രൊഫഷണൽ DTP, ബഹുഭാഷാ ടൈപ്പിംഗ്, AI ടൂളുകൾ, സൈബർ സുരക്ഷ, പ്രോഗ്രാമിംഗ്.</span>
                                 </div>
                                 <div class="flex items-start gap-2.5">
                                     <i class="fa-solid fa-circle-check text-brand-600 mt-1"></i>
-                                    <span><strong>ലഭിക്കുന്നത്:</strong> QR വെരിഫൈഡ് എക്സിക്യൂട്ടീവ് ഡിപ്ലോമ + 3-ലധികം അന്താരാഷ്ട്ര സർട്ടിഫിക്കറ്റുകൾ.</span>
+                                    <span><strong>ലഭിക്കുന്നത്:</strong> QR വെരിഫൈഡ് എക്സിക്യൂട്ടീവ് ഡിപ്ലോമയും 3-ലധികം അന്താരാഷ്ട്ര സർട്ടിഫിക്കറ്റുകളും.</span>
                                 </div>
                             </div>
                         </div>
@@ -359,29 +392,31 @@
                 <!-- Track 2: NOOR -->
                 <div class="bg-white rounded-3xl border border-slate-200 shadow-lg overflow-hidden flex flex-col justify-between">
                     <div>
-                        <div class="bg-slate-900 text-white p-6 sm:p-8">
-                            <div class="flex justify-between items-start gap-4">
-                                <div>
-                                    <span class="inline-block px-3 py-1 bg-sky-400 text-slate-950 text-xs font-extrabold rounded-lg mb-2">TRACK 02 • ഹ്രസ്വകാല ക്യാമ്പ്</span>
-                                    <h3 class="text-2xl sm:text-3xl font-extrabold flex items-center gap-2">
-                                        <span>NOOR</span>
-                                        <span class="arabic-text text-sky-400 text-2xl">(النُّورُ)</span>
-                                    </h3>
-                                    <p class="text-xs text-slate-300 mt-1">New-gen Outreach, Online-safety & Organizational Resources</p>
-                                </div>
-                                <div class="w-12 h-12 rounded-2xl bg-slate-800 flex items-center justify-center text-sky-400 text-2xl shrink-0">
-                                    <i class="fa-solid fa-lightbulb"></i>
-                                </div>
+                        <div class="relative h-56 overflow-hidden bg-slate-900">
+                            <div id="noorImgLoader" class="absolute inset-0 flex flex-col items-center justify-center bg-slate-900 text-sky-200 text-xs gap-2">
+                                <i class="fa-solid fa-circle-notch fa-spin text-2xl text-sky-400"></i>
+                                <span>NOOR ചിത്രം തയ്യാറാക്കുന്നു...</span>
                             </div>
-                            <div class="mt-4 pt-4 border-t border-slate-800 text-xs text-slate-300 flex items-center justify-between">
-                                <span class="arabic-text text-base text-sky-300" dir="rtl">﴿يُخْرِجُهُم مِّنَ الظُّلُمَاتِ إِلَى النُّورِ﴾</span>
-                                <span>അൽ-ബഖറ: 257</span>
+                            <img id="noorTrackImg" 
+                                 src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=800&q=80" 
+                                 alt="NOOR Workshop Track - Muslim Men" 
+                                 class="w-full h-full object-cover">
+                            <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/60 to-transparent"></div>
+                            <div class="absolute bottom-4 left-6 right-6 flex justify-between items-end text-white">
+                                <div>
+                                    <span class="inline-block px-2.5 py-1 bg-sky-400 text-slate-950 text-[11px] font-extrabold rounded-md mb-1.5">ഹ്രസ്വകാല ക്യാമ്പ്</span>
+                                    <h3 class="font-english text-2xl sm:text-3xl font-extrabold flex items-center gap-3">
+                                        <span>NOOR</span>
+                                        <span class="arabic-calligraphy text-sky-400 text-2xl">النُّورُ</span>
+                                    </h3>
+                                </div>
+                                <span class="arabic-calligraphy text-base text-sky-200 hidden sm:inline" dir="rtl">﴿يُخْرِجُهُم مِّنَ الظُّلُمَاتِ إِلَى النُّورِ﴾</span>
                             </div>
                         </div>
 
                         <div class="p-6 sm:p-8 space-y-5">
                             <p class="text-sm text-slate-600 leading-relaxed">
-                                സംഘടനാ യൂണിറ്റുകൾ, മീഡിയ വിംഗ് പ്രവർത്തകർ, അധ്യാപകർ, പൊതുജനങ്ങൾ എന്നിവർക്കായി രൂപകൽപ്പന ചെയ്ത ഏകദിന (1-Day) അല്ലെങ്കിൽ ഹ്രസ്വകാല പ്രായോഗിക വർക്ക്ഷോപ്പ്.
+                                സംഘടനാ യൂണിറ്റുകൾ, മീഡിയ വിംഗ് പ്രവർത്തകർ, അധ്യാപകർ, പൊതുജനങ്ങൾ എന്നിവർക്കായി രൂപകൽപ്പന ചെയ്ത ഏകദിന അല്ലെങ്കിൽ ഹ്രസ്വകാല പ്രായോഗിക വർക്ക്ഷോപ്പ്.
                             </p>
 
                             <div class="space-y-3 text-sm">
@@ -391,7 +426,7 @@
                                 </div>
                                 <div class="flex items-start gap-2.5">
                                     <i class="fa-solid fa-circle-check text-sky-600 mt-1"></i>
-                                    <span><strong>പാഠ്യപദ്ധതി:</strong> പോസ്റ്റർ & റീൽസ് എഡിറ്റിംഗ് (Canva/CapCut), AI വഴി മിനിറ്റ്സ് & റിപ്പോർട്ട് നിർമ്മാണം, വരവ്-ചെലവ് കണക്കുകൾ (Google Sheets), സൈബർ തട്ടിപ്പ് പ്രതിരോധം.</span>
+                                    <span><strong>പാഠ്യപദ്ധതി:</strong> പോസ്റ്റർ & റീൽസ് എഡിറ്റിംഗ്, AI വഴി മിനിറ്റ്സ് & റിപ്പോർട്ട് നിർമ്മാണം, വരവ്-ചെലവ് കണക്കുകൾ, സൈബർ തട്ടിപ്പ് പ്രതിരോധം.</span>
                                 </div>
                                 <div class="flex items-start gap-2.5">
                                     <i class="fa-solid fa-circle-check text-sky-600 mt-1"></i>
@@ -416,7 +451,7 @@
         <div class="text-center max-w-3xl mx-auto space-y-3 mb-14">
             <span class="text-xs font-bold tracking-wider uppercase text-brand-700 bg-brand-100 px-3.5 py-1.5 rounded-full">സമ്പൂർണ്ണ പാഠ്യപദ്ധതി</span>
             <h2 class="font-display text-2xl sm:text-4xl font-bold text-slate-900">12 മൊഡ്യൂളുകളും പഠന രീതിയും</h2>
-            <p class="text-slate-600 text-sm sm:text-base">തുടക്കക്കാർക്കുള്ള <strong>Foundation Track</strong>-ഉം, സാങ്കേതിക പരിജ്ഞാനമുള്ളവർക്കുള്ള <strong>Advanced Track</strong>-ഉം ഉൾക്കൊള്ളുന്ന കരിക്കുലം.</p>
+            <p class="text-slate-600 text-sm sm:text-base">തുടക്കക്കാർക്കുള്ള <strong class="font-english">Foundation Track</strong>-ഉം, സാങ്കേതിക പരിജ്ഞാനമുള്ളവർക്കുള്ള <strong class="font-english">Advanced Track</strong>-ഉം ഉൾക്കൊള്ളുന്ന കരിക്കുലം.</p>
         </div>
 
         <!-- 12 Modules Grid -->
@@ -424,70 +459,70 @@
             <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm hover:border-brand-500 transition-all">
                 <div class="flex items-center justify-between mb-2">
                     <span class="text-xs font-extrabold text-brand-800 bg-brand-50 px-2.5 py-1 rounded-md">മൊഡ്യൂൾ 01</span>
-                    <span class="text-[11px] font-semibold text-slate-400">Digital Foundation</span>
+                    <span class="font-english text-[11px] font-semibold text-slate-400">Digital Security</span>
                 </div>
                 <h4 class="font-bold text-base text-slate-900 mb-1.5">ഡിജിറ്റൽ സുരക്ഷ & അക്കൗണ്ട് മാനേജ്‌മെന്റ്</h4>
-                <p class="text-xs text-slate-600 leading-relaxed">Proton Mail, Bitwarden/Proton Pass പാസ്‌വേഡ് മാനേജറുകൾ, 2FA സുരക്ഷ, Chrome പ്രൊഫൈലുകൾ, uBlock Origin, ഡാറ്റാ പ്രൈവസി ബോധവൽക്കരണം.</p>
+                <p class="text-xs text-slate-600 leading-relaxed">Proton Mail, Bitwarden പാസ്‌വേഡ് മാനേജർ, 2FA സുരക്ഷ, Chrome പ്രൊഫൈലുകൾ, uBlock Origin, ഡാറ്റാ പ്രൈവസി ബോധവൽക്കരണം.</p>
             </div>
 
             <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm hover:border-brand-500 transition-all">
                 <div class="flex items-center justify-between mb-2">
                     <span class="text-xs font-extrabold text-brand-800 bg-brand-50 px-2.5 py-1 rounded-md">മൊഡ്യൂൾ 02</span>
-                    <span class="text-[11px] font-semibold text-slate-400">Multilingual Typing</span>
+                    <span class="font-english text-[11px] font-semibold text-slate-400">Multilingual Typing</span>
                 </div>
                 <h4 class="font-bold text-base text-slate-900 mb-1.5">ശാസ്ത്രീയ ബഹുഭാഷാ ടൈപ്പിംഗ്</h4>
-                <p class="text-xs text-slate-600 leading-relaxed">TypingClub വഴി ഇംഗ്ലീഷ്, അറബിക് ടച്ച് ടൈപ്പിംഗ് (Touch Typing), Monkeytype & Google Input Tools വഴി മലയാളം, ഹിന്ദി ടൈപ്പിംഗ് പരിശീലനം.</p>
+                <p class="text-xs text-slate-600 leading-relaxed">TypingClub വഴി ഇംഗ്ലീഷ്, അറബിക് ടച്ച് ടൈപ്പിംഗ്, Monkeytype & Google Input Tools വഴി മലയാളം, ഹിന്ദി ടൈപ്പിംഗ് പരിശീലനം.</p>
             </div>
 
             <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm hover:border-brand-500 transition-all">
                 <div class="flex items-center justify-between mb-2">
                     <span class="text-xs font-extrabold text-brand-800 bg-brand-50 px-2.5 py-1 rounded-md">മൊഡ്യൂൾ 03</span>
-                    <span class="text-[11px] font-semibold text-slate-400">Office Productivity</span>
+                    <span class="font-english text-[11px] font-semibold text-slate-400">Documentation</span>
                 </div>
                 <h4 class="font-bold text-base text-slate-900 mb-1.5">ഡ്യുവൽ ഓഫീസ് & ഡോക്യുമെന്റേഷൻ</h4>
-                <p class="text-xs text-slate-600 leading-relaxed">LibreOffice Writer & Google Docs/MS Word ഉപയോഗിച്ച് ഔദ്യോഗിക കത്തുകൾ, അജണ്ട, മിനിറ്റ്സ്, റിപ്പോർട്ടുകൾ, Header/Footer ഫോർമാറ്റിംഗ്.</p>
+                <p class="text-xs text-slate-600 leading-relaxed">LibreOffice Writer & Google Docs ഉപയോഗിച്ച് ഔദ്യോഗിക കത്തുകൾ, അജണ്ട, മിനിറ്റ്സ്, റിപ്പോർട്ടുകൾ, Header/Footer ഫോർമാറ്റിംഗ്.</p>
             </div>
 
             <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm hover:border-brand-500 transition-all">
                 <div class="flex items-center justify-between mb-2">
                     <span class="text-xs font-extrabold text-brand-800 bg-brand-50 px-2.5 py-1 rounded-md">മൊഡ്യൂൾ 04</span>
-                    <span class="text-[11px] font-semibold text-slate-400">Smart Data & Finance</span>
+                    <span class="font-english text-[11px] font-semibold text-slate-400">Smart Spreadsheets</span>
                 </div>
                 <h4 class="font-bold text-base text-slate-900 mb-1.5">സ്പ്രെഡ്ഷീറ്റ് & വരവ്-ചെലവ് കണക്കുകൾ</h4>
-                <p class="text-xs text-slate-600 leading-relaxed">Google Sheets & LibreOffice Calc വഴി സ്ഥാപനങ്ങളുടെ ബജറ്റ് ഷീറ്റ്, ഓട്ടോമേറ്റഡ് ഗ്രേഡിംഗ് (=SUM, =IF, =COUNTIF), Google Forms ഡാറ്റാ ലിങ്കിംഗ്.</p>
+                <p class="text-xs text-slate-600 leading-relaxed">Google Sheets & LibreOffice Calc വഴി സ്ഥാപനങ്ങളുടെ ബജറ്റ് ഷീറ്റ്, ഓട്ടോമേറ്റഡ് ഗ്രേഡിംഗ് ഫോർമുലകൾ, Google Forms ഡാറ്റാ ലിങ്കിംഗ്.</p>
             </div>
 
             <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm hover:border-brand-500 transition-all">
                 <div class="flex items-center justify-between mb-2">
                     <span class="text-xs font-extrabold text-brand-800 bg-brand-50 px-2.5 py-1 rounded-md">മൊഡ്യൂൾ 05</span>
-                    <span class="text-[11px] font-semibold text-slate-400">Graphic Design & DTP</span>
+                    <span class="font-english text-[11px] font-semibold text-slate-400">Graphic Design & DTP</span>
                 </div>
                 <h4 class="font-bold text-base text-slate-900 mb-1.5">പ്രൊഫഷണൽ DTP & പ്രിന്റിംഗ്</h4>
-                <p class="text-xs text-slate-600 leading-relaxed">GIMP, Inkscape, Canva എന്നിവയിലൂടെ പോസ്റ്ററുകൾ, QR കോഡ് ID കാർഡുകൾ, അറബിക് കാലിഗ്രാഫി ലേഔട്ട്, CMYK/RGB കളർ മോഡ്, PDF/X പ്രിന്റ് എക്സ്പോർട്ട്.</p>
+                <p class="text-xs text-slate-600 leading-relaxed">GIMP, Inkscape, Canva എന്നിവയിലൂടെ പോസ്റ്ററുകൾ, QR കോഡ് ID കാർഡുകൾ, അറബിക് കാലിഗ്രാഫി ലേഔട്ട്, CMYK/RGB പ്രിന്റ് എക്സ്പോർട്ട്.</p>
             </div>
 
             <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm hover:border-brand-500 transition-all">
                 <div class="flex items-center justify-between mb-2">
                     <span class="text-xs font-extrabold text-brand-800 bg-brand-50 px-2.5 py-1 rounded-md">മൊഡ്യൂൾ 06</span>
-                    <span class="text-[11px] font-semibold text-slate-400">Next-Gen AI</span>
+                    <span class="font-english text-[11px] font-semibold text-slate-400">Generative AI</span>
                 </div>
                 <h4 class="font-bold text-base text-slate-900 mb-1.5">AI ടൂളുകളും പ്രോംപ്റ്റ് എൻജിനീയറിംഗും</h4>
-                <p class="text-xs text-slate-600 leading-relaxed">Gemini, Google AI Studio, NotebookLM എന്നിവ വഴി അറബി-മലയാളം-ഇംഗ്ലീഷ് വിവർത്തനങ്ങൾ, പ്രസംഗങ്ങൾ, പഠന സംഗ്രഹങ്ങൾ, ഓഡിയോ പോഡ്‌കാസ്റ്റുകൾ.</p>
+                <p class="text-xs text-slate-600 leading-relaxed">Gemini, Google AI Studio, NotebookLM എന്നിവ വഴി അറബി-മലയാളം-ഇംഗ്ലീഷ് വിവർത്തനങ്ങൾ, പ്രസംഗങ്ങൾ, പഠന സംഗ്രഹങ്ങൾ, പോഡ്‌കാസ്റ്റുകൾ.</p>
             </div>
 
             <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm hover:border-brand-500 transition-all">
                 <div class="flex items-center justify-between mb-2">
                     <span class="text-xs font-extrabold text-brand-800 bg-brand-50 px-2.5 py-1 rounded-md">മൊഡ്യൂൾ 07</span>
-                    <span class="text-[11px] font-semibold text-slate-400">Audio & Video Studio</span>
+                    <span class="font-english text-[11px] font-semibold text-slate-400">Audio & Video Studio</span>
                 </div>
                 <h4 class="font-bold text-base text-slate-900 mb-1.5">ഓഡിയോ & വീഡിയോ / റീൽസ് എഡിറ്റിംഗ്</h4>
-                <p class="text-xs text-slate-600 leading-relaxed">Audacity ഉപയോഗിച്ച് പ്രഭാഷണങ്ങളിലെ പശ്ചാത്തല ശബ്ദം നീക്കം ചെയ്യൽ, Kdenlive & CapCut വഴി ബഹുഭാഷാ സബ്‌ടൈറ്റിലുകളോടെ റീൽസ് & വീഡിയോ എഡിറ്റിംഗ്.</p>
+                <p class="text-xs text-slate-600 leading-relaxed">Audacity ഉപയോഗിച്ച് പ്രഭാഷണങ്ങളിലെ പശ്ചാത്തല ശബ്ദം നീക്കം ചെയ്യൽ, Kdenlive & CapCut വഴി സബ്‌ടൈറ്റിലുകളോടെ റീൽസ് & വീഡിയോ എഡിറ്റിംഗ്.</p>
             </div>
 
             <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm hover:border-brand-500 transition-all">
                 <div class="flex items-center justify-between mb-2">
                     <span class="text-xs font-extrabold text-brand-800 bg-brand-50 px-2.5 py-1 rounded-md">മൊഡ്യൂൾ 08</span>
-                    <span class="text-[11px] font-semibold text-slate-400">Media Governance</span>
+                    <span class="font-english text-[11px] font-semibold text-slate-400">Media Governance</span>
                 </div>
                 <h4 class="font-bold text-base text-slate-900 mb-1.5">സോഷ്യൽ മീഡിയ & ഡിജിറ്റൽ പബ്ലിഷിംഗ്</h4>
                 <p class="text-xs text-slate-600 leading-relaxed">YouTube Brand Account, Meta Business Suite, Google Sites, Blogger എന്നിവയിലൂടെ സ്ഥാപനങ്ങളുടെ മീഡിയ വിംഗ് & ഡിജിറ്റൽ മാഗസിൻ മാനേജ്‌മെന്റ്.</p>
@@ -496,7 +531,7 @@
             <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm hover:border-brand-500 transition-all">
                 <div class="flex items-center justify-between mb-2">
                     <span class="text-xs font-extrabold text-brand-800 bg-brand-50 px-2.5 py-1 rounded-md">മൊഡ്യൂൾ 09</span>
-                    <span class="text-[11px] font-semibold text-slate-400">FOSS & Linux OS</span>
+                    <span class="font-english text-[11px] font-semibold text-slate-400">Linux & FOSS</span>
                 </div>
                 <h4 class="font-bold text-base text-slate-900 mb-1.5">ലിനക്സ് ഓപ്പറേറ്റിംഗ് സിസ്റ്റം & CLI</h4>
                 <p class="text-xs text-slate-600 leading-relaxed">സ്വതന്ത്ര സോഫ്റ്റ്‌വെയർ തത്ത്വശാസ്ത്രം, Ubuntu / Linux Mint ഇൻസ്റ്റാളേഷൻ, അടിസ്ഥാന Linux Terminal കമാൻഡുകൾ, സിസ്റ്റം അഡ്മിനിസ്ട്രേഷൻ.</p>
@@ -505,16 +540,16 @@
             <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm hover:border-brand-500 transition-all">
                 <div class="flex items-center justify-between mb-2">
                     <span class="text-xs font-extrabold text-brand-800 bg-brand-50 px-2.5 py-1 rounded-md">മൊഡ്യൂൾ 10</span>
-                    <span class="text-[11px] font-semibold text-slate-400">Cyber Defense</span>
+                    <span class="font-english text-[11px] font-semibold text-slate-400">Cybersecurity</span>
                 </div>
                 <h4 class="font-bold text-base text-slate-900 mb-1.5">നെറ്റ്‌വർക്കിംഗും സൈബർ സുരക്ഷയും</h4>
-                <p class="text-xs text-slate-600 leading-relaxed">ഫിഷിംഗ് (Phishing) & ഓൺലൈൻ സാമ്പത്തിക തട്ടിപ്പുകൾ തിരിച്ചറിയൽ, നെറ്റ്‌വർക്ക് അടിസ്ഥാനങ്ങൾ, Cisco Introduction to Cybersecurity സർട്ടിഫിക്കേഷൻ.</p>
+                <p class="text-xs text-slate-600 leading-relaxed">ഫിഷിംഗ് & ഓൺലൈൻ സാമ്പത്തിക തട്ടിപ്പുകൾ തിരിച്ചറിയൽ, നെറ്റ്‌വർക്ക് അടിസ്ഥാനങ്ങൾ, Cisco Introduction to Cybersecurity സർട്ടിഫിക്കേഷൻ.</p>
             </div>
 
             <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm hover:border-brand-500 transition-all">
                 <div class="flex items-center justify-between mb-2">
                     <span class="text-xs font-extrabold text-brand-800 bg-brand-50 px-2.5 py-1 rounded-md">മൊഡ്യൂൾ 11</span>
-                    <span class="text-[11px] font-semibold text-slate-400">Coding & Web</span>
+                    <span class="font-english text-[11px] font-semibold text-slate-400">Coding & Web</span>
                 </div>
                 <h4 class="font-bold text-base text-slate-900 mb-1.5">പ്രോഗ്രാമിംഗ് ലോജിക് & വെബ് ഡെവലപ്മെന്റ്</h4>
                 <p class="text-xs text-slate-600 leading-relaxed">Python പ്രോഗ്രാമിംഗ് അടിസ്ഥാനങ്ങൾ, HTML/CSS വെബ് ഡിസൈനിംഗ്, Git & GitHub ഹോസ്റ്റിംഗ്, freeCodeCamp & Cisco Python സർട്ടിഫിക്കേഷനുകൾ.</p>
@@ -523,7 +558,7 @@
             <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm hover:border-brand-500 transition-all">
                 <div class="flex items-center justify-between mb-2">
                     <span class="text-xs font-extrabold text-brand-800 bg-brand-50 px-2.5 py-1 rounded-md">മൊഡ്യൂൾ 12</span>
-                    <span class="text-[11px] font-semibold text-slate-400">e-Gov & Capstone</span>
+                    <span class="font-english text-[11px] font-semibold text-slate-400">e-Gov & Capstone</span>
                 </div>
                 <h4 class="font-bold text-base text-slate-900 mb-1.5">ഡിജിറ്റൽ ഗവേണൻസ് & ഫൈനൽ പ്രൊജക്റ്റ്</h4>
                 <p class="text-xs text-slate-600 leading-relaxed">പൊതുസേവന പോർട്ടലുകൾ, ട്രാവൽ റിസർവേഷൻ സിസ്റ്റങ്ങൾ, കൂടാതെ സ്വന്തമായി നിർമ്മിച്ച വെബ്സൈറ്റും ഡിസൈനുകളും അടങ്ങുന്ന ഫൈനൽ പോർട്ട്‌ഫോളിയോ.</p>
@@ -535,7 +570,7 @@
             <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-brand-800 pb-5 mb-6">
                 <div>
                     <span class="text-xs font-bold text-amber-400 uppercase tracking-wider">ഫുൾ-ഡേ പ്രാക്ടിക്കൽ ഘടന</span>
-                    <h3 class="text-xl sm:text-2xl font-bold mt-1">മാതൃകാ ക്ലാസ് സമയക്രമം (Daily Session Routine)</h3>
+                    <h3 class="text-xl sm:text-2xl font-bold mt-1">മാതൃകാ ക്ലാസ് സമയക്രമം</h3>
                 </div>
                 <span class="text-xs text-emerald-200 bg-brand-900 px-3.5 py-2 rounded-xl border border-brand-700">
                     <i class="fa-regular fa-clock text-amber-400 mr-1.5"></i> അവധി ദിനങ്ങളിൽ സൗകര്യപ്രദമായ ക്രമീകരണം
@@ -544,29 +579,29 @@
 
             <div class="grid sm:grid-cols-2 lg:grid-cols-5 gap-4">
                 <div class="bg-brand-900/80 p-4 rounded-2xl border border-brand-800">
-                    <div class="text-xs font-bold text-amber-400 mb-1">09:00 AM – 10:30 AM</div>
+                    <div class="font-english text-xs font-bold text-amber-400 mb-1">09:00 AM – 10:30 AM</div>
                     <h4 class="font-bold text-sm text-white mb-1">തിയറി & കൺസെപ്റ്റ്</h4>
                     <p class="text-xs text-emerald-200/80">ആശയങ്ങൾ ലളിതമായി മലയാളത്തിൽ ബോർഡിലും സ്ക്രീനിലും വിശദീകരിക്കുന്നു.</p>
                 </div>
                 <div class="bg-brand-900/80 p-4 rounded-2xl border border-brand-800">
-                    <div class="text-xs font-bold text-amber-400 mb-1">10:45 AM – 01:00 PM</div>
+                    <div class="font-english text-xs font-bold text-amber-400 mb-1">10:45 AM – 01:00 PM</div>
                     <h4 class="font-bold text-sm text-white mb-1">പ്രാക്ടിക്കൽ ലാബ്</h4>
                     <p class="text-xs text-emerald-200/80">പഠിതാക്കൾ നേരിട്ട് കമ്പ്യൂട്ടറിൽ വർക്ക്ഷീറ്റുകൾ ചെയ്ത് പരിശീലിക്കുന്നു.</p>
                 </div>
                 <div class="bg-brand-900/60 p-4 rounded-2xl border border-brand-800/60">
-                    <div class="text-xs font-bold text-emerald-300 mb-1">01:00 PM – 02:00 PM</div>
+                    <div class="font-english text-xs font-bold text-emerald-300 mb-1">01:00 PM – 02:00 PM</div>
                     <h4 class="font-bold text-sm text-white mb-1">ഉച്ചഭക്ഷണം & നമസ്കാരം</h4>
                     <p class="text-xs text-emerald-200/80">ളുഹ്ർ നമസ്കാരത്തിനും ഉച്ചഭക്ഷണത്തിനുമുള്ള ഇടവേള.</p>
                 </div>
                 <div class="bg-brand-900/80 p-4 rounded-2xl border border-brand-800">
-                    <div class="text-xs font-bold text-amber-400 mb-1">02:00 PM – 03:30 PM</div>
+                    <div class="font-english text-xs font-bold text-amber-400 mb-1">02:00 PM – 03:30 PM</div>
                     <h4 class="font-bold text-sm text-white mb-1">സർട്ടിഫിക്കേഷൻ ലാബ്</h4>
                     <p class="text-xs text-emerald-200/80">Google, Cisco, IBM ഓൺലൈൻ മൊഡ്യൂളുകളും ക്വിസ്സുകളും പൂർത്തിയാക്കൽ.</p>
                 </div>
                 <div class="bg-brand-900/80 p-4 rounded-2xl border border-brand-800">
-                    <div class="text-xs font-bold text-amber-400 mb-1">03:45 PM – 04:45 PM</div>
+                    <div class="font-english text-xs font-bold text-amber-400 mb-1">03:45 PM – 04:45 PM</div>
                     <h4 class="font-bold text-sm text-white mb-1">ക്രിയേറ്റീവ് ചലഞ്ച്</h4>
-                    <p class="text-xs text-emerald-200/80">അന്നത്തെ ദിവസത്തെ ഡിസൈൻ / കോഡ് / ഡോക്യുമെന്റ് ടാസ്ക് വിലയിരുത്തൽ.</p>
+                    <p class="text-xs text-emerald-200/80">അന്നത്തെ ദിവസത്തെ ഡിസൈൻ, കോഡ്, ഡോക്യുമെന്റ് ടാസ്ക് വിലയിരുത്തൽ.</p>
                 </div>
             </div>
         </div>
@@ -587,10 +622,10 @@
                         <i class="fa-solid fa-lock"></i> പ്രൈവസി & സുരക്ഷ
                     </div>
                     <ul class="space-y-2.5 text-xs text-slate-600">
-                        <li class="flex justify-between"><strong>Proton Mail & Pass</strong> <span class="text-emerald-700 font-semibold">Encrypted</span></li>
-                        <li class="flex justify-between"><strong>Bitwarden</strong> <span class="text-emerald-700 font-semibold">Open Source</span></li>
-                        <li class="flex justify-between"><strong>uBlock Origin</strong> <span class="text-emerald-700 font-semibold">Ad-Blocker</span></li>
-                        <li class="flex justify-between"><strong>Linux Mint / Ubuntu</strong> <span class="text-emerald-700 font-semibold">FOSS OS</span></li>
+                        <li class="flex justify-between"><strong class="font-english">Proton Mail & Pass</strong> <span class="text-emerald-700 font-semibold">Encrypted</span></li>
+                        <li class="flex justify-between"><strong class="font-english">Bitwarden</strong> <span class="text-emerald-700 font-semibold">Open Source</span></li>
+                        <li class="flex justify-between"><strong class="font-english">uBlock Origin</strong> <span class="text-emerald-700 font-semibold">Ad-Blocker</span></li>
+                        <li class="flex justify-between"><strong class="font-english">Linux Mint / Ubuntu</strong> <span class="text-emerald-700 font-semibold">FOSS OS</span></li>
                     </ul>
                 </div>
 
@@ -599,10 +634,10 @@
                         <i class="fa-solid fa-palette"></i> ഡിസൈൻ & മീഡിയ
                     </div>
                     <ul class="space-y-2.5 text-xs text-slate-600">
-                        <li class="flex justify-between"><strong>GIMP & Inkscape</strong> <span class="text-emerald-700 font-semibold">Open Source</span></li>
-                        <li class="flex justify-between"><strong>Kdenlive & Audacity</strong> <span class="text-emerald-700 font-semibold">Audio/Video</span></li>
-                        <li class="flex justify-between"><strong>Canva & Photopea</strong> <span class="text-sky-700 font-semibold">Web Design</span></li>
-                        <li class="flex justify-between"><strong>SMC & Google Fonts</strong> <span class="text-emerald-700 font-semibold">Free License</span></li>
+                        <li class="flex justify-between"><strong class="font-english">GIMP & Inkscape</strong> <span class="text-emerald-700 font-semibold">Open Source</span></li>
+                        <li class="flex justify-between"><strong class="font-english">Kdenlive & Audacity</strong> <span class="text-emerald-700 font-semibold">Audio/Video</span></li>
+                        <li class="flex justify-between"><strong class="font-english">Canva & Photopea</strong> <span class="text-sky-700 font-semibold">Web Design</span></li>
+                        <li class="flex justify-between"><strong class="font-english">SMC & Google Fonts</strong> <span class="text-emerald-700 font-semibold">Free License</span></li>
                     </ul>
                 </div>
 
@@ -611,10 +646,10 @@
                         <i class="fa-solid fa-keyboard"></i> ടൈപ്പിംഗ് & ഓഫീസ്
                     </div>
                     <ul class="space-y-2.5 text-xs text-slate-600">
-                        <li class="flex justify-between"><strong>LibreOffice Suite</strong> <span class="text-emerald-700 font-semibold">Open Source</span></li>
-                        <li class="flex justify-between"><strong>Google Workspace</strong> <span class="text-sky-700 font-semibold">Cloud Docs</span></li>
-                        <li class="flex justify-between"><strong>TypingClub</strong> <span class="text-sky-700 font-semibold">EN/AR Typing</span></li>
-                        <li class="flex justify-between"><strong>Monkeytype & Varnam</strong> <span class="text-emerald-700 font-semibold">ML Typing</span></li>
+                        <li class="flex justify-between"><strong class="font-english">LibreOffice Suite</strong> <span class="text-emerald-700 font-semibold">Open Source</span></li>
+                        <li class="flex justify-between"><strong class="font-english">Google Workspace</strong> <span class="text-sky-700 font-semibold">Cloud Docs</span></li>
+                        <li class="flex justify-between"><strong class="font-english">TypingClub</strong> <span class="text-sky-700 font-semibold">EN/AR Typing</span></li>
+                        <li class="flex justify-between"><strong class="font-english">Monkeytype & Varnam</strong> <span class="text-emerald-700 font-semibold">ML Typing</span></li>
                     </ul>
                 </div>
 
@@ -623,10 +658,10 @@
                         <i class="fa-solid fa-robot"></i> AI & ഡെവലപ്മെന്റ്
                     </div>
                     <ul class="space-y-2.5 text-xs text-slate-600">
-                        <li class="flex justify-between"><strong>Google Gemini & AI Studio</strong> <span class="text-sky-700 font-semibold">Generative AI</span></li>
-                        <li class="flex justify-between"><strong>NotebookLM</strong> <span class="text-sky-700 font-semibold">Study AI</span></li>
-                        <li class="flex justify-between"><strong>Git & GitHub</strong> <span class="text-emerald-700 font-semibold">Code Hosting</span></li>
-                        <li class="flex justify-between"><strong>Supabase</strong> <span class="text-emerald-700 font-semibold">Open Backend</span></li>
+                        <li class="flex justify-between"><strong class="font-english">Google Gemini & AI Studio</strong> <span class="text-sky-700 font-semibold">Generative AI</span></li>
+                        <li class="flex justify-between"><strong class="font-english">NotebookLM</strong> <span class="text-sky-700 font-semibold">Study AI</span></li>
+                        <li class="flex justify-between"><strong class="font-english">Git & GitHub</strong> <span class="text-emerald-700 font-semibold">Code Hosting</span></li>
+                        <li class="flex justify-between"><strong class="font-english">Supabase</strong> <span class="text-emerald-700 font-semibold">Open Backend</span></li>
                     </ul>
                 </div>
             </div>
@@ -637,7 +672,7 @@
     <section id="certifications" class="py-16 md:py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10">
             <div class="space-y-2">
-                <span class="text-xs font-bold tracking-wider uppercase text-brand-700 bg-brand-100 px-3.5 py-1.5 rounded-full">Global Credentials</span>
+                <span class="font-english text-xs font-bold tracking-wider uppercase text-brand-700 bg-brand-100 px-3.5 py-1.5 rounded-full">Global Credentials</span>
                 <h2 class="font-display text-2xl sm:text-4xl font-bold text-slate-900">ആഗോള സൗജന്യ സർട്ടിഫിക്കേഷനുകളുടെ ഏകോപനം</h2>
                 <p class="text-slate-600 text-sm sm:text-base max-w-2xl">ലോകോത്തര ടെക് കമ്പനികളുടെയും ഗവൺമെന്റ് ഏജൻസികളുടെയും അംഗീകൃത സർട്ടിഫിക്കറ്റ് കോഴ്സുകളിലേക്കുള്ള നേരിട്ടുള്ള കവാടം.</p>
             </div>
@@ -691,7 +726,7 @@
                         <i class="fa-solid fa-chevron-down text-xs text-brand-700"></i>
                     </summary>
                     <p class="text-xs sm:text-sm text-slate-600 mt-3 leading-relaxed">
-                        തീർച്ചയായും. ആദ്യമായി കമ്പ്യൂട്ടർ ഉപയോഗിക്കുന്നവർക്ക് അടിസ്ഥാനം മുതൽ പഠിപ്പിക്കുന്ന <strong>Foundation Track</strong>-ഉം, മുൻപരിചയമുള്ളവർക്ക് <strong>Advanced Track</strong>-ഉം പ്രത്യേകം ലഭ്യമാണ്.
+                        തീർച്ചയായും. ആദ്യമായി കമ്പ്യൂട്ടർ ഉപയോഗിക്കുന്നവർക്ക് അടിസ്ഥാനം മുതൽ പഠിപ്പിക്കുന്ന <strong class="font-english">Foundation Track</strong>-ഉം, മുൻപരിചയമുള്ളവർക്ക് <strong class="font-english">Advanced Track</strong>-ഉം പ്രത്യേകം ലഭ്യമാണ്.
                     </p>
                 </details>
 
@@ -701,7 +736,7 @@
                         <i class="fa-solid fa-chevron-down text-xs text-brand-700"></i>
                     </summary>
                     <p class="text-xs sm:text-sm text-slate-600 mt-3 leading-relaxed">
-                        താഴെ കാണുന്ന അഡ്മിഷൻ / സ്ഥാപന രജിസ്ട്രേഷൻ ഫോം വഴി അപേക്ഷിച്ചാൽ, നിങ്ങളുടെ സ്ഥാപനത്തിലോ യൂണിറ്റിലോ എത്തി ഏകദിന <strong>NOOR</strong> ക്യാമ്പോ 1-വർഷത്തെ <strong>BAYAN</strong> ഡിപ്ലോമ ബാച്ചോ ക്രമീകരിച്ചു നൽകുന്നതാണ്.
+                        താഴെ കാണുന്ന അഡ്മിഷൻ / സ്ഥാപന രജിസ്ട്രേഷൻ ഫോം വഴി അപേക്ഷിച്ചാൽ, നിങ്ങളുടെ സ്ഥാപനത്തിലോ യൂണിറ്റിലോ എത്തി ഏകദിന <strong class="font-english">NOOR</strong> ക്യാമ്പോ 1-വർഷത്തെ <strong class="font-english">BAYAN</strong> ഡിപ്ലോമ ബാച്ചോ ക്രമീകരിച്ചു നൽകുന്നതാണ്.
                     </p>
                 </details>
             </div>
@@ -722,7 +757,7 @@
 
                     <div class="space-y-4 pt-2">
                         <div class="bg-brand-900/70 p-4 rounded-2xl border border-brand-800">
-                            <h4 class="font-bold text-amber-400 text-sm mb-1">1. അക്കാദമിക് സപ്പോർട്ട് മോഡൽ (മതകലാലയങ്ങൾക്ക്)</h4>
+                            <h4 class="font-bold text-amber-400 text-sm mb-1">1. അക്കാദമിക് സപ്പോർട്ട് മോഡൽ</h4>
                             <p class="text-xs text-emerald-100/80">സേവന മനസ്സോടെ, അധ്യാപകരുടെ യാത്രാബത്തയും അടിസ്ഥാന ചെലവുകളും മാത്രം ഈടാക്കി നടത്തുന്ന 1-വർഷത്തെ BAYAN ഡിപ്ലോമ ബാച്ചുകൾ.</p>
                         </div>
                         <div class="bg-brand-900/70 p-4 rounded-2xl border border-brand-800">
@@ -730,7 +765,7 @@
                             <p class="text-xs text-emerald-100/80">മറ്റു വിദ്യാഭ്യാസ സ്ഥാപനങ്ങൾക്കും സംഘടനാ യൂണിറ്റുകൾക്കും 10-15 പഠിതാക്കൾ അടങ്ങുന്ന ബാച്ച് അടിസ്ഥാനത്തിലുള്ള പരിശീലനം.</p>
                         </div>
                         <div class="bg-brand-900/70 p-4 rounded-2xl border border-brand-800">
-                            <h4 class="font-bold text-amber-400 text-sm mb-1">3. വ്യക്തിഗത പ്രവേശനം (Public Enrollment)</h4>
+                            <h4 class="font-bold text-amber-400 text-sm mb-1">3. വ്യക്തിഗത പ്രവേശനം</h4>
                             <p class="text-xs text-emerald-100/80">പൊതുസമൂഹത്തിലെ താല്പര്യമുള്ള പഠിതാക്കൾക്ക് നിശ്ചിത രജിസ്ട്രേഷൻ ഫീസോടെ ഓൺലൈൻ/ഓഫ്‌ലൈൻ ബാച്ചുകളിൽ ചേരാം.</p>
                         </div>
                     </div>
@@ -754,7 +789,7 @@
                                     <input type="text" id="admOrg" required placeholder="സ്ഥാപനത്തിന്റെ അല്ലെങ്കിൽ യൂണിറ്റിന്റെ പേര്" class="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:border-brand-600 focus:ring-2 focus:ring-brand-600/20 outline-none text-sm">
                                 </div>
                                 <div>
-                                    <label class="block text-xs font-bold text-slate-700 mb-1">ഫോൺ നമ്പർ (WhatsApp) *</label>
+                                    <label class="block text-xs font-bold text-slate-700 mb-1">ഫോൺ നമ്പർ *</label>
                                     <input type="tel" id="admPhone" required placeholder="+91 00000 00000" class="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:border-brand-600 focus:ring-2 focus:ring-brand-600/20 outline-none text-sm">
                                 </div>
                             </div>
@@ -762,15 +797,15 @@
                             <div>
                                 <label class="block text-xs font-bold text-slate-700 mb-1">തിരഞ്ഞെടുക്കുന്ന കോഴ്സ് *</label>
                                 <select id="trackSelect" class="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:border-brand-600 focus:ring-2 focus:ring-brand-600/20 outline-none text-sm bg-white">
-                                    <option value="BAYAN - 1 Year Diploma">BAYAN (الْبَيَانُ) - 1 വർഷത്തെ ഡിപ്ലോമ കോഴ്സ്</option>
-                                    <option value="NOOR - Unit & Public Bootcamp">NOOR (النُّورُ) - സംഘടനാ യൂണിറ്റ് / ഏകദിന ക്യാമ്പ്</option>
+                                    <option value="BAYAN - 1 Year Diploma">BAYAN — 1 വർഷത്തെ ഡിപ്ലോമ കോഴ്സ്</option>
+                                    <option value="NOOR - Unit & Public Bootcamp">NOOR — സംഘടനാ യൂണിറ്റ് / ഏകദിന ക്യാമ്പ്</option>
                                     <option value="Individual Student Enrollment">വ്യക്തിഗത വിദ്യാർത്ഥി പ്രവേശനം</option>
                                 </select>
                             </div>
 
                             <div>
-                                <label class="block text-xs font-bold text-slate-700 mb-1">പഠിതാക്കളുടെ എണ്ണവും സ്ഥലവും (ജില്ല)</label>
-                                <textarea id="admNotes" rows="2" placeholder="ഉദാ: 10 പഠിതാക്കൾ, ജില്ല..." class="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:border-brand-600 focus:ring-2 focus:ring-brand-600/20 outline-none text-sm"></textarea>
+                                <label class="block text-xs font-bold text-slate-700 mb-1">പഠിതാക്കളുടെ എണ്ണവും സ്ഥലവും</label>
+                                <textarea id="admNotes" rows="2" placeholder="പഠിതാക്കളുടെ എണ്ണവും ജില്ലയും രേഖപ്പെടുത്തുക" class="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:border-brand-600 focus:ring-2 focus:ring-brand-600/20 outline-none text-sm"></textarea>
                             </div>
 
                             <button type="submit" id="admSubmitBtn" class="w-full py-3.5 bg-brand-800 hover:bg-brand-900 text-white font-bold rounded-xl shadow-md transition-all flex items-center justify-center gap-2">
@@ -790,12 +825,10 @@
             <div class="grid md:grid-cols-3 gap-8 pb-8 border-b border-slate-800/80">
                 <div class="space-y-3">
                     <div class="flex items-center gap-2.5 text-white">
-                        <span class="arabic-text text-2xl text-amber-400 font-bold">الْحِكْمَةُ</span>
-                        <span class="font-extrabold text-lg">AL-HIKMAH</span>
+                        <span class="font-english font-extrabold text-xl tracking-tight">HIKMA <span class="text-amber-400">Digital Academy</span></span>
                     </div>
                     <p class="text-xs leading-relaxed">
-                        Academy for Learning, Holistic Innovation, Knowledge, Media & AI. <br>
-                        ഓപ്പൺ സോഴ്സ് സാങ്കേതികവിദ്യയും ധാർമ്മിക മൂല്യങ്ങളും സമന്വയിപ്പിക്കുന്ന ഡിജിറ്റൽ പഠന സംരംഭം.
+                        ഓപ്പൺ സോഴ്സ് സാങ്കേതികവിദ്യയും ധാർമ്മിക മൂല്യങ്ങളും സമന്വയിപ്പിക്കുന്ന ഡിജിറ്റൽ & AI പരിശീലന സംരംഭം.
                     </p>
                 </div>
 
@@ -812,16 +845,16 @@
                 <div class="space-y-3 text-xs">
                     <h4 class="text-white font-bold text-sm mb-3">ഓപ്പൺ സോഴ്സ് & സ്വകാര്യത</h4>
                     <p class="leading-relaxed">
-                        ഈ വെബ് പോർട്ടൽ 100% സ്വതന്ത്രവും ഓപ്പൺ സോഴ്സുമായ (GitHub Pages & Supabase) സാങ്കേതികവിദ്യ ഉപയോഗിച്ചാണ് നിർമ്മിച്ചിരിക്കുന്നത്.
+                        ഈ വെബ് പോർട്ടൽ 100% സ്വതന്ത്രവും ഓപ്പൺ സോഴ്സുമായ സാങ്കേതികവിദ്യ ഉപയോഗിച്ചാണ് നിർമ്മിച്ചിരിക്കുന്നത്.
                     </p>
                     <div class="flex gap-3 pt-1">
-                        <span class="px-2.5 py-1 bg-slate-900 border border-slate-800 rounded-md text-[11px] text-emerald-400">FOSS Compliant</span>
-                        <span class="px-2.5 py-1 bg-slate-900 border border-slate-800 rounded-md text-[11px] text-amber-400">Privacy First</span>
+                        <span class="font-english px-2.5 py-1 bg-slate-900 border border-slate-800 rounded-md text-[11px] text-emerald-400">FOSS Compliant</span>
+                        <span class="font-english px-2.5 py-1 bg-slate-900 border border-slate-800 rounded-md text-[11px] text-amber-400">Privacy First</span>
                     </div>
                 </div>
             </div>
             <div class="pt-6 text-center text-xs text-slate-500">
-                &copy; 2026 AL-HIKMAH Digital & AI Initiative. All Rights Reserved.
+                &copy; 2026 HIKMA Digital Academy. All Rights Reserved.
             </div>
         </div>
     </footer>
@@ -857,9 +890,6 @@
                         ലോഗിൻ ചെയ്യുക
                     </button>
                 </form>
-                <div class="text-[11px] text-center text-slate-400 pt-2 border-t border-slate-100">
-                    Powered by Supabase Open-Source Authentication
-                </div>
             </div>
 
             <!-- Logged-in Student Dashboard View -->
@@ -867,7 +897,7 @@
                 <div class="flex items-center justify-between border-b border-slate-100 pb-3">
                     <div>
                         <h4 class="font-bold text-slate-900" id="studentEmailDisplay">വിദ്യാർത്ഥി പ്രൊഫൈൽ</h4>
-                        <p class="text-xs text-slate-500">BAYAN / NOOR Digital Portfolio</p>
+                        <p class="text-xs text-slate-500">Digital Portfolio Hub</p>
                     </div>
                     <button onclick="logoutStudent()" class="text-xs text-red-600 font-semibold hover:underline">ലോഗൗട്ട്</button>
                 </div>
@@ -876,11 +906,11 @@
                 <div class="bg-slate-50 p-4 rounded-2xl border border-slate-200 space-y-3">
                     <h5 class="text-xs font-bold text-slate-800 uppercase">പുതിയ സർട്ടിഫിക്കറ്റ് ലിങ്ക് ചേർക്കുക</h5>
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
-                        <input type="text" id="newCertTitle" placeholder="കോഴ്സിന്റെ പേര് (ഉദാ: Cisco Cyber)" class="px-3 py-2 rounded-lg border border-slate-300 text-xs">
+                        <input type="text" id="newCertTitle" placeholder="കോഴ്സിന്റെ പേര്" class="px-3 py-2 rounded-lg border border-slate-300 text-xs">
                         <input type="text" id="newCertId" placeholder="Credential ID / Link" class="px-3 py-2 rounded-lg border border-slate-300 text-xs">
                     </div>
                     <button onclick="addStudentCert()" class="w-full py-2 bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold rounded-lg text-xs">
-                        + സർട്ടിഫിക്കറ്റ് ഡാറ്റാബേസിൽ സേവ് ചെയ്യുക
+                        + സർട്ടിഫിക്കറ്റ് സേവ് ചെയ്യുക
                     </button>
                 </div>
 
@@ -908,7 +938,7 @@
             </div>
 
             <div class="p-6 space-y-4">
-                <p class="text-xs text-slate-600">AL-HIKMAH സർട്ടിഫിക്കറ്റുകളുടെയും അനുബന്ധ ആഗോള ക്രെഡൻഷ്യലുകളുടെയും ആധികാരികത പരിശോധിക്കാൻ സർട്ടിഫിക്കറ്റ് നമ്പർ നൽകുക.</p>
+                <p class="text-xs text-slate-600">സർട്ടിഫിക്കറ്റുകളുടെ ആധികാരികത പരിശോധിക്കാൻ സർട്ടിഫിക്കറ്റ് നമ്പർ നൽകുക.</p>
                 
                 <div class="flex gap-2">
                     <input type="text" id="verifyInput" placeholder="ഉദാ: HIKMA-DEMO-01" class="flex-1 px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm uppercase font-mono outline-none focus:border-brand-600">
@@ -917,12 +947,10 @@
                     </button>
                 </div>
 
-                <!-- Sample IDs helper -->
                 <div class="text-[11px] text-slate-500">
                     മാതൃക പരിശോധന: <button onclick="verifySpecificId('HIKMA-DEMO-01')" class="text-brand-700 font-bold underline">HIKMA-DEMO-01</button>
                 </div>
 
-                <!-- Verification Result Box -->
                 <div id="verifyResult" class="hidden p-4 rounded-2xl text-xs space-y-1.5"></div>
             </div>
         </div>
@@ -947,13 +975,11 @@
             supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
         }
 
-        // 1. Mobile Menu Toggle
         function toggleMobileMenu() {
             const menu = document.getElementById('mobileMenu');
             menu.classList.toggle('hidden');
         }
 
-        // 2. Modal Controls
         function openModal(id) {
             document.getElementById(id).classList.remove('hidden');
         }
@@ -961,7 +987,6 @@
             document.getElementById(id).classList.add('hidden');
         }
 
-        // 3. Toast Notification
         function showToast(msg) {
             const toast = document.getElementById('toast');
             document.getElementById('toastMsg').innerText = msg;
@@ -969,23 +994,21 @@
             setTimeout(() => toast.classList.add('hidden'), 4000);
         }
 
-        // 4. Select Track from Button
         function selectTrack(trackValue) {
             const select = document.getElementById('trackSelect');
             if (select) select.value = trackValue;
         }
 
-        // 5. Global Certifications Data & Filter
         const globalCerts = [
             { title: 'Google AI Essentials', provider: 'Google', category: 'ai', duration: '5 - 10 മണിക്കൂർ', desc: 'പഠനത്തിലും ദൈനംദിന പ്രവർത്തനങ്ങളിലും ജനറേറ്റീവ് AI ഫലപ്രദമായി ഉപയോഗിക്കാൻ.', link: 'https://grow.google/ai/' },
             { title: 'Artificial Intelligence Fundamentals', provider: 'IBM SkillsBuild', category: 'ai', duration: '10 മണിക്കൂർ', desc: 'AI ചരിത്രം, NLP, കമ്പ്യൂട്ടർ വിഷൻ എന്നിവയിൽ ആഗോള Credly ഡിജിറ്റൽ ബാഡ്ജ്.', link: 'https://skillsbuild.org/students/course-catalog/artificial-intelligence' },
             { title: 'Introduction to Cybersecurity', provider: 'Cisco NetAcad', category: 'cyber', duration: '6 മണിക്കൂർ', desc: 'ഓൺലൈൻ സുരക്ഷ, ഹാക്കിംഗ് പ്രതിരോധം, ഡാറ്റാ സംരക്ഷണം എന്നിവയിൽ വെരിഫൈഡ് ബാഡ്ജ്.', link: 'https://www.netacad.com/courses/introduction-to-cybersecurity' },
             { title: 'Python Essentials 1', provider: 'Cisco & Python Institute', category: 'coding', duration: '30 മണിക്കൂർ', desc: 'പൈത്തൺ പ്രോഗ്രാമിംഗ് അടിസ്ഥാനം മുതൽ പഠിച്ച് കോഡിംഗ് ലോജിക് സ്വായത്തമാക്കാൻ.', link: 'https://www.netacad.com/courses/python-essentials-1' },
             { title: 'Responsive Web Design', provider: 'freeCodeCamp', category: 'coding', duration: 'സ്വന്തം വേഗതയിൽ', desc: 'HTML, CSS എന്നിവ ഉപയോഗിച്ച് സ്വന്തമായി വെബ്സൈറ്റുകൾ നിർമ്മിക്കുന്നതിനുള്ള സർട്ടിഫിക്കറ്റ്.', link: 'https://www.freecodecamp.org/learn/2022/responsive-web-design/' },
-            { title: 'Skill India Digital & FutureSkills', provider: 'Govt. of India (NSDC)', category: 'gov', duration: '2 - 20 മണിക്കൂർ', desc: 'ഭാരത സർക്കാരിന്റെ ഔദ്യോഗിക QR വെരിഫൈഡ് ഡിജിറ്റൽ സ്കിൽ സർട്ടിഫിക്കറ്റുകൾ.', link: 'https://www.skillindiadigital.gov.in/courses' },
-            { title: 'Elements of AI', provider: 'Govt. of Finland & Univ. of Helsinki', category: 'ai', duration: '15 - 25 മണിക്കൂർ', desc: 'യൂറോപ്യൻ യൂണിയൻ അംഗീകൃത ആർട്ടിഫിഷ്യൽ ഇന്റലിജൻസ് അടിസ്ഥാന കോഴ്സ്.', link: 'https://www.elementsofai.com/' },
+            { title: 'Skill India Digital & FutureSkills', provider: 'Govt. of India', category: 'gov', duration: '2 - 20 മണിക്കൂർ', desc: 'ഭാരത സർക്കാരിന്റെ ഔദ്യോഗിക QR വെരിഫൈഡ് ഡിജിറ്റൽ സ്കിൽ സർട്ടിഫിക്കറ്റുകൾ.', link: 'https://www.skillindiadigital.gov.in/courses' },
+            { title: 'Elements of AI', provider: 'Univ. of Helsinki', category: 'ai', duration: '15 - 25 മണിക്കൂർ', desc: 'യൂറോപ്യൻ യൂണിയൻ അംഗീകൃത ആർട്ടിഫിഷ്യൽ ഇന്റലിജൻസ് അടിസ്ഥാന കോഴ്സ്.', link: 'https://www.elementsofai.com/' },
             { title: 'Career Essentials in Generative AI', provider: 'Microsoft & LinkedIn', category: 'ai', duration: '4 - 6 മണിക്കൂർ', desc: 'പ്രോംപ്റ്റ് എൻജിനീയറിംഗിലും Microsoft AI ടൂളുകളിലും പ്രൊഫഷണൽ സർട്ടിഫിക്കറ്റ്.', link: 'https://learn.microsoft.com/en-us/training/paths/career-essentials-generative-ai/' },
-            { title: 'Fundamentals of Digital Marketing', provider: 'Google Digital Garage', category: 'gov', duration: '40 മണിക്കൂർ', desc: 'സോഷ്യൽ മീഡിയ മാനേജ്‌മെന്റ്, SEO, ഡിജിറ്റൽ ബ്രാൻഡിംഗ് എന്നിവയിൽ IAB അംഗീകൃത സർട്ടിഫിക്കറ്റ്.', link: 'https://skillshop.exceedlms.com/student/collection/654330-digital-marketing' }
+            { title: 'Fundamentals of Digital Marketing', provider: 'Google Digital Garage', category: 'gov', duration: '40 മണിക്കൂർ', desc: 'സോഷ്യൽ മീഡിയ മാനേജ്‌മെന്റ്, SEO, ഡിജിറ്റൽ ബ്രാൻഡിംഗ് എന്നിവയിൽ അംഗീകൃത സർട്ടിഫിക്കറ്റ്.', link: 'https://skillshop.exceedlms.com/student/collection/654330-digital-marketing' }
         ];
 
         function renderCerts(filter = 'all') {
@@ -998,10 +1021,10 @@
                     <div class="bg-white p-6 rounded-3xl border border-slate-200 shadow-sm hover:shadow-md transition-all flex flex-col justify-between space-y-4">
                         <div>
                             <div class="flex items-center justify-between gap-2 mb-3">
-                                <span class="text-[11px] font-bold px-2.5 py-1 rounded-lg bg-brand-50 text-brand-800 border border-brand-200">${cert.provider}</span>
+                                <span class="font-english text-[11px] font-bold px-2.5 py-1 rounded-lg bg-brand-50 text-brand-800 border border-brand-200">${cert.provider}</span>
                                 <span class="text-[11px] text-slate-400 font-medium"><i class="fa-regular fa-clock mr-1"></i>${cert.duration}</span>
                             </div>
-                            <h3 class="font-bold text-base text-slate-900 mb-2">${cert.title}</h3>
+                            <h3 class="font-english font-bold text-base text-slate-900 mb-2">${cert.title}</h3>
                             <p class="text-xs text-slate-600 leading-relaxed">${cert.desc}</p>
                         </div>
                         <a href="${cert.link}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2 w-full py-2.5 bg-slate-100 hover:bg-brand-800 hover:text-white text-slate-800 font-bold rounded-xl text-xs transition-colors">
@@ -1023,10 +1046,79 @@
             renderCerts(category);
         }
 
-        // Initialize Certifications on Load
         renderCerts();
 
-        // 6. Admission Form Submission (Connected to Supabase)
+        // ==========================================
+        // GEMINI AI IMAGE GENERATION (NO WOMEN, KERALA ISLAMIC ATTIRE)
+        // ==========================================
+        async function generateCustomImage(prompt, imgId, loaderId) {
+            const apiKey = "";
+            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite-image:generateContent?key=${apiKey}`;
+            const payload = {
+                contents: [{ parts: [{ text: prompt }] }],
+                generationConfig: { responseModalities: ['TEXT', 'IMAGE'] }
+            };
+
+            let delay = 1000;
+            for (let attempt = 0; attempt < 4; attempt++) {
+                try {
+                    const response = await fetch(apiUrl, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload)
+                    });
+                    if (!response.ok) throw new Error('API Error');
+                    const result = await response.json();
+                    const base64Data = result?.candidates?.[0]?.content?.parts?.find(p => p.inlineData)?.inlineData?.data;
+                    if (base64Data) {
+                        const imgEl = document.getElementById(imgId);
+                        const loaderEl = document.getElementById(loaderId);
+                        if (imgEl) imgEl.src = `data:image/png;base64,${base64Data}`;
+                        if (loaderEl) loaderEl.classList.add('hidden');
+                        return;
+                    }
+                } catch (e) {
+                    if (attempt < 3) {
+                        await new Promise(res => setTimeout(res, delay));
+                        delay *= 2;
+                    }
+                }
+            }
+            const loaderEl = document.getElementById(loaderId);
+            if (loaderEl) loaderEl.classList.add('hidden');
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            // 1. Hero Image: Kerala Dars students in white turban & white thobe/shirt learning on laptops
+            generateCustomImage(
+                "A realistic, bright modern computer lab in Kerala, India. Young South Indian Muslim male students (Dars students) wearing traditional neat white cotton turbans (thalappavu) and clean white shirts/thobes, focused on coding and AI on modern laptops. Only male students, no women. Natural daylight, clean academic environment, high resolution photography.",
+                "heroDarsImg",
+                "heroImgLoader"
+            );
+
+            // 2. Vision Image: Male Islamic scholar mentor guiding Dars students
+            generateCustomImage(
+                "A respected South Indian Muslim male scholar wearing a white turban and white traditional attire guiding two young male Dars students in white turbans at a clean computer desk with laptops. Warm, inspiring educational atmosphere, no women, realistic photography.",
+                "visionDarsImg",
+                "visionImgLoader"
+            );
+
+            // 3. BAYAN Track Image: Dars students working on DTP and programming
+            generateCustomImage(
+                "South Indian Muslim male Dars students wearing crisp white turbans and white attire collaborating around laptops showing code and graphic design in a modern Islamic academy computer lab. Only males, bright professional lighting, photorealistic.",
+                "bayanTrackImg",
+                "bayanImgLoader"
+            );
+
+            // 4. NOOR Track Image: Muslim men wearing white skullcaps (topi) & formal shirts in a media & AI workshop
+            generateCustomImage(
+                "A professional digital media and AI workshop for men in Kerala. South Indian Muslim men wearing neat white prayer caps (topi) and clean formal shirts sitting with laptops, learning digital presentations and media editing. Only men, no women, bright modern seminar hall, realistic photography.",
+                "noorTrackImg",
+                "noorImgLoader"
+            );
+        });
+
+        // Admission Form Submission
         async function handleAdmissionSubmit(e) {
             e.preventDefault();
             const btn = document.getElementById('admSubmitBtn');
@@ -1046,7 +1138,7 @@
                 if (supabaseClient) {
                     const { error } = await supabaseClient.from('admissions').insert([payload]);
                     if (error) throw error;
-                    showToast('നിങ്ങളുടെ അപേക്ഷ Supabase ഡാറ്റാബേസിൽ വിജയകരമായി രേഖപ്പെടുത്തി!');
+                    showToast('നിങ്ങളുടെ അപേക്ഷ വിജയകരമായി രേഖപ്പെടുത്തി!');
                 } else {
                     showToast('അപേക്ഷ സ്വീകരിച്ചു!');
                 }
@@ -1060,7 +1152,7 @@
             }
         }
 
-        // 7. Student Login & Portfolio (Connected to Supabase Auth & DB)
+        // Student Login & Portfolio
         let currentUser = null;
 
         async function handleStudentLogin(e) {
@@ -1143,7 +1235,7 @@
                         <div class="p-3 bg-white border border-slate-200 rounded-xl flex justify-between items-center text-xs">
                             <div>
                                 <p class="font-bold text-slate-900">${title}</p>
-                                <p class="text-slate-500">ID / Link: ${id}</p>
+                                <p class="text-slate-500">ID: ${id}</p>
                             </div>
                             <span class="px-2 py-1 bg-amber-100 text-amber-800 rounded-md font-semibold">Added</span>
                         </div>
@@ -1151,13 +1243,13 @@
                 }
                 document.getElementById('newCertTitle').value = '';
                 document.getElementById('newCertId').value = '';
-                showToast('സർട്ടിഫിക്കറ്റ് ലിങ്ക് ഡാറ്റാബേസിൽ സേവ് ചെയ്തു!');
+                showToast('സർട്ടിഫിക്കറ്റ് ലിങ്ക് സേവ് ചെയ്തു!');
             } catch (err) {
                 showToast('സേവ് ചെയ്യുന്നതിൽ പിശക് സംഭവിച്ചു.');
             }
         }
 
-        // 8. Certificate Verification Logic (Connected to Supabase DB)
+        // Certificate Verification Logic
         function verifySpecificId(id) {
             openModal('verifyModal');
             document.getElementById('verifyInput').value = id;
@@ -1183,7 +1275,7 @@
                     resultBox.innerHTML = `
                         <div class="flex items-center gap-2 font-bold text-emerald-800 text-sm">
                             <i class="fa-solid fa-circle-check text-emerald-600"></i>
-                            <span>ആധികാരിക സർട്ടിഫിക്കറ്റ് (Verified)</span>
+                            <span>ആധികാരിക സർട്ടിഫിക്കറ്റ്</span>
                         </div>
                         <p><strong>കോഴ്സ്:</strong> ${data.course_title}</p>
                         <p><strong>ID:</strong> ${data.credential_id}</p>
@@ -1197,9 +1289,9 @@
                 resultBox.innerHTML = `
                     <div class="flex items-center gap-2 font-bold text-emerald-800 text-sm">
                         <i class="fa-solid fa-circle-check text-emerald-600"></i>
-                        <span>ആധികാരിക സർട്ടിഫിക്കറ്റ് (Verified Sample)</span>
+                        <span>ആധികാരിക സർട്ടിഫിക്കറ്റ്</span>
                     </div>
-                    <p><strong>കോഴ്സ്:</strong> AL-HIKMAH (BAYAN Diploma Track)</p>
+                    <p><strong>കോഴ്സ്:</strong> HIKMA Digital Academy — BAYAN Diploma</p>
                     <p><strong>പദവി:</strong> Successfully Completed</p>
                     <p><strong>ID:</strong> ${input.toUpperCase()}</p>
                 `;
