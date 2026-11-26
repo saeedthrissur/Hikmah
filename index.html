@@ -819,7 +819,7 @@
                     <div class="text-[11px] text-slate-500">
                         <p class="font-bold text-slate-700">Scan to Verify Authenticity</p>
                         <p id="pdfCertDateText">Issued: November 2026</p>
-                        <p>saeedthrissur.github.io</p>
+                        <p>saeedthrissur.github.io/Hikmah/</p>
                     </div>
                 </div>
                 <div class="text-center">
@@ -1033,8 +1033,19 @@
         const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImdycHZhcnd0dmJ6ZXlzbW5yZGtvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQ1Mjg5OTQsImV4cCI6MjA5MDEwNDk5NH0.L3c-37H141B6F6t6Z9uF_9yR2x7jY5u_8vA1k9X8o2I";
         const ADMIN_EMAIL = "saeed.anchangadi@gmail.com";
         const INSTAMOJO_PAY_URL = "https://www.instamojo.com/@saeed_anchangadi/lbd890fba8f0c421cbf79815cf7120370/";
+        const SITE_REDIRECT_URL = window.location.origin.includes('github.io')
+            ? "https://saeedthrissur.github.io/Hikmah/"
+            : (window.location.origin + window.location.pathname);
 
-        const supabaseClient = window.supabase ? window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY) : null;
+        const supabaseClient = window.supabase
+            ? window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY, {
+                auth: {
+                    detectSessionInUrl: true,
+                    persistSession: true,
+                    autoRefreshToken: true
+                }
+            })
+            : null;
 
         let currentUser = null;
         let isServerAdmin = false;
@@ -1410,11 +1421,13 @@ HOW TO TEACH ME IN THIS SESSION:
                 return;
             }
             showToast('ഗൂഗിൾ ലോഗിൻ പേജിലേക്ക് പോകുന്നു...');
-            const exactCurrentPageUrl = window.location.origin + window.location.pathname;
 
             const { data, error } = await supabaseClient.auth.signInWithOAuth({
                 provider: 'google',
-                options: { redirectTo: exactCurrentPageUrl }
+                options: {
+                    redirectTo: SITE_REDIRECT_URL,
+                    queryParams: { prompt: 'select_account' }
+                }
             });
 
             if (error) {
@@ -1425,49 +1438,77 @@ HOW TO TEACH ME IN THIS SESSION:
             }
         }
 
-        async function checkUserAndLoadLessons() {
-            if (!supabaseClient) { renderModuleGrid(); return; }
-            const { data: { session } } = await supabaseClient.auth.getSession();
-
-            if (session && session.user) {
-                currentUser = session.user;
-                const email = currentUser.email.toLowerCase();
-                document.getElementById('navUserLabel').innerText = email.split('@')[0];
-                document.getElementById('menuLoggedOut').classList.add('hidden');
-                document.getElementById('menuLoggedIn').classList.remove('hidden');
-                document.getElementById('menuUserEmail').innerText = email;
-                document.getElementById('academyLoggedOutView').classList.add('hidden');
-                document.getElementById('academyLoggedInView').classList.remove('hidden');
-                document.getElementById('academyUserEmail').innerText = email;
-
-                const dashBtn = document.getElementById('headerStudentDashBtn');
-                dashBtn.classList.remove('hidden');
-                dashBtn.classList.add('inline-flex');
-
-                isServerAdmin = (email === ADMIN_EMAIL);
-
-                const { data: facRow } = await supabaseClient.from('faculties').select('status').eq('email', email).eq('status', 'approved').maybeSingle();
-                isFacultyUser = !!facRow;
-
-                if (isServerAdmin) {
-                    document.getElementById('menuAdminBtn').classList.remove('hidden');
-                    const topAdminBtn = document.getElementById('topAdminShortcutBtn');
-                    topAdminBtn.classList.remove('hidden');
-                    topAdminBtn.classList.add('inline-flex');
-                    actualPaidStatus = true;
-                } else {
-                    const { data: enrollment } = await supabaseClient.from('enrollments').select('status').eq('student_email', email).eq('status', 'paid').maybeSingle();
-                    actualPaidStatus = !!enrollment || isFacultyUser;
-                }
-
-                await loadStudentProgressAndVault();
-            } else {
+        async function applyAuthenticatedUser(user) {
+            if (!user) {
                 currentUser = null;
                 isServerAdmin = false;
                 isFacultyUser = false;
                 actualPaidStatus = false;
+                document.getElementById('navUserLabel').innerText = 'സെറ്റിംഗ്സ്';
+                document.getElementById('menuLoggedOut').classList.remove('hidden');
+                document.getElementById('menuLoggedIn').classList.add('hidden');
+                document.getElementById('academyLoggedOutView').classList.remove('hidden');
+                document.getElementById('academyLoggedInView').classList.add('hidden');
+                document.getElementById('headerStudentDashBtn').classList.add('hidden');
+                document.getElementById('topAdminShortcutBtn').classList.add('hidden');
+                document.getElementById('menuAdminBtn').classList.add('hidden');
+                applyEffectiveRoleView();
+                return;
             }
+
+            currentUser = user;
+            const email = currentUser.email.toLowerCase();
+            document.getElementById('navUserLabel').innerText = email.split('@')[0];
+            document.getElementById('menuLoggedOut').classList.add('hidden');
+            document.getElementById('menuLoggedIn').classList.remove('hidden');
+            document.getElementById('menuUserEmail').innerText = email;
+            document.getElementById('academyLoggedOutView').classList.add('hidden');
+            document.getElementById('academyLoggedInView').classList.remove('hidden');
+            document.getElementById('academyUserEmail').innerText = email;
+
+            const dashBtn = document.getElementById('headerStudentDashBtn');
+            dashBtn.classList.remove('hidden');
+            dashBtn.classList.add('inline-flex');
+
+            isServerAdmin = (email === ADMIN_EMAIL);
+
+            const { data: facRow } = await supabaseClient.from('faculties').select('status').eq('email', email).eq('status', 'approved').maybeSingle();
+            isFacultyUser = !!facRow;
+
+            if (isServerAdmin) {
+                document.getElementById('menuAdminBtn').classList.remove('hidden');
+                const topAdminBtn = document.getElementById('topAdminShortcutBtn');
+                topAdminBtn.classList.remove('hidden');
+                topAdminBtn.classList.add('inline-flex');
+                actualPaidStatus = true;
+            } else {
+                const { data: enrollment } = await supabaseClient.from('enrollments').select('status').eq('student_email', email).eq('status', 'paid').maybeSingle();
+                actualPaidStatus = !!enrollment || isFacultyUser;
+            }
+
+            await loadStudentProgressAndVault();
             applyEffectiveRoleView();
+        }
+
+        async function checkUserAndLoadLessons() {
+            if (!supabaseClient) { renderModuleGrid(); return; }
+
+            supabaseClient.auth.onAuthStateChange(async (event, session) => {
+                if (session && session.user) {
+                    if (window.location.hash && window.location.hash.includes('access_token')) {
+                        window.history.replaceState({}, document.title, window.location.pathname + window.location.search);
+                    }
+                    await applyAuthenticatedUser(session.user);
+                    if (event === 'SIGNED_IN') {
+                        showToast(`സ്വാഗതം, ${session.user.email}!`);
+                    }
+                } else if (event === 'SIGNED_OUT') {
+                    await applyAuthenticatedUser(null);
+                }
+            });
+
+            const { data: { session } } = await supabaseClient.auth.getSession();
+            await applyAuthenticatedUser(session ? session.user : null);
         }
 
         function applyEffectiveRoleView() {
@@ -2106,7 +2147,7 @@ HOW TO TEACH ME IN THIS SESSION:
             const studentName = (currentUser.user_metadata && currentUser.user_metadata.full_name) ? currentUser.user_metadata.full_name : currentUser.email.split('@')[0].toUpperCase();
             const certId = `HIKMA-2026-${currentUser.id.slice(0, 6).toUpperCase()}`;
             const dateStr = new Date().toLocaleDateString('en-US', { month: 'long', year: 'numeric' });
-            const verifyUrl = `${window.location.origin}${window.location.pathname}?verify=${certId}`;
+            const verifyUrl = `${SITE_REDIRECT_URL}?verify=${certId}`;
 
             document.getElementById('pdfCertStudentName').innerText = studentName;
             document.getElementById('pdfCertIdText').innerText = `ID: ${certId}`;
